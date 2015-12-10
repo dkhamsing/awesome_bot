@@ -8,4 +8,4 @@ script:
   - awesome_bot bin/assets/test-no-issues
   - awesome_bot bin/assets/test-no-links
   - awesome_bot bin/assets/test-dupe --allow-dupe
-  - awesome_bot README.md --allow-dupe --white-list gph.is,bot.svg
+  - awesome_bot README.md --allow-dupe --white-list gph.is,bot.svg,codeload,badge
