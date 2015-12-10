@@ -13,6 +13,13 @@
 - [gemspec] update
 - [travis] simplify
 
+## 1.1.0
+
+- handle bad links
+- statuses yields `status`, `url`
+- add head option when getting statuses
+- [cli] improve output for `--allow-dupe`
+
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)

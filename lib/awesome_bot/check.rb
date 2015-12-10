@@ -13,7 +13,7 @@ module AwesomeBot
     def check(content, white_listed = nil, skip_dupe = false, verbose = false)
       dupe_success = skip_dupe
 
-      puts '> Will not check for duplicate links' if skip_dupe && verbose
+      puts '> Will allow duplicate links' if skip_dupe && verbose
 
       white_listing = !white_listed.nil?
       puts "> White list: #{white_listed.join ', '}" if white_listing && verbose
@@ -34,7 +34,9 @@ module AwesomeBot
 
       print 'Checking URLs: ' if verbose && (links.count > 0)
       statuses =
-        statuses links.uniq, NUMBER_OF_THREADS, verbose, STATUS_OK, STATUS_OTHER
+        statuses(links.uniq, NUMBER_OF_THREADS) do |s|
+          print(s == 200 ? STATUS_OK : STATUS_OTHER) if verbose
+        end
       puts '' if verbose
 
       statuses_issues = statuses.select { |x| x['status'] != 200 }
@@ -58,7 +60,7 @@ module AwesomeBot
           puts "  All OK #{STATUS_OK}"
         else
           statuses_issues.each_with_index do |x, k|
-            puts "  #{k + 1}. #{x['status']} #{x['url']} "
+            puts "  #{k + 1}. #{x['status']}: #{x['url']} "
           end
         end
 
