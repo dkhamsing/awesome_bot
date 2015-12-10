@@ -2,8 +2,7 @@ language: ruby
 rvm:
   - 2.2
 before_script:
-  - export PATH=$PATH:$PWD/bin/
-  - bundle install
+  - rake install
 script:
   - awesome_bot
   - awesome_bot bin/assets/test-no-issues
