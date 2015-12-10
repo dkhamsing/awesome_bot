@@ -12,18 +12,20 @@ module AwesomeBot
       Faraday.get(url).status
     end
 
+    def net_status(url, head)
+      head ? net_head_status(url) : net_get_status(url)
+    end
+
     def statuses(links, threads, head = false)
       statuses = []
       Parallel.each(links, in_threads: threads) do |u|
-        status =
-          if head
-            net_head_status u
-          else
-            net_get_status u
-          end
+        begin
+          status = net_status u, head
+        rescue => e
+          status = e
+        end
 
         yield status, u
-
         statuses.push('url' => u, 'status' => status)
       end # Parallel
 

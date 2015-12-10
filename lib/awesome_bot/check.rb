@@ -60,7 +60,7 @@ module AwesomeBot
           puts "  All OK #{STATUS_OK}"
         else
           statuses_issues.each_with_index do |x, k|
-            puts "  #{k + 1}. #{x['status']} #{x['url']} "
+            puts "  #{k + 1}. #{x['status']}: #{x['url']} "
           end
         end
 
