@@ -34,7 +34,8 @@ irb(main):002:0> c = File.read 'README.md'
 => "..."
 irb(main):003:0> AwesomeBot.run c
 => [false, [{"url"=>"http://gph.is/1gU5itl", "status"=>301},..]
-# if there are errors, the object includes false, statuses and dupes
+# returning false, statuses and dupes if there are errors
+# otherwise returning true
 ```
 
 More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot/0.1.0).
