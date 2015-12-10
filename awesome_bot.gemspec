@@ -15,9 +15,11 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.bindir        = 'bin'
+  spec.executables   = [AwesomeBot::PROJECT]
+  spec.require_paths = ['lib']
+
+  spec.required_ruby_version = '>= 2.0.0'
 
   spec.add_runtime_dependency 'faraday', '~> 0.9.2' # validate urls
   spec.add_runtime_dependency 'uri', '~> 4.4.29' # get urls
