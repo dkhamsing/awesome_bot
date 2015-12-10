@@ -21,13 +21,12 @@ module AwesomeBot
       option_w = "--#{OPTION_WHITE_LIST}"
 
       if ARGV.count == 0
-        puts "#{PROJECT_DESCRIPTION} \n"\
-             "Usage: #{PROJECT} <file> [#{option_d}] "\
-             "[#{option_w} item1,item2,..]\n"\
-             "#{USAGE} file \t\t Path to file \n"\
-             "#{USAGE} #{option_d} \t Skip checking for duplicate URLs \n"\
-             "#{USAGE} #{option_w} \t Comma separated URLs to white list \n"\
-             "\nSee #{PROJECT_URL} for more information"
+        puts "Usage: #{PROJECT} <file> [#{option_d}] "\
+          "[#{option_w} item1,item2,..]\n"\
+          "#{USAGE} file \t\t Path to file \n"\
+          "#{USAGE} #{option_d} \t Skip checking for duplicate URLs \n"\
+          "#{USAGE} #{option_w} \t Comma separated URLs to white list \n"\
+          "\nVersion #{VERSION}, see #{PROJECT_URL} for more information"
 
         exit
       end
