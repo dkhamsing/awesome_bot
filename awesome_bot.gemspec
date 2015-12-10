@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Daniel Khamsing']
   spec.email         = ['dkhamsing8@gmail.com']
 
-  spec.summary       = 'Validate awesome project URLs.'
+  spec.summary       = AwesomeBot::PROJECT_DESCRIPTION
   spec.description   = AwesomeBot::PROJECT_DESCRIPTION
   spec.homepage      = AwesomeBot::PROJECT_URL
   spec.license       = 'MIT'
