@@ -53,7 +53,7 @@ module AwesomeBot
         exit 1
       end
 
-      exit 1 if run(content, white_listed, skip_dupe, true) == false
+      exit 1 unless run(content, white_listed, skip_dupe, true) == true
 
       exit
     end
