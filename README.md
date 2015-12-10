@@ -110,13 +110,9 @@ language: ruby
 rvm:
   - 2.2
 before_script:
-  - wget https://codeload.github.com/dkhamsing/awesome_bot/tar.gz/master -O /tmp/temp.tar.gz
-  - tar -xvf /tmp/temp.tar.gz
-  - export PATH=$PATH:$PWD/awesome_bot-master/bin/
-  - cd awesome_bot-master
-  - bundle install
-script:  
-  - awesome_bot ../README.md 
+  - gem install awesome_bot
+script:
+  - awesome_bot README.md
 ```
 
 ## Credits
