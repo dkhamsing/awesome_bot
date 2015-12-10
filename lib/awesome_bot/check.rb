@@ -53,12 +53,12 @@ module AwesomeBot
         exit 1
       end
 
-      exit 1 unless run(content, white_listed, skip_dupe, true) == true
+      exit 1 unless check(content, white_listed, skip_dupe, true) == true
 
       exit
     end
 
-    def run(content, white_listed = nil, skip_dupe = false, verbose = false)
+    def check(content, white_listed = nil, skip_dupe = false, verbose = false)
       dupe_success = skip_dupe
 
       puts '> Will not check for duplicate links' if skip_dupe && verbose
