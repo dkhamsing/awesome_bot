@@ -11,15 +11,15 @@
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's Gemfile
 
-    gem 'awesome_bot', '~> 0.1'
+    gem 'awesome_bot'
 
-And then execute:
+And then execute
 
     $ bundle
 
-Or install it yourself as:
+Or install it yourself as
 
     $ gem install awesome_bot
 
@@ -32,13 +32,13 @@ irb(main):001:0> require 'awesome_bot'
 => true
 irb(main):002:0> c = File.read 'README.md'
 => "..."
-irb(main):003:0> AwesomeBot.run c
+irb(main):003:0> AwesomeBot.check c
 => [false, [{"url"=>"http://gph.is/1gU5itl", "status"=>301},..]
 # returning false, statuses and dupes if there are errors
 # otherwise returning true
 ```
 
-More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot/0.1.0).
+More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot/1.0.0).
 
 ### Command Line
 
