@@ -13,7 +13,7 @@ module AwesomeBot
     def check(content, white_listed = nil, skip_dupe = false, verbose = false)
       dupe_success = skip_dupe
 
-      puts '> Will not check for duplicate links' if skip_dupe && verbose
+      puts '> Will allow duplicate links' if skip_dupe && verbose
 
       white_listing = !white_listed.nil?
       puts "> White list: #{white_listed.join ', '}" if white_listing && verbose
