@@ -8,12 +8,12 @@ module AwesomeBot
       Faraday.get(url).status
     end
 
-    def statuses(links, threads, verbose, status_ok, status_other)
+    def statuses(links, threads)
       statuses = []
       Parallel.each(links, in_threads: threads) do |u|
         status = net_status u
 
-        print(status == 200 ? status_ok : status_other) if verbose
+        yield status, u
 
         statuses.push('url' => u, 'status' => status)
       end # Parallel

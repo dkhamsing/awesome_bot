@@ -34,7 +34,9 @@ module AwesomeBot
 
       print 'Checking URLs: ' if verbose && (links.count > 0)
       statuses =
-        statuses links.uniq, NUMBER_OF_THREADS, verbose, STATUS_OK, STATUS_OTHER
+        statuses(links.uniq, NUMBER_OF_THREADS) do |s|
+          print(s == 200 ? STATUS_OK : STATUS_OTHER) if verbose
+        end
       puts '' if verbose
 
       statuses_issues = statuses.select { |x| x['status'] != 200 }
