@@ -47,34 +47,19 @@ module AwesomeBot
         dupes = links.select { |e| links.count(e) > 1 }
       end
 
-      if links_success && dupe_success
-        puts 'No issues :-)' if verbose
-        return true
-      end
+      return true if links_success && dupe_success
 
-      if verbose
-        puts "\nIssues :-("
-
-        print "> Links \n"
-        if links_success
-          puts "  All OK #{STATUS_OK}"
-        else
-          statuses_issues.each_with_index do |x, k|
-            puts "  #{k + 1}. #{x['status']}: #{x['url']} "
-          end
-        end
-
-        unless skip_dupe
-          print "> Dupes \n"
-          if dupe_success
-            puts "  None #{STATUS_OK}"
-          else
-            dupes.uniq.each_with_index { |d, m| puts "  #{m + 1}. #{d}" }
-          end
-        end
-      end # if verbose
-
-      [false, statuses, dupes]
+      {
+        'issues' => {
+          'status' => statuses_issues,
+          'dupe' => dupes
+        },
+        'results' => {
+          'links' => links_success,
+          'dupe' => dupe_success
+        },
+        'status' => statuses
+      }
     end # run
   end # class
 end

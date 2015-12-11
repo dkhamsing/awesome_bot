@@ -43,9 +43,39 @@ module AwesomeBot
         exit 1
       end
 
-      exit 1 unless check(content, white_listed, skip_dupe, true) == true
+      r = check(content, white_listed, skip_dupe, true)
+      if r == true
+        puts 'No issues :-)'
+        # exit ?
+      else
+        puts "\nIssues :-("
 
-      exit
+        i = r['issues']
+        r = r['results']
+
+        s = i['status']
+
+        print "> Links \n"
+        if r['links']
+          puts "  All OK #{STATUS_OK}"
+        else
+          s.each_with_index do |x, k|
+            puts "  #{k + 1}. #{x['status']}: #{x['url']} "
+          end
+        end
+
+        unless skip_dupe
+          dupes = i['dupe']
+          print "> Dupes \n"
+          if r['dupe']
+            puts "  None #{STATUS_OK}"
+          else
+            dupes.uniq.each_with_index { |d, m| puts "  #{m + 1}. #{d}" }
+          end
+        end
+
+        exit 1
+      end
     end
   end # class
 end
