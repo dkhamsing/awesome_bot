@@ -1,4 +1,5 @@
 require 'awesome_bot/check'
+require 'awesome_bot/log'
 require 'awesome_bot/result'
 require 'awesome_bot/version'
 
@@ -45,7 +46,8 @@ module AwesomeBot
         exit 1
       end
 
-      r = check(content, white_listed, skip_dupe, true)
+      log = Log.new(true)
+      r = check(content, white_listed, skip_dupe, log)
 
       unless r.white_listed.nil?
         puts "\n> White listed:"

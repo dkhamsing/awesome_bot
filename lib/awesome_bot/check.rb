@@ -1,4 +1,5 @@
 require 'awesome_bot/links'
+require 'awesome_bot/log'
 require 'awesome_bot/result'
 require 'awesome_bot/statuses'
 
@@ -10,46 +11,43 @@ module AwesomeBot
   STATUS_OTHER = 'x'
 
   class << self
-    def check(content, white_listed = nil, skip_dupe = false, verbose = false)
-      puts '> Will allow duplicate links' if skip_dupe && verbose
+    def check(content, white_listed = nil, skip_dupe = false, log = Log.new)
+      log.add '> Will allow duplicate links' if skip_dupe
 
       temp = links_filter(links_find(content))
 
       r = Result.new(temp, white_listed)
       r.skip_dupe = skip_dupe
 
-      puts "> White list: #{white_listed.join ', '}" if
-        r.white_listing && verbose
+      log.add "> White list: #{white_listed.join ', '}" if r.white_listing
 
       r.dupes = r.links.select { |e| r.links.count(e) > 1 } unless skip_dupe
 
-      if verbose
-        print "Links found: #{r.links.count}"
-        print ", #{r.rejected.count} white listed" if r.white_listing
-        unless skip_dupe
-          print ", #{r.links.uniq.count} unique" if r.dupes.count > 0
-        end
-        puts ''
-        r.links.uniq.each_with_index { |u, j| puts "  #{j + 1}. #{u}" }
+      log.addp "Links found: #{r.links.count}"
+      log.addp ", #{r.rejected.count} white listed" if r.white_listing
+      unless skip_dupe
+        log.addp ", #{r.links.uniq.count} unique" if r.dupes.count > 0
       end
+      log.add ''
+      r.links.uniq.each_with_index { |u, j| log.add "  #{j + 1}. #{u}" }
 
-      print 'Checking URLs: ' if verbose && (r.links.count > 0)
+      log.addp 'Checking URLs: ' if r.links.count > 0
       r.status =
         statuses(r.links.uniq, NUMBER_OF_THREADS) do |s|
-          print(s == 200 ? STATUS_OK : STATUS_OTHER) if verbose
+          log.addp(s == 200 ? STATUS_OK : STATUS_OTHER)
         end
-      puts '' if verbose
+      log.add ''
 
       return r if !r.white_listing || (r.rejected.count > 0)
 
-      print 'Checking white listed URLs: ' if verbose
+      log.addp 'Checking white listed URLs: '
       r.white_listed =
         statuses(r.rejected.uniq, NUMBER_OF_THREADS, true) do |s|
-          print(s == 200 ? STATUS_OK : STATUS_OTHER) if verbose
+          log.addp(s == 200 ? STATUS_OK : STATUS_OTHER)
         end
-      puts '' if verbose
+      log.add ''
 
       r
-    end # run
+    end # check
   end # class
 end
