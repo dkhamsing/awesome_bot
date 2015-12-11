@@ -20,6 +20,13 @@
 - add head option when getting statuses
 - [cli] improve output for `--allow-dupe`
 
+# 1.2.0
+
+- move some logic from check to cli
+- output status for white listed links
+- use `result`
+- use `logger`
+
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)

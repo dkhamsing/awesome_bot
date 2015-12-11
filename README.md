@@ -33,12 +33,11 @@ irb(main):001:0> require 'awesome_bot'
 irb(main):002:0> c = File.read 'README.md'
 => "..."
 irb(main):003:0> AwesomeBot.check c
-=> [false, [{"url"=>"http://gph.is/1gU5itl", "status"=>301},..]
-# returning false, statuses and dupes if there are errors
-# otherwise returning true
+=> #<AwesomeBot::Result:0x007fdde39f4408 @links=...>
+# AwesomeBot Result with success, statuses_issues, dupes and more
 ```
 
-More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot/1.1.0).
+More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 
 ### Command Line
 

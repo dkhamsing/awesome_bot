@@ -1,3 +1,6 @@
+require 'awesome_bot/check'
+require 'awesome_bot/log'
+require 'awesome_bot/result'
 require 'awesome_bot/version'
 
 # Command line interface
@@ -43,9 +46,42 @@ module AwesomeBot
         exit 1
       end
 
-      exit 1 unless check(content, white_listed, skip_dupe, true) == true
+      log = Log.new(true)
+      r = check(content, white_listed, skip_dupe, log)
 
-      exit
+      unless r.white_listed.nil?
+        puts "\n> White listed:"
+        r.white_listed.each_with_index do |x, k|
+          puts "  #{k + 1}. #{x['status']}: #{x['url']} "
+        end
+      end
+
+      if r.success == true
+        puts 'No issues :-)'
+        # exit ?
+      else
+        puts "\nIssues :-("
+
+        print "> Links \n"
+        if r.success_links
+          puts "  All OK #{STATUS_OK}"
+        else
+          r.statuses_issues.each_with_index do |x, k|
+            puts "  #{k + 1}. #{x['status']}: #{x['url']} "
+          end
+        end
+
+        unless skip_dupe
+          print "> Dupes \n"
+          if r.success_dupe
+            puts "  None #{STATUS_OK}"
+          else
+            r.dupes.uniq.each_with_index { |d, m| puts "  #{m + 1}. #{d}" }
+          end
+        end
+
+        exit 1
+      end
     end
   end # class
 end

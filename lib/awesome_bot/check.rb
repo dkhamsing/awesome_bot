@@ -1,6 +1,7 @@
 require 'awesome_bot/links'
+require 'awesome_bot/log'
+require 'awesome_bot/result'
 require 'awesome_bot/statuses'
-require 'awesome_bot/white_list'
 
 # Check links
 module AwesomeBot
@@ -10,71 +11,43 @@ module AwesomeBot
   STATUS_OTHER = 'x'
 
   class << self
-    def check(content, white_listed = nil, skip_dupe = false, verbose = false)
-      dupe_success = skip_dupe
+    def check(content, white_listed = nil, skip_dupe = false, log = Log.new)
+      log.add '> Will allow duplicate links' if skip_dupe
 
-      puts '> Will allow duplicate links' if skip_dupe && verbose
+      temp = links_filter(links_find(content))
 
-      white_listing = !white_listed.nil?
-      puts "> White list: #{white_listed.join ', '}" if white_listing && verbose
+      r = Result.new(temp, white_listed)
+      r.skip_dupe = skip_dupe
 
-      links = links_filter(links_find(content))
+      log.add "> White list: #{white_listed.join ', '}" if r.white_listing
 
-      if white_listing
-        rejected, links = links.partition { |u| white_list white_listed, u }
-      end
+      r.dupes = r.links.select { |e| r.links.count(e) > 1 } unless skip_dupe
 
-      if verbose
-        print "Links found: #{links.count}"
-        print ", #{rejected.count} white listed" if white_listing
-        print ", #{links.uniq.count} unique" if links.count != links.uniq.count
-        puts ''
-        links.uniq.each_with_index { |u, j| puts "  #{j + 1}. #{u}" }
-      end
-
-      print 'Checking URLs: ' if verbose && (links.count > 0)
-      statuses =
-        statuses(links.uniq, NUMBER_OF_THREADS) do |s|
-          print(s == 200 ? STATUS_OK : STATUS_OTHER) if verbose
-        end
-      puts '' if verbose
-
-      statuses_issues = statuses.select { |x| x['status'] != 200 }
-      links_success = statuses_issues.count == 0
-
+      log.addp "Links found: #{r.links.count}"
+      log.addp ", #{r.rejected.count} white listed" if r.white_listing
       unless skip_dupe
-        dupe_success = links.uniq.count == links.count
-        dupes = links.select { |e| links.count(e) > 1 }
+        log.addp ", #{r.links.uniq.count} unique" if r.dupes.count > 0
       end
+      log.add ''
+      r.links.uniq.each_with_index { |u, j| log.add "  #{j + 1}. #{u}" }
 
-      if links_success && dupe_success
-        puts 'No issues :-)' if verbose
-        return true
-      end
-
-      if verbose
-        puts "\nIssues :-("
-
-        print "> Links \n"
-        if links_success
-          puts "  All OK #{STATUS_OK}"
-        else
-          statuses_issues.each_with_index do |x, k|
-            puts "  #{k + 1}. #{x['status']}: #{x['url']} "
-          end
+      log.addp 'Checking URLs: ' if r.links.count > 0
+      r.status =
+        statuses(r.links.uniq, NUMBER_OF_THREADS) do |s|
+          log.addp(s == 200 ? STATUS_OK : STATUS_OTHER)
         end
+      log.add ''
 
-        unless skip_dupe
-          print "> Dupes \n"
-          if dupe_success
-            puts "  None #{STATUS_OK}"
-          else
-            dupes.uniq.each_with_index { |d, m| puts "  #{m + 1}. #{d}" }
-          end
+      return r if !r.white_listing || (r.rejected.count > 0)
+
+      log.addp 'Checking white listed URLs: '
+      r.white_listed =
+        statuses(r.rejected.uniq, NUMBER_OF_THREADS, true) do |s|
+          log.addp(s == 200 ? STATUS_OK : STATUS_OTHER)
         end
-      end # if verbose
+      log.add ''
 
-      [false, statuses, dupes]
-    end # run
+      r
+    end # check
   end # class
 end
