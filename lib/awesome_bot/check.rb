@@ -38,7 +38,7 @@ module AwesomeBot
         end
       log.add ''
 
-      return r if !r.white_listing || (r.rejected.count > 0)
+      return r if !r.white_listing || (r.rejected.count == 0)
 
       log.addp 'Checking white listed URLs: '
       r.white_listed =
