@@ -1,3 +1,5 @@
+require 'awesome_bot/check'
+require 'awesome_bot/result'
 require 'awesome_bot/version'
 
 # Command line interface
@@ -45,41 +47,34 @@ module AwesomeBot
 
       r = check(content, white_listed, skip_dupe, true)
 
-      wl = r['white_listed']
-      unless wl.nil?
+      unless r.white_listed.nil?
         puts "\n> White listed:"
-        wl.each_with_index do |x, k|
+        r.white_listed.each_with_index do |x, k|
           puts "  #{k + 1}. #{x['status']}: #{x['url']} "
         end
       end
 
-      if r['success'] == true
+      if r.success == true
         puts 'No issues :-)'
         # exit ?
       else
         puts "\nIssues :-("
 
-        i = r['issues']
-        r = r['results']
-
-        s = i['status']
-
         print "> Links \n"
-        if r['links']
+        if r.success_links
           puts "  All OK #{STATUS_OK}"
         else
-          s.each_with_index do |x, k|
+          r.statuses_issues.each_with_index do |x, k|
             puts "  #{k + 1}. #{x['status']}: #{x['url']} "
           end
         end
 
         unless skip_dupe
-          dupes = i['dupe']
           print "> Dupes \n"
-          if r['dupe']
+          if r.success_dupe
             puts "  None #{STATUS_OK}"
           else
-            dupes.uniq.each_with_index { |d, m| puts "  #{m + 1}. #{d}" }
+            r.dupes.uniq.each_with_index { |d, m| puts "  #{m + 1}. #{d}" }
           end
         end
 
