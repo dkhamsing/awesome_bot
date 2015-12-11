@@ -44,7 +44,16 @@ module AwesomeBot
       end
 
       r = check(content, white_listed, skip_dupe, true)
-      if r == true
+
+      wl = r['white_listed']
+      unless wl.nil?
+        puts "\n> White listed:"
+        wl.each_with_index do |x, k|
+          puts "  #{k + 1}. #{x['status']}: #{x['url']} "
+        end
+      end
+
+      if r['success'] == true
         puts 'No issues :-)'
         # exit ?
       else

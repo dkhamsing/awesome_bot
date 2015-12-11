@@ -47,9 +47,18 @@ module AwesomeBot
         dupes = links.select { |e| links.count(e) > 1 }
       end
 
-      return true if links_success && dupe_success
+      if white_listing
+        if verbose && (rejected.count > 0)
+          print 'Checking white listed URLs: '
+          wl = statuses(rejected.uniq, NUMBER_OF_THREADS, true) do |s|
+            print(s == 200 ? STATUS_OK : STATUS_OTHER)
+          end
+          puts ''
+        end
+      end
 
       {
+        'success' => links_success && dupe_success,
         'issues' => {
           'status' => statuses_issues,
           'dupe' => dupes
@@ -58,7 +67,8 @@ module AwesomeBot
           'links' => links_success,
           'dupe' => dupe_success
         },
-        'status' => statuses
+        'status' => statuses,
+        'white_listed' => wl
       }
     end # run
   end # class
