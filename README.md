@@ -37,7 +37,7 @@ irb(main):003:0> AwesomeBot.check c
 # AwesomeBot Result with success, statuses_issues, dupes and more
 ```
 
-More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot/1.1.0).
+More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 
 ### Command Line
 
