@@ -27,6 +27,10 @@
 - use `result`
 - use `logger`
 
+# 1.2.1
+
+- correct logic for displaying white list status
+
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)
