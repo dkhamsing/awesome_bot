@@ -32,39 +32,47 @@ irb(main):001:0> require 'awesome_bot'
 => true
 irb(main):002:0> c = File.read 'README.md'
 => "..."
-irb(main):003:0> AwesomeBot.check c
+irb(main):003:0> r = AwesomeBot.check c
 => #<AwesomeBot::Result:0x007fdde39f4408 @links=...>
 # AwesomeBot Result with success, statuses_issues, dupes and more
+irb(main):004:0> puts r.success ? 'No errors' : ':-('
+:-(
 ```
 
 More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 
 ### Command Line
 
-    awesome_bot <file> [--allow-dupe] [--white-list item1,item2,..]
-
+    awesome_bot <file> [--allow-dupe] [--allow-redirect] [--white-list item1,item2,..]
 
 ```shell
 $ awesome_bot README.md
-Checking links in ../README.md
-Links found: 35, 11 unique
+> Checking links in README.md
+Links found: 46, 14 unique
   1. https://github.com/sindresorhus/awesome
   2. http://i.giphy.com/12qq4Em3MVuwJW.gif
   3. https://travis-ci.org/dkhamsing/awesome_bot.svg
   4. https://travis-ci.org/dkhamsing/awesome_bot
-  5. https://travis-ci.org/
-  6. http://gph.is/1gU5itl
-  7. https://github.com/dkhamsing
-  8. https://twitter.com/dkhamsing
-  9. https://github.com/dkhamsing/open-source-ios-apps/pull/159
-  10. https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml
-  11. https://codeload.github.com/dkhamsing/awesome_bot/tar.gz/wip
-Checking URLs: x✓✓✓x✓✓✓✓✓✓
+  5. https://badge.fury.io/rb/awesome_bot.svg
+  6. https://badge.fury.io/rb/awesome_bot
+  7. http://www.rubydoc.info/gems/awesome_bot
+  8. https://travis-ci.org/
+  9. http://gph.is/1gU5itl
+  10. https://github.com/dkhamsing
+  11. https://twitter.com/dkhamsing
+  12. https://github.com/dkhamsing/open-source-ios-apps/pull/159
+  13. https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml
+  14. https://codeload.github.com/dkhamsing/awesome_bot/tar.gz/wip
+Checking URLs: ✓→→x→→✓✓✓✓x✓✓✓
 
 Issues :-(
 > Links
-  1. 301 http://gph.is/1gU5itl
-  2. 301 https://travis-ci.org/dkhamsing/awesome_bot.svg
+1. 302 https://badge.fury.io/rb/awesome_bot.svg
+2. 302 https://badge.fury.io/rb/awesome_bot
+3. 202 http://www.rubydoc.info/gems/awesome_bot
+4. 301 http://gph.is/1gU5itl
+5. 301 https://travis-ci.org/dkhamsing/awesome_bot.svg
+6. 404 https://codeload.github.com/dkhamsing/awesome_bot/tar.gz/wip
 > Dupes
   1. https://github.com/sindresorhus/awesome
   2. http://i.giphy.com/12qq4Em3MVuwJW.gif
@@ -80,21 +88,29 @@ Issues :-(
 ```
 
 ```shell
-$ awesome_bot README.md --allow-dupe --white-list gph.is,bot.svg
+$ awesome_bot README.md --allow-dupe --white-list fury,gph.is,rubydoc,travis,codeload
 > Checking links in README.md
-> Will not check for duplicate links
-> White list: gph.is, bot.svg
-Links found: 27, 8 white listed, 9 unique
+> Will allow duplicate links
+> White list: fury, gph.is, rubydoc, travis, codeload
+Links found: 20, 33 white listed
   1. https://github.com/sindresorhus/awesome
   2. http://i.giphy.com/12qq4Em3MVuwJW.gif
-  3. https://travis-ci.org/dkhamsing/awesome_bot
-  4. https://travis-ci.org/
-  5. https://github.com/dkhamsing
-  6. https://twitter.com/dkhamsing
-  7. https://github.com/dkhamsing/open-source-ios-apps/pull/159
-  8. https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml
-  9. https://codeload.github.com/dkhamsing/awesome_bot/tar.gz/wip
-Checking URLs: ✓✓✓✓✓✓✓✓✓
+  3. https://github.com/dkhamsing
+  4. https://twitter.com/dkhamsing
+  5. https://github.com/dkhamsing/open-source-ios-apps/pull/159
+Checking URLs: ✓✓✓✓✓
+Checking white listed URLs: →x→→✓→✓x✓
+
+> White listed:
+  1. 301: http://gph.is/1gU5itl
+  2. 202: http://www.rubydoc.info/gems/awesome_bot
+  3. 302: https://badge.fury.io/rb/awesome_bot
+  4. 302: https://badge.fury.io/rb/awesome_bot.svg
+  5. 200: https://travis-ci.org/dkhamsing/awesome_bot
+  6. 301: https://travis-ci.org/dkhamsing/awesome_bot.svg
+  7. 200: https://travis-ci.org/
+  8. 404: https://codeload.github.com/dkhamsing/awesome_bot/tar.gz/wip
+  9. 200: https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml
 No issues :-)
 ```
 
