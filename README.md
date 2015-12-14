@@ -2,7 +2,7 @@
 
 :rocket: Check for links in [awesome](https://github.com/sindresorhus/awesome) projects
 
-![](http://i.giphy.com/12qq4Em3MVuwJW.gif)
+![](http://i.giphy.com/urvsFBDfR6N32.gif)
 
 `awesome_bot` checks for valid URLs in a file, it can be used to verify pull requests to update a README with [Travis](#travis).
 
@@ -117,7 +117,7 @@ script:
 ## Credits
 
 - `faraday`, `parallel` and [more](awesome_bot.gemspec)
-- [giphy](http://gph.is/1gU5itl)
+- [giphy](http://gph.is/XM6gMT)
 
 ## Contact
 
