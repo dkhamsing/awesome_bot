@@ -9,6 +9,7 @@ module AwesomeBot
 
   STATUS_OK = '✓'
   STATUS_OTHER = 'x'
+  STATUS_REDIRECT = '→'  
 
   class << self
     def check(content, white_listed = nil, skip_dupe = false, log = Log.new)
@@ -34,7 +35,11 @@ module AwesomeBot
       log.addp 'Checking URLs: ' if r.links.count > 0
       r.status =
         statuses(r.links.uniq, NUMBER_OF_THREADS) do |s|
-          log.addp(s == 200 ? STATUS_OK : STATUS_OTHER)
+          if (s > 299) && (s < 400)
+            log.addp STATUS_REDIRECT
+          else
+            log.addp(s == 200 ? STATUS_OK : STATUS_OTHER)
+          end
         end
       log.add ''
 
@@ -43,7 +48,11 @@ module AwesomeBot
       log.addp 'Checking white listed URLs: '
       r.white_listed =
         statuses(r.rejected.uniq, NUMBER_OF_THREADS, true) do |s|
-          log.addp(s == 200 ? STATUS_OK : STATUS_OTHER)
+          if (s > 299) && (s < 400)
+            log.addp STATUS_REDIRECT
+          else
+            log.addp(s == 200 ? STATUS_OK : STATUS_OTHER)
+          end
         end
       log.add ''
 

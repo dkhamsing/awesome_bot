@@ -31,6 +31,12 @@
 
 - correct logic for displaying white list status
 
+# 1.3.0
+
+- add `--allow-redirect` option
+- output `→` as redirect status indicator
+- update error logic in statuses
+
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)
