@@ -3,6 +3,8 @@ module AwesomeBot
   require 'faraday'
   require 'parallel'
 
+  STATUS_ERROR = -1
+
   class << self
     def net_head_status(url)
       Faraday.head(url).status
@@ -22,11 +24,12 @@ module AwesomeBot
         begin
           status = net_status u, head
         rescue => e
-          status = e
+          status = STATUS_ERROR
+          error = e
         end
 
         yield status, u
-        statuses.push('url' => u, 'status' => status)
+        statuses.push('url' => u, 'status' => status, 'error' => error)
       end # Parallel
 
       statuses
