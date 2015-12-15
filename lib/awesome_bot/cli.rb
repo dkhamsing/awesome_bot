@@ -12,6 +12,15 @@ module AwesomeBot
   USAGE = "\t"
 
   class << self
+    def output(x, k)
+      s = x['status']
+      print "#{k + 1}. "
+      print "#{s} " unless s == STATUS_ERROR
+      print "#{x['url']}"
+      print " #{x['error']}" if s == STATUS_ERROR
+      puts ''
+    end
+
     def cli
       option_d = "--#{OPTION_DUPE}"
       option_r = "--#{OPTION_REDIRECT}"
@@ -61,7 +70,7 @@ module AwesomeBot
       unless r.white_listed.nil?
         puts "\n> White listed:"
         r.white_listed.each_with_index do |x, k|
-          puts "  #{k + 1}. #{x['status']}: #{x['url']} "
+          output x, k
         end
       end
 
@@ -76,12 +85,7 @@ module AwesomeBot
           puts "  All OK #{STATUS_OK}"
         else
           r.statuses_issues(allow_redirects).each_with_index do |x, k|
-            s = x['status']
-            print "#{k + 1}. "
-            print "#{s} " unless s == STATUS_ERROR
-            print "#{x['url']}"
-            print x['error'] if s == STATUS_ERROR
-            puts ''
+            output x, k
           end
         end
 
