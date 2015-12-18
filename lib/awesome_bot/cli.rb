@@ -7,6 +7,7 @@ require 'awesome_bot/version'
 module AwesomeBot
   OPTION_DUPE = 'allow-dupe'
   OPTION_REDIRECT = 'allow-redirect'
+  OPTION_TIMEOUT_ALLOW = 'allow-timeout'
   OPTION_TIMEOUT_SET = 'set-timeout'
   OPTION_WHITE_LIST = 'white-list'
 
@@ -30,15 +31,17 @@ module AwesomeBot
       option_d = make_option OPTION_DUPE
       option_r = make_option OPTION_REDIRECT
       option_t = make_option OPTION_TIMEOUT_SET
+      option_t_a = make_option OPTION_TIMEOUT_ALLOW
       option_w = make_option OPTION_WHITE_LIST
 
       if ARGV.count == 0
         puts "Usage: #{PROJECT} <file> [#{option_d}] [#{option_r}] "\
-             "[#{option_t} d] "\
+             "[#{option_t_a}] [#{option_t} d] "\
              "[#{option_w} item1,item2,..]\n"\
              "#{USAGE} file \t\t  Path to file \n"\
              "#{USAGE} #{option_d} \t  Duplicates URLs are allowed URLs \n"\
              "#{USAGE} #{option_r} Redirected URLs are allowed \n"\
+             "#{USAGE} #{option_t_a}  URLs that time out are allowed \n"\
              "#{USAGE} #{option_t} \t  Set connection timeout (seconds) \n"\
              "#{USAGE} #{option_w} \t  Comma separated URLs to white list \n"\
              "\nVersion #{VERSION}, see #{PROJECT_URL} for more information"
@@ -56,6 +59,9 @@ module AwesomeBot
         allow_redirects = options.include? option_r
         puts '> Will allow redirects' if allow_redirects == true
 
+        allow_timeouts = options.include? option_t_a
+        puts '> Will allow network timeouts' if allow_timeouts == true
+
         if options.include? option_w
           i = options.find_index(option_w) + 1
           white_listed = options[i].split ','
@@ -68,6 +74,7 @@ module AwesomeBot
         end
       else
         allow_redirects = false
+        allow_timeouts = false
       end
 
       begin
@@ -89,18 +96,19 @@ module AwesomeBot
         end
       end
 
-      if r.success(allow_redirects) == true
+      if r.success(allow_redirects, allow_timeouts) == true
         puts 'No issues :-)'
         # exit ?
       else
         puts "\nIssues :-("
 
         print "> Links \n"
-        if r.success_links(allow_redirects)
+        if r.success_links(allow_redirects, allow_timeouts)
           puts "  All OK #{STATUS_OK}"
         else
-          r.statuses_issues(allow_redirects).each_with_index do |x, k|
-            output x, k
+          r.statuses_issues(allow_redirects, allow_timeouts)
+            .each_with_index do |x, k|
+              output x, k
           end
         end
 
