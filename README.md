@@ -130,6 +130,15 @@ script:
   - awesome_bot README.md
 ```
 
+`awesome_bot` is used by the following projects:
+
+- https://github.com/prakhar1989/awesome-courses
+- https://github.com/matteocrippa/awesome-swift
+- https://github.com/iCHAIT/awesome-osx
+- https://github.com/vsouza/awesome-ios
+- https://github.com/ellisonleao/magictools
+- https://github.com/christian-bromann/awesome-selenium
+
 ## Credits
 
 - `faraday`, `parallel` and [more](awesome_bot.gemspec)
