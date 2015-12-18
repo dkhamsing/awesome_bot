@@ -37,6 +37,11 @@
 - output `→` as redirect status indicator
 - update error logic in statuses
 
+# 1.3.1
+
+- fix error with `)` in link parsing, reported by [Halim Qarroum](https://github.com/HQarroum)
+- minor improvement to output
+
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)
