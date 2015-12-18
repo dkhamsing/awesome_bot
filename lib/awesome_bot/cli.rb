@@ -7,11 +7,16 @@ require 'awesome_bot/version'
 module AwesomeBot
   OPTION_DUPE = 'allow-dupe'
   OPTION_REDIRECT = 'allow-redirect'
+  OPTION_TIMEOUT_SET = 'set-timeout'
   OPTION_WHITE_LIST = 'white-list'
 
   USAGE = "\t"
 
   class << self
+    def make_option(o)
+      "--#{o}"
+    end
+
     def output(x, k)
       s = x['status']
       print "#{k + 1}. "
@@ -22,16 +27,19 @@ module AwesomeBot
     end
 
     def cli
-      option_d = "--#{OPTION_DUPE}"
-      option_r = "--#{OPTION_REDIRECT}"
-      option_w = "--#{OPTION_WHITE_LIST}"
+      option_d = make_option OPTION_DUPE
+      option_r = make_option OPTION_REDIRECT
+      option_t = make_option OPTION_TIMEOUT_SET
+      option_w = make_option OPTION_WHITE_LIST
 
       if ARGV.count == 0
         puts "Usage: #{PROJECT} <file> [#{option_d}] [#{option_r}] "\
+             "[#{option_t} d] "\
              "[#{option_w} item1,item2,..]\n"\
-             "#{USAGE} file \t\t Path to file \n"\
+             "#{USAGE} file \t\t  Path to file \n"\
              "#{USAGE} #{option_d} \t  Duplicates URLs are allowed URLs \n"\
              "#{USAGE} #{option_r} Redirected URLs are allowed \n"\
+             "#{USAGE} #{option_t} \t  Set connection timeout (seconds) \n"\
              "#{USAGE} #{option_w} \t  Comma separated URLs to white list \n"\
              "\nVersion #{VERSION}, see #{PROJECT_URL} for more information"
         exit
@@ -52,6 +60,12 @@ module AwesomeBot
           i = options.find_index(option_w) + 1
           white_listed = options[i].split ','
         end
+
+        if options.include? option_t
+          i = options.find_index(option_t) + 1
+          timeout = options[i].to_i
+          puts "> Connection timeout = #{timeout}s"
+        end
       else
         allow_redirects = false
       end
@@ -63,6 +77,7 @@ module AwesomeBot
         exit 1
       end
 
+      Faraday.options.timeout = timeout unless timeout.nil?
 
       log = Log.new(true)
       r = check(content, white_listed, skip_dupe, log)
