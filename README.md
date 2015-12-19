@@ -138,6 +138,7 @@ script:
 - https://github.com/vsouza/awesome-ios
 - https://github.com/ellisonleao/magictools
 - https://github.com/christian-bromann/awesome-selenium
+- https://github.com/sotayamashita/awesome-css
 
 ## Credits
 
