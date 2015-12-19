@@ -4,7 +4,7 @@
 
 ![](http://i.giphy.com/urvsFBDfR6N32.gif)
 
-`awesome_bot` checks for valid URLs in a file, it can be used to verify pull requests to update a README with [Travis](#travis).
+`awesome_bot` checks for valid URLs in a file, it can be used to verify pull requests updating a README with [Travis](#travis).
 
 [![Build Status](https://travis-ci.org/dkhamsing/awesome_bot.svg)](https://travis-ci.org/dkhamsing/awesome_bot)
 [![Gem Version](https://badge.fury.io/rb/awesome_bot.svg)](https://badge.fury.io/rb/awesome_bot)
