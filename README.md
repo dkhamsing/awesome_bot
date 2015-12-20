@@ -132,12 +132,22 @@ script:
 
 `awesome_bot` is used by the following projects:
 
+- https://github.com/vinta/awesome-python
 - https://github.com/prakhar1989/awesome-courses
+- https://github.com/vsouza/awesome-ios
 - https://github.com/matteocrippa/awesome-swift
 - https://github.com/iCHAIT/awesome-osx
-- https://github.com/vsouza/awesome-ios
 - https://github.com/ellisonleao/magictools
+- https://github.com/chentsulin/awesome-graphql
+- https://github.com/RichardLitt/awesome-conferences
+- https://github.com/stefanbuck/awesome-browser-extensions-for-github
+- https://github.com/afonsopacifer/awesome-flexbox
+- https://github.com/HQarroum/awesome-iot
+- https://github.com/ipfs/awesome-ipfs
 - https://github.com/christian-bromann/awesome-selenium
+- https://github.com/ramitsurana/awesome-kubernetes
+- https://github.com/vinkla/awesome-fuse
+- https://github.com/wfhio/awesome-job-boards
 - https://github.com/sotayamashita/awesome-css
 - https://github.com/MakinGiants/awesome-mobile-dev
 
