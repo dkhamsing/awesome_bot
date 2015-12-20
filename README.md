@@ -139,6 +139,7 @@ script:
 - https://github.com/ellisonleao/magictools
 - https://github.com/christian-bromann/awesome-selenium
 - https://github.com/sotayamashita/awesome-css
+- https://github.com/MakinGiants/awesome-mobile-dev
 
 ## Credits
 
