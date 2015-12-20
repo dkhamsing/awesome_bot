@@ -150,6 +150,7 @@ script:
 - https://github.com/wfhio/awesome-job-boards
 - https://github.com/sotayamashita/awesome-css
 - https://github.com/MakinGiants/awesome-mobile-dev
+- https://github.com/unixorn/awesome-zsh-plugins
 
 ## Credits
 
