@@ -4,7 +4,7 @@
 
 ![](http://i.giphy.com/urvsFBDfR6N32.gif)
 
-`awesome_bot` checks for valid URLs in a file, it can be used to verify pull requests to update a README with [Travis](#travis).
+`awesome_bot` checks for valid URLs in a file, it can be used to verify pull requests updating a README with [Travis](#travis).
 
 [![Build Status](https://travis-ci.org/dkhamsing/awesome_bot.svg)](https://travis-ci.org/dkhamsing/awesome_bot)
 [![Gem Version](https://badge.fury.io/rb/awesome_bot.svg)](https://badge.fury.io/rb/awesome_bot)
@@ -138,12 +138,25 @@ script:
 
 `awesome_bot` is used by the following projects:
 
+- https://github.com/vinta/awesome-python
 - https://github.com/prakhar1989/awesome-courses
+- https://github.com/vsouza/awesome-ios
 - https://github.com/matteocrippa/awesome-swift
 - https://github.com/iCHAIT/awesome-osx
-- https://github.com/vsouza/awesome-ios
 - https://github.com/ellisonleao/magictools
+- https://github.com/chentsulin/awesome-graphql
+- https://github.com/RichardLitt/awesome-conferences
+- https://github.com/stefanbuck/awesome-browser-extensions-for-github
+- https://github.com/afonsopacifer/awesome-flexbox
+- https://github.com/HQarroum/awesome-iot
+- https://github.com/ipfs/awesome-ipfs
 - https://github.com/christian-bromann/awesome-selenium
+- https://github.com/ramitsurana/awesome-kubernetes
+- https://github.com/vinkla/awesome-fuse
+- https://github.com/wfhio/awesome-job-boards
+- https://github.com/sotayamashita/awesome-css
+- https://github.com/MakinGiants/awesome-mobile-dev
+- https://github.com/unixorn/awesome-zsh-plugins
 
 ## Credits
 

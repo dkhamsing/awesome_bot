@@ -39,8 +39,16 @@
 
 # 1.3.1
 
-- fix error with `)` in link parsing, reported by [Halim Qarroum](https://github.com/HQarroum)
+- [fix] error with `)` in link parsing, reported by [Halim Qarroum](https://github.com/HQarroum)
 - minor improvement to output
+
+# 1.3.2
+
+- [fix] another error with ')' in link parsing, reported by [Julien Bisconti](https://github.com/veggiemonk)
+
+# 1.3.3
+
+- [gemspec] remove uri dependency
 
 ## Contact
 
