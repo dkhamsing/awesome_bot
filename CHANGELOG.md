@@ -46,6 +46,10 @@
 
 - [fix] another error with ')' in link parsing, reported by [Julien Bisconti](https://github.com/veggiemonk)
 
+# 1.3.3
+
+- [gemspec] remove uri dependency
+
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)
