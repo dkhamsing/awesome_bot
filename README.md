@@ -151,6 +151,7 @@ script:
 - https://github.com/sotayamashita/awesome-css
 - https://github.com/MakinGiants/awesome-mobile-dev
 - https://github.com/unixorn/awesome-zsh-plugins
+- https://github.com/vredniy/awesome-newsletters
 
 ## Credits
 
