@@ -169,6 +169,7 @@ script:
 - https://github.com/unixorn/awesome-zsh-plugins
 - https://github.com/vredniy/awesome-newsletters
 - https://github.com/unixorn/git-extra-commands
+- https://github.com/deanhume/typography
 
 ## Credits
 
