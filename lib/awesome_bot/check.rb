@@ -22,13 +22,11 @@ module AwesomeBot
 
       log.add "> White list: #{white_listed.join ', '}" if r.white_listing
 
-      r.dupes = r.links.select { |e| r.links.count(e) > 1 } unless skip_dupe
+      r.dupes = r.links.select { |e| r.links.count(e) > 1 }
 
       log.addp "Links found: #{r.links.count}"
       log.addp ", #{r.links_white_listed.count} white listed" if r.white_listing
-      unless skip_dupe
-        log.addp ", #{r.links.uniq.count} unique" if r.dupes.count > 0
-      end
+      log.addp ", #{r.links.uniq.count} unique" if r.dupes.count > 0
       log.add ''
       r.links.uniq.each_with_index { |u, j| log.add "  #{j + 1}. #{u}" }
 
