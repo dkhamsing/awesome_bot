@@ -20,15 +20,28 @@ module AwesomeBot
       @rejected, @links = links.partition { |u| AwesomeBot.white_list @w, u }
     end
 
-    def statuses_issues(allow_redirects = false)
+    def statuses_issues(allow_redirects = false, allow_timeouts = false)
       s = status.select { |x| x['status'] != 200 }
-      return s if allow_redirects == false
+      r = s.reject { |x| (x['status'] > 299) && (x['status'] < 400) }
+      t = s.reject do |x|
+        (x['status'] == -1) && ((x['error'].message == 'Net::ReadTimeout') || (x['error'].message == 'execution expired'))
+      end
 
-      s.reject { |x| (x['status'] > 299) && (x['status'] < 400) }
+      if (allow_redirects == false) && (allow_timeouts == false)
+        return s
+      elsif (allow_redirects == true) && (allow_timeouts == false)
+        return r
+      elsif (allow_redirects == false) && (allow_timeouts == true)
+        return t
+      else
+        return r.reject do |x|
+          (x['status'] == -1) && ((x['error'].message == 'Net::ReadTimeout') || (x['error'].message == 'execution expired'))
+        end
+      end
     end
 
-    def success(allow_redirects = false)
-      success_dupe && success_links(allow_redirects)
+    def success(allow_redirects = false, allow_timeouts = false)
+      success_dupe && success_links(allow_redirects, allow_timeouts)
     end
 
     def success_dupe
@@ -36,8 +49,8 @@ module AwesomeBot
       links.uniq.count == links.count
     end
 
-    def success_links(allow_redirects = false)
-      statuses_issues(allow_redirects).count == 0
+    def success_links(allow_redirects = false, allow_timeouts = false)
+      statuses_issues(allow_redirects, allow_timeouts).count == 0
     end
 
     def white_listing
