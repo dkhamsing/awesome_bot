@@ -25,7 +25,7 @@ module AwesomeBot
       r.dupes = r.links.select { |e| r.links.count(e) > 1 } unless skip_dupe
 
       log.addp "Links found: #{r.links.count}"
-      log.addp ", #{r.rejected.count} white listed" if r.white_listing
+      log.addp ", #{r.links_white_listed.count} white listed" if r.white_listing
       unless skip_dupe
         log.addp ", #{r.links.uniq.count} unique" if r.dupes.count > 0
       end
@@ -43,11 +43,11 @@ module AwesomeBot
         end
       log.add ''
 
-      return r if !r.white_listing || (r.rejected.count == 0)
+      return r if !r.white_listing || (r.links_white_listed.count == 0)
 
       log.addp 'Checking white listed URLs: '
       r.white_listed =
-        statuses(r.rejected.uniq, NUMBER_OF_THREADS, true) do |s|
+        statuses(r.links_white_listed.uniq, NUMBER_OF_THREADS, true) do |s|
           if (s > 299) && (s < 400)
             log.addp STATUS_REDIRECT
           else

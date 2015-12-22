@@ -9,7 +9,7 @@ module AwesomeBot
     attr_accessor :status
     attr_accessor :white_listed
 
-    attr_reader :rejected
+    attr_reader :links_white_listed
     attr_reader :links
 
     def initialize(links, white_list_from_cli)
@@ -17,7 +17,8 @@ module AwesomeBot
       @w = white_list_from_cli
 
       return if @w.nil?
-      @rejected, @links = links.partition { |u| AwesomeBot.white_list @w, u }
+      @links_white_listed,
+      @links = links.partition { |u| AwesomeBot.white_list @w, u }
     end
 
     def statuses_issues(allow_redirects = false, allow_timeouts = false)
