@@ -141,13 +141,17 @@ script:
 - https://github.com/vinta/awesome-python
 - https://github.com/prakhar1989/awesome-courses
 - https://github.com/vsouza/awesome-ios
+- https://github.com/caesar0301/awesome-public-datasets
 - https://github.com/matteocrippa/awesome-swift
 - https://github.com/iCHAIT/awesome-osx
 - https://github.com/ellisonleao/magictools
 - https://github.com/JStumpp/awesome-android
+- https://github.com/dariubs/GoBooks
+- https://github.com/arslanbilal/git-cheat-sheet
 - https://github.com/chentsulin/awesome-graphql
 - https://github.com/fasouto/awesome-dataviz
 - https://github.com/RichardLitt/awesome-conferences
+- https://github.com/caesar0301/awesome-pcaptools
 - https://github.com/stefanbuck/awesome-browser-extensions-for-github
 - https://github.com/afonsopacifer/awesome-flexbox
 - https://github.com/HQarroum/awesome-iot
@@ -156,8 +160,8 @@ script:
 - https://github.com/ipfs/awesome-ipfs
 - https://github.com/brunopulis/awesome-a11y
 - https://github.com/ramitsurana/awesome-kubernetes
-- https://github.com/benoitjadinon/awesome-xamarin
 - https://github.com/christian-bromann/awesome-selenium
+- https://github.com/benoitjadinon/awesome-xamarin
 - https://github.com/vinkla/awesome-fuse
 - https://github.com/wfhio/awesome-job-boards
 - https://github.com/sotayamashita/awesome-css
