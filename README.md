@@ -138,7 +138,7 @@ script:
 
 `awesome_bot` is used by the following projects:
 
-- https://github.com/vinta/awesome-python
+1. https://github.com/vinta/awesome-python
 - https://github.com/prakhar1989/awesome-courses
 - https://github.com/vsouza/awesome-ios
 - https://github.com/caesar0301/awesome-public-datasets
