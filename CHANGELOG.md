@@ -33,7 +33,7 @@
 
 # 1.3.0
 
-- add `--allow-redirect` option
+- add `--allow-redirect` option, suggested by [R.I. Pienaar][]
 - output `→` as redirect status indicator
 - update error logic in statuses
 
@@ -44,7 +44,7 @@
 
 # 1.3.2
 
-- [fix] another error with ')' in link parsing, reported by [Julien Bisconti](https://github.com/veggiemonk)
+- [fix] another error with `)` in link parsing, reported by [Julien Bisconti](https://github.com/veggiemonk)
 
 # 1.3.3
 
@@ -52,9 +52,11 @@
 
 # 1.4.0
 
-- add `--allow-timeout` and `--set-timeout` options
+- add `--allow-timeout` and `--set-timeout` options, suggested by [R.I. Pienaar][]
 
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)
 - [twitter.com/dkhamsing](https://twitter.com/dkhamsing)
+
+[R.I. Pienaar]:https://github.com/ripienaar
