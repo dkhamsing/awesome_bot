@@ -50,6 +50,10 @@
 
 - [gemspec] remove uri dependency
 
+# 1.4.0
+
+- add `--allow-timeout` and `--set-timeout` options
+
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)
