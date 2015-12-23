@@ -173,7 +173,7 @@ script:
 
 ## Credits
 
-- `faraday`, `parallel` and [more](awesome_bot.gemspec)
+- [`faraday` and `parallel`](awesome_bot.gemspec)
 - [giphy](http://gph.is/XM6gMT)
 
 ## Contact
