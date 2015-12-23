@@ -44,12 +44,12 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 ### Command Line
 
     awesome_bot <file> [--allow-dupe] [--allow-redirect] [--allow-timeout] [--set-timeout d] [--white-list item1,item2,..]    
-      file 		     Path to file
-      --allow-dupe 	 Duplicates URLs are allowed URLs
-      --allow-redirect  Redirected URLs are allowed
-      --allow-timeout   URLs that time out are allowed
-      --set-timeout 	Set connection timeout (seconds)
-      --white-list 	 Comma separated URLs to white list
+      file             Path to file
+      --allow-dupe     Duplicates URLs are allowed URLs
+      --allow-redirect Redirected URLs are allowed
+      --allow-timeout  URLs that time out are allowed
+      --set-timeout    Set connection timeout (seconds)
+      --white-list     Comma separated URLs to white list
 
 ```shell
 $ awesome_bot README.md

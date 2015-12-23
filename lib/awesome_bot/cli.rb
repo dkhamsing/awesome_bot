@@ -38,12 +38,12 @@ module AwesomeBot
         puts "Usage: #{PROJECT} <file> [#{option_d}] [#{option_r}] "\
              "[#{option_t_a}] [#{option_t} d] "\
              "[#{option_w} item1,item2,..]\n"\
-             "#{USAGE} file \t\t  Path to file \n"\
-             "#{USAGE} #{option_d} \t  Duplicates URLs are allowed URLs \n"\
+             "#{USAGE} file             Path to file \n"\
+             "#{USAGE} #{option_d}     Duplicates URLs are allowed URLs \n"\
              "#{USAGE} #{option_r} Redirected URLs are allowed \n"\
              "#{USAGE} #{option_t_a}  URLs that time out are allowed \n"\
-             "#{USAGE} #{option_t} \t  Set connection timeout (seconds) \n"\
-             "#{USAGE} #{option_w} \t  Comma separated URLs to white list \n"\
+             "#{USAGE} #{option_t}    Set connection timeout (seconds) \n"\
+             "#{USAGE} #{option_w}     Comma separated URLs to white list \n"\
              "\nVersion #{VERSION}, see #{PROJECT_URL} for more information"
         exit
       end
