@@ -140,10 +140,12 @@ script:
 
 1. https://github.com/vinta/awesome-python
 - https://github.com/prakhar1989/awesome-courses
+- https://github.com/ripienaar/free-for-dev
 - https://github.com/vsouza/awesome-ios
 - https://github.com/caesar0301/awesome-public-datasets
 - https://github.com/matteocrippa/awesome-swift
 - https://github.com/iCHAIT/awesome-osx
+- https://github.com/rosarior/awesome-django
 - https://github.com/ellisonleao/magictools
 - https://github.com/JStumpp/awesome-android
 - https://github.com/dariubs/GoBooks
@@ -152,6 +154,7 @@ script:
 - https://github.com/fasouto/awesome-dataviz
 - https://github.com/RichardLitt/awesome-conferences
 - https://github.com/caesar0301/awesome-pcaptools
+- https://github.com/matiassingers/awesome-readme
 - https://github.com/stefanbuck/awesome-browser-extensions-for-github
 - https://github.com/afonsopacifer/awesome-flexbox
 - https://github.com/HQarroum/awesome-iot
