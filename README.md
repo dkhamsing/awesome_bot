@@ -43,7 +43,7 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 
 ### Command Line
 
-    awesome_bot <file> [--allow-dupe] [--allow-redirect] [--allow-timeout] [--set-timeout d] [--white-list item1,item2,..]    
+    awesome_bot <file> [--allow-dupe] [--allow-redirect] [--allow-timeout] [--set-timeout d] [--white-list item1,item2,..]
       file             Path to file
       --allow-dupe     Duplicates URLs are allowed URLs
       --allow-redirect Redirected URLs are allowed
@@ -173,6 +173,7 @@ script:
 - https://github.com/vredniy/awesome-newsletters
 - https://github.com/unixorn/git-extra-commands
 - https://github.com/deanhume/typography
+- https://github.com/dotfiles/dotfiles.github.com
 
 ## Credits
 
