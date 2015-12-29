@@ -174,6 +174,7 @@ script:
 - https://github.com/unixorn/git-extra-commands
 - https://github.com/deanhume/typography
 - https://github.com/dotfiles/dotfiles.github.com
+- https://github.com/veggiemonk/awesome-docker
 
 ## Credits
 
