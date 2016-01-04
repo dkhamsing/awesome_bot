@@ -26,7 +26,8 @@ module AwesomeBot
 
       log.addp "Links found: #{r.links.count}"
       log.addp ", #{r.links_white_listed.count} white listed" if r.white_listing
-      log.addp ", #{r.links.uniq.count} unique" if r.dupes.count > 0
+      uniq = r.links.uniq.count
+      log.addp ", #{uniq} unique" if uniq != r.links.count
       log.add ''
       r.links.uniq.each_with_index { |u, j| log.add "  #{j + 1}. #{u}" }
 
