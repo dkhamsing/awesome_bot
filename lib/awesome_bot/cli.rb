@@ -20,7 +20,7 @@ module AwesomeBot
 
     def output(x, k)
       s = x['status']
-      print "#{k + 1}. "
+      print "  #{k + 1}. "
       print "#{s} " unless s == STATUS_ERROR
       print "#{x['url']}"
       print " #{x['error']}" if s == STATUS_ERROR
