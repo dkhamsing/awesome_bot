@@ -54,69 +54,46 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 ```shell
 $ awesome_bot README.md
 > Checking links in README.md
-Links found: 46, 14 unique
+Links found: 56, 53 unique
   1. https://github.com/sindresorhus/awesome
-  2. http://i.giphy.com/12qq4Em3MVuwJW.gif
+  2. http://i.giphy.com/urvsFBDfR6N32.gif
   3. https://travis-ci.org/dkhamsing/awesome_bot.svg
-  4. https://travis-ci.org/dkhamsing/awesome_bot
-  5. https://badge.fury.io/rb/awesome_bot.svg
-  6. https://badge.fury.io/rb/awesome_bot
-  7. http://www.rubydoc.info/gems/awesome_bot
-  8. https://travis-ci.org/
-  9. http://gph.is/1gU5itl
-  10. https://github.com/dkhamsing
-  11. https://twitter.com/dkhamsing
-  12. https://github.com/dkhamsing/open-source-ios-apps/pull/159
-  13. https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml
-  14. https://codeload.github.com/dkhamsing/awesome_bot/tar.gz/wip
-Checking URLs: ✓→→x→→✓✓✓✓x✓✓✓
+  ...
+  53. https://twitter.com/dkhamsing
+Checking URLs: ✓x→✓✓✓✓→→✓→✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓→✓✓✓✓✓✓✓✓
 
 Issues :-(
-> Links
-1. 302 https://badge.fury.io/rb/awesome_bot.svg
-2. 302 https://badge.fury.io/rb/awesome_bot
-3. 202 http://www.rubydoc.info/gems/awesome_bot
-4. 301 http://gph.is/1gU5itl
-5. 301 https://travis-ci.org/dkhamsing/awesome_bot.svg
-6. 404 https://codeload.github.com/dkhamsing/awesome_bot/tar.gz/wip
-> Dupes
+> Links 
+  1. 202 http://www.rubydoc.info/gems/awesome_bot
+  2. 301 http://rubygems.org/gems/awesome_bot → https://rubygems.org/gems/awesome_bot
+  3. 302 https://badge.fury.io/rb/awesome_bot.svg → https://d25lcipzij17d.cloudfront.net/badge.svg?id=rb&type=6&v=1.4.0&x2=0
+  4. 302 https://badge.fury.io/rb/awesome_bot → http://rubygems.org/gems/awesome_bot
+  5. 301 https://travis-ci.org/dkhamsing/awesome_bot.svg → https://api.travis-ci.org/dkhamsing/awesome_bot.svg
+  6. 301 http://gph.is/XM6gMT → http://giphy.com/gifs/urvsFBDfR6N32
+> Dupes 
   1. https://github.com/sindresorhus/awesome
-  2. http://i.giphy.com/12qq4Em3MVuwJW.gif
-  3. https://travis-ci.org/dkhamsing/awesome_bot.svg
-  4. https://travis-ci.org/dkhamsing/awesome_bot
-  5. https://travis-ci.org/
-  6. http://gph.is/1gU5itl
-  7. https://github.com/dkhamsing
-  8. https://twitter.com/dkhamsing
-  9. https://github.com/dkhamsing/open-source-ios-apps/pull/159
-  10. https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml
-  11. https://codeload.github.com/dkhamsing/awesome_bot/tar.gz/wip
+  2. https://github.com/veggiemonk/awesome-docker
+  3. https://github.com/dotfiles/dotfiles.github.com  
 ```
 
 ```shell
-$ awesome_bot README.md --allow-dupe --white-list fury,gph.is,rubydoc,travis,codeload
+$ awesome_bot README.md --allow-dupe --white-list fury,rubydoc,travis,codeload,gems,giphy,gph
 > Checking links in README.md
 > Will allow duplicate links
-> White list: fury, gph.is, rubydoc, travis, codeload
-Links found: 20, 33 white listed
+> White list: fury, rubydoc, travis, codeload, gems, giphy, gph
+Links found: 51, 23 white listed, 42 unique
   1. https://github.com/sindresorhus/awesome
-  2. http://i.giphy.com/12qq4Em3MVuwJW.gif
-  3. https://github.com/dkhamsing
-  4. https://twitter.com/dkhamsing
-  5. https://github.com/dkhamsing/open-source-ios-apps/pull/159
-Checking URLs: ✓✓✓✓✓
-Checking white listed URLs: →x→→✓→✓x✓
+  2. https://twitter.com/dkhamsing
+  ...
+Checking URLs: ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓
+Checking white listed URLs: →→✓x✓✓✓→✓✓→→→
 
 > White listed:
-  1. 301: http://gph.is/1gU5itl
-  2. 202: http://www.rubydoc.info/gems/awesome_bot
-  3. 302: https://badge.fury.io/rb/awesome_bot
-  4. 302: https://badge.fury.io/rb/awesome_bot.svg
-  5. 200: https://travis-ci.org/dkhamsing/awesome_bot
-  6. 301: https://travis-ci.org/dkhamsing/awesome_bot.svg
-  7. 200: https://travis-ci.org/
-  8. 404: https://codeload.github.com/dkhamsing/awesome_bot/tar.gz/wip
-  9. 200: https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml
+  1. 301 http://rubygems.org/gems/awesome_bot → https://rubygems.org/gems/awesome_bot
+  2. 301 http://gph.is/XM6gMT → http://giphy.com/gifs/urvsFBDfR6N32
+  3. 200 http://i.giphy.com/urvsFBDfR6N32.gif
+  ...
+
 No issues :-)
 ```
 
