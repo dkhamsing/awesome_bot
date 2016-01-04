@@ -54,6 +54,13 @@
 
 - add `--allow-timeout` and `--set-timeout` options, suggested by [R.I. Pienaar][]
 
+# 1.5.0
+
+- [output] display url redirect location, by [Colby M. White](https://github.com/colbywhite)
+- [output] update logic for number of unique links
+- [output] standardize indent
+- rename `Result` `rejected` to `links_white_listed` 
+
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)
