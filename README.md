@@ -115,25 +115,35 @@ script:
 
 `awesome_bot` is used by the following projects:
 
-1. https://github.com/vinta/awesome-python
+1. https://github.com/tiimgreen/github-cheat-sheet 
+- https://github.com/vinta/awesome-python
 - https://github.com/prakhar1989/awesome-courses
 - https://github.com/ripienaar/free-for-dev
 - https://github.com/vsouza/awesome-ios
 - https://github.com/caesar0301/awesome-public-datasets
+- https://github.com/alebcay/awesome-shell 
 - https://github.com/matteocrippa/awesome-swift
+- https://github.com/hangtwenty/dive-into-machine-learning
 - https://github.com/iCHAIT/awesome-osx
 - https://github.com/rosarior/awesome-django
 - https://github.com/ellisonleao/magictools
+- https://github.com/humiaozuzu/awesome-flask
 - https://github.com/JStumpp/awesome-android
 - https://github.com/dariubs/GoBooks
 - https://github.com/arslanbilal/git-cheat-sheet
 - https://github.com/chentsulin/awesome-graphql
+- https://github.com/rshipp/awesome-malware-analysis
+- https://github.com/wbinnssmith/awesome-promises
+- https://github.com/mfornos/awesome-microservices
 - https://github.com/fasouto/awesome-dataviz
 - https://github.com/RichardLitt/awesome-conferences
+- https://github.com/FriendsOfCake/awesome-cakephp
 - https://github.com/caesar0301/awesome-pcaptools
+- https://github.com/najela/discount-for-student-dev
 - https://github.com/matiassingers/awesome-readme
 - https://github.com/stefanbuck/awesome-browser-extensions-for-github
 - https://github.com/afonsopacifer/awesome-flexbox
+- https://github.com/isRuslan/awesome-elm
 - https://github.com/HQarroum/awesome-iot
 - https://github.com/filipelinhares/awesome-slack
 - https://github.com/notthetup/awesome-webaudio
@@ -144,6 +154,7 @@ script:
 - https://github.com/benoitjadinon/awesome-xamarin
 - https://github.com/vinkla/awesome-fuse
 - https://github.com/wfhio/awesome-job-boards
+- https://github.com/joubertredrat/awesome-devops
 - https://github.com/sotayamashita/awesome-css
 - https://github.com/MakinGiants/awesome-mobile-dev
 - https://github.com/unixorn/awesome-zsh-plugins
