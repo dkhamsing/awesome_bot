@@ -7,11 +7,11 @@ module AwesomeBot
 
   class << self
     def net_head_status(url)
-      Faraday.head(url).status
+      Faraday.head(url)
     end
 
     def net_get_status(url)
-      Faraday.get(url).status
+      Faraday.get(url)
     end
 
     def net_status(url, head)
@@ -22,14 +22,17 @@ module AwesomeBot
       statuses = []
       Parallel.each(links, in_threads: threads) do |u|
         begin
-          status = net_status u, head
+          response = net_status u, head
+          status = response.status
+          headers = response.headers
         rescue => e
           status = STATUS_ERROR
+          headers = {}
           error = e
         end
 
         yield status, u
-        statuses.push('url' => u, 'status' => status, 'error' => error)
+        statuses.push('url' => u, 'status' => status, 'error' => error, 'headers' => headers)
       end # Parallel
 
       statuses
