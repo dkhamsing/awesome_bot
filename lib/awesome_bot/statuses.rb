@@ -25,6 +25,7 @@ module AwesomeBot
           response = net_status u, head
           status = response.status
           headers = response.headers
+          error = nil # nil (success)
         rescue => e
           status = STATUS_ERROR
           headers = {}
