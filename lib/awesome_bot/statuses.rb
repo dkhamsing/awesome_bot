@@ -18,7 +18,7 @@ module AwesomeBot
       head ? net_head_status(url) : net_get_status(url)
     end
 
-    def status_is_redirected(status)
+    def status_is_redirected?(status)
       (status > 299) && (status < 400)
     end
 
