@@ -25,7 +25,7 @@ module AwesomeBot
       print "#{s} " unless s == STATUS_ERROR
       print "#{x['url']}"
       print " #{x['error']}" if s == STATUS_ERROR
-      print " #{STATUS_REDIRECT} #{x['headers']['location']}" if status_is_redirected s
+      print " #{STATUS_REDIRECT} #{x['headers']['location']}" if status_is_redirected? s
       puts ''
     end
 

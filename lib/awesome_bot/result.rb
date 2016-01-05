@@ -24,7 +24,7 @@ module AwesomeBot
 
     def statuses_issues(allow_redirects = false, allow_timeouts = false)
       s = status.select { |x| x['status'] != 200 }
-      r = s.reject { |x| AwesomeBot.status_is_redirected x['status'] }
+      r = s.reject { |x| AwesomeBot.status_is_redirected? x['status'] }
       t = s.reject do |x|
         (x['status'] == -1) && ((x['error'].message == 'Net::ReadTimeout') || (x['error'].message == 'execution expired'))
       end

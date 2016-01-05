@@ -13,7 +13,7 @@ module AwesomeBot
 
   class << self
     def log_status(s, log)
-      if status_is_redirected s
+      if status_is_redirected? s
         log.addp STATUS_REDIRECT
       else
         log.addp(s == 200 ? STATUS_OK : STATUS_OTHER)
