@@ -12,7 +12,7 @@ module AwesomeBot
   STATUS_REDIRECT = '→'
 
   class << self
-    def check_output(s, log)
+    def log_status(s, log)
       if status_is_redirected s
         log.addp STATUS_REDIRECT
       else
@@ -42,7 +42,7 @@ module AwesomeBot
       log.addp 'Checking URLs: ' if r.links.count > 0
       r.status =
         statuses(r.links.uniq, NUMBER_OF_THREADS) do |s|
-          check_output s, log
+          log_status s, log
         end
       log.add ''
 
@@ -51,7 +51,7 @@ module AwesomeBot
       log.addp 'Checking white listed URLs: '
       r.white_listed =
         statuses(r.links_white_listed.uniq, NUMBER_OF_THREADS, true) do |s|
-          check_output s, log
+          log_status s, log
         end
       log.add ''
 
