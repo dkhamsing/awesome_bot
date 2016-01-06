@@ -1,6 +1,7 @@
 require 'awesome_bot/check'
 require 'awesome_bot/log'
 require 'awesome_bot/result'
+require 'awesome_bot/statuses'
 require 'awesome_bot/version'
 
 # Command line interface
@@ -24,7 +25,7 @@ module AwesomeBot
       print "#{s} " unless s == STATUS_ERROR
       print "#{x['url']}"
       print " #{x['error']}" if s == STATUS_ERROR
-      print " #{STATUS_REDIRECT} #{x['headers']['location']}" if s > 299 && s <400
+      print " #{STATUS_REDIRECT} #{x['headers']['location']}" if status_is_redirected? s
       puts ''
     end
 

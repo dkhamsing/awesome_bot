@@ -18,6 +18,10 @@ module AwesomeBot
       head ? net_head_status(url) : net_get_status(url)
     end
 
+    def status_is_redirected?(status)
+      (status > 299) && (status < 400)
+    end
+
     def statuses(links, threads, head = false)
       statuses = []
       Parallel.each(links, in_threads: threads) do |u|
@@ -25,6 +29,7 @@ module AwesomeBot
           response = net_status u, head
           status = response.status
           headers = response.headers
+          error = nil # nil (success)
         rescue => e
           status = STATUS_ERROR
           headers = {}
