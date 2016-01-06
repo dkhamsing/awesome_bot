@@ -56,14 +56,20 @@
 
 # 1.5.0
 
-- [output] display url redirect location, by [Colby M. White](https://github.com/colbywhite)
+- [output] display url redirect location, by [Colby M. White][]
 - [output] update logic for number of unique links
 - [output] standardize indent
-- rename `Result` `rejected` to `links_white_listed` 
+- rename `Result` `rejected` to `links_white_listed`
+
+# 1.5.1
+
+- [fix] link parsing error with markdown badge
+- improve code, suggested by [Colby M. White][]
 
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)
 - [twitter.com/dkhamsing](https://twitter.com/dkhamsing)
 
+[Colby M. White]:https://github.com/colbywhite
 [R.I. Pienaar]:https://github.com/ripienaar
