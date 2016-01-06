@@ -9,7 +9,9 @@ module AwesomeBot
           x.gsub(/'.*/, '').gsub(/,.*/, '').gsub('/:', '/')
         end
         .map do |x|
-          if (x.scan(')').count == 2) && (x.scan('(').count == 1)
+          if x.include? ')]'
+            x.gsub /\)\].*/, ''
+          elsif (x.scan(')').count == 2) && (x.scan('(').count == 1)
             x.gsub(/\)\).*/, ')')
           elsif x.scan(')').count > 0
             x.gsub(/\).*/, '')
