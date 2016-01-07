@@ -163,6 +163,7 @@ script:
 - https://github.com/deanhume/typography
 - https://github.com/dotfiles/dotfiles.github.com
 - https://github.com/veggiemonk/awesome-docker
+- https://github.com/lerrua/remote-jobs-brazil
 
 ## Credits
 
