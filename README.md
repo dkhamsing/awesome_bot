@@ -115,62 +115,15 @@ script:
 
 `awesome_bot` is used by the following projects:
 
-1. https://github.com/tiimgreen/github-cheat-sheet 
+- https://github.com/tiimgreen/github-cheat-sheet 
 - https://github.com/vinta/awesome-python
-- https://github.com/prakhar1989/awesome-courses
 - https://github.com/ripienaar/free-for-dev
-- https://github.com/enaqx/awesome-react
 - https://github.com/vsouza/awesome-ios
 - https://github.com/caesar0301/awesome-public-datasets
 - https://github.com/alebcay/awesome-shell 
 - https://github.com/matteocrippa/awesome-swift
-- https://github.com/hangtwenty/dive-into-machine-learning
-- https://github.com/hsavit1/Awesome-Swift-Education
-- https://github.com/iCHAIT/awesome-osx
-- https://github.com/rosarior/awesome-django
-- https://github.com/h4cc/awesome-elixir
-- https://github.com/ellisonleao/magictools
-- https://github.com/humiaozuzu/awesome-flask
-- https://github.com/JStumpp/awesome-android
-- https://github.com/dariubs/GoBooks
-- https://github.com/arslanbilal/git-cheat-sheet
-- https://github.com/chentsulin/awesome-graphql
-- https://github.com/rshipp/awesome-malware-analysis
-- https://github.com/wbinnssmith/awesome-promises
-- https://github.com/mfornos/awesome-microservices
-- https://github.com/fasouto/awesome-dataviz
-- https://github.com/RichardLitt/awesome-conferences
-- https://github.com/FriendsOfCake/awesome-cakephp
-- https://github.com/caesar0301/awesome-pcaptools
-- https://github.com/matiassingers/awesome-readme
-- https://github.com/najela/discount-for-student-dev
-- https://github.com/stefanbuck/awesome-browser-extensions-for-github
-- https://github.com/uralbash/awesome-pyramid
-- https://github.com/ahkscript/awesome-AutoHotkey
-- https://github.com/isRuslan/awesome-elm
-- https://github.com/afonsopacifer/awesome-flexbox
-- https://github.com/phillipadsmith/awesome-github
-- https://github.com/HQarroum/awesome-iot
-- https://github.com/filipelinhares/awesome-slack
-- https://github.com/notthetup/awesome-webaudio
-- https://github.com/ipfs/awesome-ipfs
-- https://github.com/brunopulis/awesome-a11y
-- https://github.com/christian-bromann/awesome-selenium
-- https://github.com/ramitsurana/awesome-kubernetes
-- https://github.com/mark-rushakoff/awesome-influxdb
-- https://github.com/benoitjadinon/awesome-xamarin
-- https://github.com/vinkla/awesome-fuse
-- https://github.com/wfhio/awesome-job-boards
-- https://github.com/joubertredrat/awesome-devops
-- https://github.com/sotayamashita/awesome-css
-- https://github.com/MakinGiants/awesome-mobile-dev
-- https://github.com/unixorn/awesome-zsh-plugins
-- https://github.com/vredniy/awesome-newsletters
-- https://github.com/unixorn/git-extra-commands
-- https://github.com/deanhume/typography
-- https://github.com/dotfiles/dotfiles.github.com
-- https://github.com/veggiemonk/awesome-docker
-- https://github.com/lerrua/remote-jobs-brazil
+
+and [more](status.md)
 
 ## Credits
 
