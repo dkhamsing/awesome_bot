@@ -113,7 +113,7 @@ script:
   - awesome_bot README.md
 ```
 
-`awesome_bot` is used by the following projects:
+`awesome_bot` is used by
 
 - https://github.com/tiimgreen/github-cheat-sheet 
 - https://github.com/vinta/awesome-python
