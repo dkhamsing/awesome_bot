@@ -120,9 +120,8 @@ script:
 
 - https://github.com/tiimgreen/github-cheat-sheet 
 - https://github.com/vinta/awesome-python
-- https://github.com/ripienaar/free-for-dev
+- https://github.com/enaqx/awesome-react
 - https://github.com/vsouza/awesome-ios
-- https://github.com/caesar0301/awesome-public-datasets
 - https://github.com/alebcay/awesome-shell 
 - https://github.com/matteocrippa/awesome-swift
 
