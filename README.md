@@ -50,7 +50,9 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
       --allow-redirect Redirected URLs are allowed
       --allow-timeout  URLs that time out are allowed
       --set-timeout    Set connection timeout (seconds)
-      --white-list     Comma separated URLs to white list
+      --white-list     Comma separated URLs/domains to white list
+
+`--white-list domain1.com/post/article,domain2.com` would white list `domain1.com/post/article` and all URLs matching `domain2.com`.
 
 ```shell
 $ awesome_bot README.md
