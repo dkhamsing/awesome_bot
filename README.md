@@ -127,6 +127,26 @@ script:
 
 and [more](status.md)
 
+### Badge
+
+[![Build Status](https://travis-ci.org/unixorn/awesome-zsh-plugins.png)](https://travis-ci.org/unixorn/awesome-zsh-plugins)
+
+To add a Travis build status badge to your project, use the following code
+
+```
+[![Build Status](https://travis-ci.org/<username>/<project>.svg)](https://travis-ci.org/<username>/<project>)
+
+i.e. 
+[![Build Status](https://travis-ci.org/unixorn/awesome-zsh-plugins.svg?branch=master)](https://travis-ci.org/unixorn/awesome-zsh-plugins)
+```
+
+As it happens, the default badge image URL Travis provides is a redirect so adding this badge could fail your status :sob:
+
+You can do a couple of things to fix this
+
+- Use the redirected URL, which is `https://api.travis-ci.org/<username>/<project>.png` or
+- Update your Travis [configuration white list](.travis.yml#L15), i.e. `- awesome_bot README.md --white-list travis-ci.org`
+
 ## Credits
 
 - [`faraday` and `parallel`](awesome_bot.gemspec)
