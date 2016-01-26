@@ -12,4 +12,4 @@ script:
   - awesome_bot bin/assets/test-timeout --allow-timeout --set-timeout 1
   - awesome_bot bin/assets/test-timeout-and-redirect --allow-timeout --set-timeout 1 --allow-redirect
   - awesome_bot bin/assets/test-redirect --allow-redirect
-  - awesome_bot README.md --allow-dupe --white-list gph.is,giphy,travis-ci.org,codeload,badge,rubydoc,rubygems
+  - awesome_bot README.md --allow-dupe --white-list gph.is,giphy,travis-ci.org,codeload,badge,rubydoc,rubygems,circleci
