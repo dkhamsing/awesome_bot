@@ -31,12 +31,12 @@ Or install it yourself as
 ```ruby
 irb(main):001:0> require 'awesome_bot'
 => true
-irb(main):002:0> c = File.read 'README.md'
+irb(main):002:0> content = File.read 'README.md'
 => "..."
-irb(main):003:0> r = AwesomeBot.check c
+irb(main):003:0> result = AwesomeBot.check content
 => #<AwesomeBot::Result:0x007fdde39f4408 @links=...>
 # AwesomeBot Result with success, statuses_issues, dupes and more
-irb(main):004:0> puts r.success ? 'No errors' : ':-('
+irb(main):004:0> puts result.success ? 'No errors' : ':-('
 :-(
 ```
 
