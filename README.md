@@ -1,14 +1,14 @@
 # awesome_bot
 
-:rocket: Check for links in [awesome](https://github.com/sindresorhus/awesome) projects
+Check for links in [awesome](https://github.com/sindresorhus/awesome) projects :rocket: 
 
 ![](http://i.giphy.com/urvsFBDfR6N32.gif)
-
-`awesome_bot` checks for valid URLs in a file, it can be used to verify pull requests updating a README with [Travis](#travis).
 
 [![Build Status](https://travis-ci.org/dkhamsing/awesome_bot.svg)](https://travis-ci.org/dkhamsing/awesome_bot)
 [![Gem Version](https://badge.fury.io/rb/awesome_bot.svg)](https://badge.fury.io/rb/awesome_bot)
 [![](https://img.shields.io/badge/awesome-status-brightgreen.svg)](status.md)
+
+`awesome_bot` checks for valid URLs in a file, it can be used to [verify pull requests](#validate-pull-requests) updating a README.
 
 ## Installation
 
@@ -31,12 +31,12 @@ Or install it yourself as
 ```ruby
 irb(main):001:0> require 'awesome_bot'
 => true
-irb(main):002:0> c = File.read 'README.md'
+irb(main):002:0> content = File.read 'README.md'
 => "..."
-irb(main):003:0> r = AwesomeBot.check c
+irb(main):003:0> result = AwesomeBot.check content
 => #<AwesomeBot::Result:0x007fdde39f4408 @links=...>
 # AwesomeBot Result with success, statuses_issues, dupes and more
-irb(main):004:0> puts r.success ? 'No errors' : ':-('
+irb(main):004:0> puts result.success ? 'No errors' : ':-('
 :-(
 ```
 
@@ -100,9 +100,23 @@ Checking white listed URLs: →→✓x✓✓✓→✓✓→→→
 No issues :-)
 ```
 
-## Travis
+## Validate Pull Requests
 
-Use `awesome_bot` with [Travis](https://travis-ci.org/) to validate GitHub [pull requests](https://github.com/dkhamsing/open-source-ios-apps/pull/159).
+`awesome_bot` can help you validate GitHub [pull requests](https://github.com/dkhamsing/open-source-ios-apps/pull/159). It is used by
+
+- https://github.com/tiimgreen/github-cheat-sheet 
+- https://github.com/vinta/awesome-python
+- https://github.com/enaqx/awesome-react
+- https://github.com/vsouza/awesome-ios
+- https://github.com/alebcay/awesome-shell 
+- https://github.com/matteocrippa/awesome-swift
+
+and [more](status.md)
+
+
+### Travis CI
+
+You can use `awesome_bot` with [Travis CI](https://travis-ci.org/).
 
 Example [`.travis.yml` file](https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml)
 
@@ -116,36 +130,48 @@ script:
   - awesome_bot README.md
 ```
 
-`awesome_bot` is used by
+### Circle CI
 
-- https://github.com/tiimgreen/github-cheat-sheet 
-- https://github.com/vinta/awesome-python
-- https://github.com/enaqx/awesome-react
-- https://github.com/vsouza/awesome-ios
-- https://github.com/alebcay/awesome-shell 
-- https://github.com/matteocrippa/awesome-swift
+If you prefer [Circle CI](https://circleci.com), it'll work too.
 
-and [more](status.md)
+Example `circle.yml` file
 
-### Badge
+```
+machine:
+  ruby:
+    version: 2.2.0
+test:
+  pre: 
+    - gem install awesome_bot
+  override:
+    - awesome_bot README.md
+```
+
+### Status Badge
 
 [![Build Status](https://travis-ci.org/unixorn/awesome-zsh-plugins.png)](https://travis-ci.org/unixorn/awesome-zsh-plugins)
 
-To add a Travis build status badge to your project, use the following code
+To add the Travis CI build status badge above to your project, use the following code
 
 ```
 [![Build Status](https://travis-ci.org/<username>/<project>.svg)](https://travis-ci.org/<username>/<project>)
 
 i.e. 
-[![Build Status](https://travis-ci.org/unixorn/awesome-zsh-plugins.svg?branch=master)](https://travis-ci.org/unixorn/awesome-zsh-plugins)
+[![Build Status](https://travis-ci.org/dkhamsing/awesome_bot.svg?branch=master)](https://travis-ci.org/dkhamsing/awesome_bot)
 ```
 
-As it happens, the default badge image URL Travis provides is a redirect so adding this badge could fail your status :sob:
+As it happens, the default code snippet provided contain a redirect so adding a badge could fail your status :sob:.. one way to fix this is to white list `travis-ci`, i.e. `- awesome_bot README.md --white-list travis-ci`
 
-You can do a couple of things to fix this
+[![Circle CI](https://circleci.com/gh/dkhamsing/awesome_bot.svg?style=svg)](https://circleci.com/gh/dkhamsing/awesome_bot)
 
-- Use the redirected URL, which is `https://api.travis-ci.org/<username>/<project>.png` or
-- Update your Travis [configuration white list](.travis.yml#L15), i.e. `- awesome_bot README.md --white-list travis-ci.org`
+To add a Circle CI build status badge above to your project, use the following code
+
+```
+[![Circle CI](https://circleci.com/gh/<username>/<project>.svg?style=svg)](https://circleci.com/gh/<username>/<project>)
+
+i.e.
+[![Circle CI](https://circleci.com/gh/dkhamsing/awesome_bot.svg?style=svg)](https://circleci.com/gh/dkhamsing/awesome_bot)
+```
 
 ## Credits
 
