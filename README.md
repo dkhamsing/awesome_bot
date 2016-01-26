@@ -164,7 +164,7 @@ As it happens, the default code snippet provided contain a redirect so adding a 
 
 [![Circle CI](https://circleci.com/gh/dkhamsing/awesome_bot.svg?style=svg)](https://circleci.com/gh/dkhamsing/awesome_bot)
 
-To add a Circle CI build status badge above to your project, use the following code
+To add the Circle CI build status badge above to your project, use the following code
 
 ```
 [![Circle CI](https://circleci.com/gh/<username>/<project>.svg?style=svg)](https://circleci.com/gh/<username>/<project>)
