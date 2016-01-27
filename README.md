@@ -102,7 +102,7 @@ No issues :-)
 
 ## Validate Pull Requests
 
-`awesome_bot` can help you validate GitHub [pull requests](https://github.com/dkhamsing/open-source-ios-apps/pull/159). It is used by
+`awesome_bot` can help you validate GitHub [pull requests](https://github.com/dkhamsing/open-source-ios-apps/pull/159), I t is used by
 
 - https://github.com/tiimgreen/github-cheat-sheet 
 - https://github.com/vinta/awesome-python
@@ -111,7 +111,7 @@ No issues :-)
 - https://github.com/alebcay/awesome-shell 
 - https://github.com/matteocrippa/awesome-swift
 
-and [more](status.md)
+and [more](status.md). 
 
 
 ### Travis CI
