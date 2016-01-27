@@ -1,6 +1,6 @@
 # awesome_bot
 
-Check for links in [awesome](https://github.com/sindresorhus/awesome) projects :rocket: 
+Verify links in [awesome](https://github.com/sindresorhus/awesome) projects :rocket: 
 
 ![](http://i.giphy.com/urvsFBDfR6N32.gif)
 
