@@ -1,6 +1,6 @@
 # Awesome Status 
 
-Build status for projects using https://github.com/dkhamsing/awesome_bot 
+Build status for **70** projects using https://github.com/dkhamsing/awesome_bot 
 
 Status | Config | Repo 
 ---    | ---    | ---  
