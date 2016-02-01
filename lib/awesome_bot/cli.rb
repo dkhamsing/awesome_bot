@@ -66,6 +66,15 @@ module AwesomeBot
         exit 1
       end
 
+      # Check options
+      user_options = ARGV.select { |o| o.include? '--' }
+      options_diff = user_options - options
+      if options_diff.count > 0
+        puts "Error, invalid options: #{options_diff.join ', '} \n"
+        puts "Valid options are #{options.join ', '}"
+        exit 1
+      end
+
       begin
         content = File.read filename
       rescue => error
