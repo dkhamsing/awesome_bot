@@ -36,11 +36,19 @@ module AwesomeBot
       option_t_a = make_option OPTION_TIMEOUT_ALLOW
       option_w = make_option OPTION_WHITE_LIST
 
+      options = [
+        option_d,
+        option_r,
+        option_t,
+        option_t_a,
+        option_w
+      ]
+
       if ARGV.count == 0
         puts "Usage: #{PROJECT} <file> [#{option_d}] [#{option_r}] "\
              "[#{option_t_a}] [#{option_t} d] "\
              "[#{option_w} item1,item2,..]\n"\
-             "#{USAGE} file             Path to file \n"\
+             "#{USAGE} file             Path to file, required as first argument\n"\
              "#{USAGE} #{option_d}     Duplicates URLs are allowed URLs \n"\
              "#{USAGE} #{option_r} Redirected URLs are allowed \n"\
              "#{USAGE} #{option_t_a}  URLs that time out are allowed \n"\
@@ -51,6 +59,20 @@ module AwesomeBot
       end
 
       filename = ARGV[0]
+
+      if options.include? filename
+        puts "Usage: #{PROJECT} <file> [options] \n"\
+             '                   Path to file, requried as first argument'
+        exit 1
+      end
+
+      begin
+        content = File.read filename
+      rescue => error
+        puts "File open error: #{error}"
+        exit 1
+      end
+
       puts "> Checking links in #{filename}"
 
       if ARGV.count > 1
@@ -77,13 +99,6 @@ module AwesomeBot
       else
         allow_redirects = false
         allow_timeouts = false
-      end
-
-      begin
-        content = File.read filename
-      rescue => error
-        puts "File open error: #{error}"
-        exit 1
       end
 
       Faraday.options.timeout = timeout unless timeout.nil?
