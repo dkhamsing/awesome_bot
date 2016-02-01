@@ -1,6 +1,6 @@
 # awesome_bot
 
-Verify links in [awesome](https://github.com/sindresorhus/awesome) projects :rocket: 
+Verify links in [awesome](https://github.com/sindresorhus/awesome) projects :rocket:
 
 ![](http://i.giphy.com/urvsFBDfR6N32.gif)
 
@@ -52,7 +52,13 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
       --set-timeout    Set connection timeout (seconds)
       --white-list     Comma separated URLs/domains to white list
 
-`--white-list domain1.com/post/article,domain2.com` would white list `domain1.com/post/article` and all URLs matching `domain2.com`.
+By default, `awesome_bot` flags duplicates and URL redirects.
+
+- Use option `--allow-dupe` to allow duplicates.
+- Use option `allow-redirect` to all redirects
+- You can also white list specific links that will not be flagged (for dupe or redirect). `--white-list domain1.com/post/article,domain2.com` white lists `domain1.com/post/article` and all URLs matching `domain2.com`.
+
+### Examples
 
 ```shell
 $ awesome_bot README.md
@@ -66,14 +72,14 @@ Links found: 56, 53 unique
 Checking URLs: ✓x→✓✓✓✓→→✓→✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓→✓✓✓✓✓✓✓✓
 
 Issues :-(
-> Links 
+> Links
   1. 202 http://www.rubydoc.info/gems/awesome_bot
   2. 301 http://rubygems.org/gems/awesome_bot → https://rubygems.org/gems/awesome_bot
   3. 302 https://badge.fury.io/rb/awesome_bot.svg → https://d25lcipzij17d.cloudfront.net/badge.svg?id=rb&type=6&v=1.4.0&x2=0
   4. 302 https://badge.fury.io/rb/awesome_bot → http://rubygems.org/gems/awesome_bot
   5. 301 https://travis-ci.org/dkhamsing/awesome_bot.svg → https://api.travis-ci.org/dkhamsing/awesome_bot.svg
   6. 301 http://gph.is/XM6gMT → http://giphy.com/gifs/urvsFBDfR6N32
-> Dupes 
+> Dupes
   1. https://github.com/sindresorhus/awesome
   2. https://github.com/veggiemonk/awesome-docker
   3. https://github.com/dotfiles/dotfiles.github.com  
@@ -102,25 +108,23 @@ No issues :-)
 
 ## Validate Pull Requests
 
-`awesome_bot` can help you validate GitHub [pull requests](https://github.com/dkhamsing/open-source-ios-apps/pull/159), I t is used by
+`awesome_bot` can help you validate GitHub [pull requests](https://github.com/dkhamsing/open-source-ios-apps/pull/159), it is used by
 
-- https://github.com/tiimgreen/github-cheat-sheet 
+- https://github.com/tiimgreen/github-cheat-sheet
 - https://github.com/vinta/awesome-python
 - https://github.com/enaqx/awesome-react
 - https://github.com/vsouza/awesome-ios
-- https://github.com/alebcay/awesome-shell 
+- https://github.com/alebcay/awesome-shell
 - https://github.com/matteocrippa/awesome-swift
 
-and [more](status.md). 
+and [more](status.md).
 
 
 ### Travis CI
 
-You can use `awesome_bot` with [Travis CI](https://travis-ci.org/).
+To use `awesome_bot` with Travis CI, [connect your repo](https://travis-ci.org/) and create a [`.travis.yml` file](https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml).
 
-Example [`.travis.yml` file](https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml)
-
-```
+```yml
 language: ruby
 rvm:
   - 2.2
@@ -130,18 +134,23 @@ script:
   - awesome_bot README.md
 ```
 
+To turn off email notifications, add the lines below
+
+```yml
+notifications:
+  email: false
+```
+
 ### Circle CI
 
-If you prefer [Circle CI](https://circleci.com), it'll work too.
+If you prefer Circle CI, it'll work too. [Connect your repo](https://circleci.com/) and create a [`circle.yml` file](https://github.com/tmcw/awesome-geojson).
 
-Example `circle.yml` file
-
-```
+```yml
 machine:
   ruby:
     version: 2.2.0
 test:
-  pre: 
+  pre:
     - gem install awesome_bot
   override:
     - awesome_bot README.md
@@ -156,11 +165,15 @@ To add the Travis CI build status badge above to your project, use the following
 ```
 [![Build Status](https://travis-ci.org/<username>/<project>.svg)](https://travis-ci.org/<username>/<project>)
 
-i.e. 
+i.e.
 [![Build Status](https://travis-ci.org/dkhamsing/awesome_bot.svg?branch=master)](https://travis-ci.org/dkhamsing/awesome_bot)
 ```
 
-As it happens, the default code snippet provided contain a redirect so adding a badge could fail your status :sob:.. one way to fix this is to white list `travis-ci`, i.e. `- awesome_bot README.md --white-list travis-ci`
+As it happens, the default code snippet provided contain a redirect so adding a badge could fail your status :sob:.. one way to fix this is to white list `travis-ci`, i.e. 
+
+```
+- awesome_bot README.md --white-list travis-ci
+```
 
 [![Circle CI](https://circleci.com/gh/dkhamsing/awesome_bot.svg?style=svg)](https://circleci.com/gh/dkhamsing/awesome_bot)
 
