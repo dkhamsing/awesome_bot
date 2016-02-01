@@ -45,7 +45,7 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 ### Command Line
 
     awesome_bot <file> [--allow-dupe] [--allow-redirect] [--allow-timeout] [--set-timeout d] [--white-list item1,item2,..]
-      file             Path to file
+      file             Path to file, required as first argument
       --allow-dupe     Duplicates URLs are allowed URLs
       --allow-redirect Redirected URLs are allowed
       --allow-timeout  URLs that time out are allowed
@@ -169,7 +169,7 @@ i.e.
 [![Build Status](https://travis-ci.org/dkhamsing/awesome_bot.svg?branch=master)](https://travis-ci.org/dkhamsing/awesome_bot)
 ```
 
-As it happens, the default code snippet provided contain a redirect so adding a badge could fail your status :sob:.. one way to fix this is to white list `travis-ci`, i.e. 
+As it happens, the default code snippet provided contain a redirect so adding a badge could fail your status :sob:.. one way to fix this is to white list `travis-ci`, i.e.
 
 ```
 - awesome_bot README.md --white-list travis-ci

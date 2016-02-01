@@ -8,15 +8,20 @@ module AwesomeBot
   NUMBER_OF_THREADS = 10
 
   STATUS_OK = '✓'
-  STATUS_OTHER = 'x'
+  STATUS_OTHER = '?'
+  STATUS_400s = 'x'
   STATUS_REDIRECT = '→'
 
   class << self
     def log_status(s, log)
       if status_is_redirected? s
         log.addp STATUS_REDIRECT
+      elsif s == 200
+        log.addp STATUS_OK
+      elsif (s > 399 && s < 500)
+        log.addp STATUS_400s
       else
-        log.addp(s == 200 ? STATUS_OK : STATUS_OTHER)
+        log.addp STATUS_OTHER
       end
     end
 
