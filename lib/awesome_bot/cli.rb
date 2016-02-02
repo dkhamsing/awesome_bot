@@ -11,6 +11,7 @@ module AwesomeBot
   OPTION_TIMEOUT_ALLOW = 'allow-timeout'
   OPTION_TIMEOUT_SET = 'set-timeout'
   OPTION_WHITE_LIST = 'white-list'
+  OPTION_IGNORE_SSL = 'ignore-ssl'
 
   USAGE = "\t"
 
@@ -35,18 +36,20 @@ module AwesomeBot
       option_t = make_option OPTION_TIMEOUT_SET
       option_t_a = make_option OPTION_TIMEOUT_ALLOW
       option_w = make_option OPTION_WHITE_LIST
+      option_i_s = make_option OPTION_IGNORE_SSL
 
       options = [
         option_d,
         option_r,
         option_t,
         option_t_a,
-        option_w
+        option_w,
+        option_i_s
       ]
 
       if ARGV.count == 0
         puts "Usage: #{PROJECT} <file> [#{option_d}] [#{option_r}] "\
-             "[#{option_t_a}] [#{option_t} d] "\
+             "[#{option_t_a}] [#{option_t} d] [#{option_i_s}] "\
              "[#{option_w} item1,item2,..]\n"\
              "#{USAGE} file             Path to file, required as first argument\n"\
              "#{USAGE} #{option_d}     Duplicates URLs are allowed URLs \n"\
@@ -54,6 +57,7 @@ module AwesomeBot
              "#{USAGE} #{option_t_a}  URLs that time out are allowed \n"\
              "#{USAGE} #{option_t}    Set connection timeout (seconds) \n"\
              "#{USAGE} #{option_w}     Comma separated URLs to white list \n"\
+             "#{USAGE} #{option_i_s}     Do not verify SSL certificate \n"\
              "\nVersion #{VERSION}, see #{PROJECT_URL} for more information"
         exit
       end
@@ -96,12 +100,18 @@ module AwesomeBot
           timeout = options[i].to_i
           puts "> Connection timeout = #{timeout}s"
         end
+
+        ignore_ssl = options.include? option_i_s
+        puts '> Will ignore SSL certificate validation' if ignore_ssl == true
+
       else
         allow_redirects = false
         allow_timeouts = false
+        ignore_ssl = false
       end
 
       Faraday.options.timeout = timeout unless timeout.nil?
+      Faraday.ssl.verify = !ignore_ssl
 
       log = Log.new(true)
       r = check(content, white_listed, skip_dupe, log)
