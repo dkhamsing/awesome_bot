@@ -55,7 +55,7 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 By default, `awesome_bot` flags duplicates and URL redirects.
 
 - Use option `--allow-dupe` to allow duplicates.
-- Use option `allow-redirect` to all redirects
+- Use option `--allow-redirect` to all redirects
 - You can also white list specific links that will not be flagged (for dupe or redirect). `--white-list domain1.com/post/article,domain2.com` white lists `domain1.com/post/article` and all URLs matching `domain2.com`.
 
 ### Examples
