@@ -89,7 +89,7 @@ Issues :-(
 $ awesome_bot README.md --allow-dupe --white-list fury,rubydoc,travis,codeload,gems,giphy,gph
 > Checking links in README.md
 > Will allow duplicate links
-> White list: fury, rubydoc, travis, codeload, gems, giphy, gph
+> White list last now matching: fury, rubydoc, travis, codeload, gems, giphy, gph
 Links found: 51, 23 white listed, 42 unique
   1. https://github.com/sindresorhus/awesome
   2. https://twitter.com/dkhamsing
