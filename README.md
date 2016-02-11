@@ -46,7 +46,7 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 
     awesome_bot <file> [--allow-dupe] [--allow-redirect] [--allow-timeout] [--set-timeout d] [--white-list item1,item2,..]
       file             Path to file, required as first argument
-      --allow-dupe     Duplicates URLs are allowed URLs
+      --allow-dupe     Duplicate URLs are allowed 
       --allow-redirect Redirected URLs are allowed
       --allow-timeout  URLs that time out are allowed
       --set-timeout    Set connection timeout (seconds)
