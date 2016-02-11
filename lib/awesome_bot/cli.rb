@@ -49,7 +49,7 @@ module AwesomeBot
              "[#{option_t_a}] [#{option_t} d] "\
              "[#{option_w} item1,item2,..]\n"\
              "#{USAGE} file             Path to file, required as first argument\n"\
-             "#{USAGE} #{option_d}     Duplicates URLs are allowed URLs \n"\
+             "#{USAGE} #{option_d}     Duplicate URLs are allowed \n"\
              "#{USAGE} #{option_r} Redirected URLs are allowed \n"\
              "#{USAGE} #{option_t_a}  URLs that time out are allowed \n"\
              "#{USAGE} #{option_t}    Set connection timeout (seconds) \n"\
