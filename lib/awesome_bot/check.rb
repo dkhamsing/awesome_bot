@@ -33,7 +33,7 @@ module AwesomeBot
       r = Result.new(temp, white_listed)
       r.skip_dupe = skip_dupe
 
-      log.add "> White list: #{white_listed.join ', '}" if r.white_listing
+      log.add "> White list links matching: #{white_listed.join ', '}" if r.white_listing
 
       r.dupes = r.links.select { |e| r.links.count(e) > 1 }
 

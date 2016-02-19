@@ -116,7 +116,7 @@ module AwesomeBot
       r = check(content, white_listed, skip_dupe, log)
 
       unless r.white_listed.nil?
-        puts "\n> White list links matching:"
+        puts "\n> White listed:"
         r.white_listed.each_with_index do |x, k|
           output x, k
         end
