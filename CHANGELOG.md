@@ -1,5 +1,9 @@
 # awesome_bot
 
+# 1.7.0
+- [cli] invalid options error
+-	[output] improve
+
 # 1.6.0
 
 - [cli] improve argument error
