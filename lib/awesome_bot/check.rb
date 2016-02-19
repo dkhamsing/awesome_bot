@@ -37,7 +37,7 @@ module AwesomeBot
 
       r.dupes = r.links.select { |e| r.links.count(e) > 1 }
 
-      log.addp "Links found: #{r.links.count}"
+      log.addp "Links to check: #{r.links.count}"
       log.addp ", #{r.links_white_listed.count} white listed" if r.white_listing
       uniq = r.links.uniq.count
       log.addp ", #{uniq} unique" if uniq != r.links.count
