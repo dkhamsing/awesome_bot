@@ -15,3 +15,4 @@ test:
     - awesome_bot bin/assets/test-redirect --allow-redirect
     - awesome_bot bin/assets/test-statuses --white-list bot,bad,super
     - awesome_bot README.md --allow-dupe --white-list gph.is,giphy,travis-ci.org,codeload,badge,rubydoc,rubygems,circleci
+    - gem install awesome_bot
