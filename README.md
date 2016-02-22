@@ -126,12 +126,9 @@ To use `awesome_bot` with Travis CI, [connect your repo](https://travis-ci.org/)
 
 ```yml
 language: ruby
-rvm:
-  - 2.2
-before_script:
-  - gem install awesome_bot
-script:
-  - awesome_bot README.md
+rvm: 2.2
+before_script: gem install awesome_bot
+script: awesome_bot README.md
 ```
 
 To turn off email notifications, add the lines below
