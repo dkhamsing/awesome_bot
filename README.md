@@ -1,6 +1,6 @@
 # awesome_bot
 
-Verify links in [awesome](https://github.com/sindresorhus/awesome) projects :rocket:
+Verify links in [awesome](https://github.com/sindresorhus/awesome) projects
 
 ![](http://i.giphy.com/urvsFBDfR6N32.gif)
 
