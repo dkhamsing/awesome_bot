@@ -12,16 +12,6 @@ Verify links in [awesome](https://github.com/sindresorhus/awesome) projects
 
 ## Installation
 
-Add this line to your application's Gemfile
-
-    gem 'awesome_bot'
-
-And then execute
-
-    $ bundle
-
-Or install it yourself as
-
     $ gem install awesome_bot
 
 ## Usage
