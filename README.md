@@ -98,7 +98,7 @@ No issues :-)
 
 ## Validate Pull Requests
 
-`awesome_bot` can help you validate GitHub [pull requests](https://github.com/dkhamsing/open-source-ios-apps/pull/159), it is used by
+Does your GitHub README contain a lot of links? `awesome_bot` can help you validate them when a [pull request](https://github.com/dkhamsing/open-source-ios-apps/pull/159) is created. It is used by
 
 - https://github.com/tiimgreen/github-cheat-sheet
 - https://github.com/vinta/awesome-python
