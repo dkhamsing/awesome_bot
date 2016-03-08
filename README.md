@@ -41,6 +41,7 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
       --allow-timeout  URLs that time out are allowed
       --set-timeout    Set connection timeout (seconds)
       --white-list     Comma separated URLs/domains to white list
+      --ignore-ssl     Do not verify SSL certificate
 
 By default, `awesome_bot` flags duplicates and URL redirects.
 
