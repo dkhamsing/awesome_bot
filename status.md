@@ -1,12 +1,11 @@
 # Awesome Status 
 
-Build status for **83** projects using https://github.com/dkhamsing/awesome_bot 
+Build status for **82** projects using https://github.com/dkhamsing/awesome_bot 
 
 Status | Config | Repo 
 ---    | ---    | ---  
 [![Build Status](https://travis-ci.org/vinta/awesome-python.svg)](https://travis-ci.org/vinta/awesome-python) | [`config`](vinta/awesome-python/blob/master/.travis.yml) | [vinta/awesome-python](vinta/awesome-python) | 
 [![Build Status](https://travis-ci.org/tiimgreen/github-cheat-sheet.svg)](https://travis-ci.org/tiimgreen/github-cheat-sheet) | [`config`](tiimgreen/github-cheat-sheet/blob/master/.travis.yml) | [tiimgreen/github-cheat-sheet](tiimgreen/github-cheat-sheet) | 
-[![Build Status](https://travis-ci.org/caesar0301/awesome-public-datasets.svg)](https://travis-ci.org/caesar0301/awesome-public-datasets) | [`config`](caesar0301/awesome-public-datasets/blob/master/.travis.yml) | [caesar0301/awesome-public-datasets](caesar0301/awesome-public-datasets) | 
 [![Build Status](https://travis-ci.org/enaqx/awesome-react.svg)](https://travis-ci.org/enaqx/awesome-react) | [`config`](enaqx/awesome-react/blob/master/.travis.yml) | [enaqx/awesome-react](enaqx/awesome-react) | 
 [![Build Status](https://travis-ci.org/ziadoz/awesome-php.svg)](https://travis-ci.org/ziadoz/awesome-php) | [`config`](ziadoz/awesome-php/blob/master/.travis.yml) | [ziadoz/awesome-php](ziadoz/awesome-php) | 
 [![Build Status](https://travis-ci.org/vsouza/awesome-ios.svg)](https://travis-ci.org/vsouza/awesome-ios) | [`config`](vsouza/awesome-ios/blob/master/.travis.yml) | [vsouza/awesome-ios](vsouza/awesome-ios) | 
