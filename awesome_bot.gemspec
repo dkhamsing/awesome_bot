@@ -24,5 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'faraday', '~> 0.9.2'  # validate urls
   spec.add_runtime_dependency 'parallel', '~> 1.6.1' # threading
 
-  spec.add_development_dependency 'rspec' # tests
+  spec.add_development_dependency 'rspec', '~> 3.4.0' # tests'
 end
