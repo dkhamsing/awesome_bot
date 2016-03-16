@@ -6,7 +6,7 @@ Verify links in [awesome](https://github.com/sindresorhus/awesome) projects
 
 [![Build Status](https://travis-ci.org/dkhamsing/awesome_bot.svg)](https://travis-ci.org/dkhamsing/awesome_bot) [![Tests](https://img.shields.io/badge/tests-circle%20ci-brightgreen.svg)](https://circleci.com/gh/dkhamsing/awesome_bot)
 [![Gem Version](https://badge.fury.io/rb/awesome_bot.svg)](https://badge.fury.io/rb/awesome_bot)
-[![](https://img.shields.io/badge/awesome-status-brightgreen.svg)](status.md)
+[![](https://img.shields.io/badge/awesome-status-brightgreen.svg)](status/status.md)
 
 `awesome_bot` checks for valid URLs in a file, it can be used to [verify pull requests](#validate-pull-requests) updating a README.
 
@@ -107,7 +107,7 @@ Does your GitHub README contain a lot of links? `awesome_bot` can help you valid
 - https://github.com/alebcay/awesome-shell
 - https://github.com/matteocrippa/awesome-swift
 
-and [more](status.md).
+and [more](status/status.md).
 
 
 ### Travis CI
