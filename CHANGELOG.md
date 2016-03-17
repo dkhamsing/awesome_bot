@@ -1,9 +1,13 @@
-# awesome_bot
+# awesome_bot changelog
+
+Changes by [Daniel Khamsing][] unless otherwise noted.
+
 # 1.7.1
 
 - [fix] parse issues with links in `adoc` files, reported by [Ibragimov Ruslan](https://github.com/IRus)
 
 # 1.7.0
+
 - [cli] invalid options error
 -	[output] improve
 
@@ -81,8 +85,9 @@
 
 ## Contact
 
-- [github.com/dkhamsing](https://github.com/dkhamsing)
+- [Daniel Khamsing][]
 - [twitter.com/dkhamsing](https://twitter.com/dkhamsing)
 
+[Daniel Khamsing]:https://github.com/dkhamsing
 [Colby M. White]:https://github.com/colbywhite
 [R.I. Pienaar]:https://github.com/ripienaar
