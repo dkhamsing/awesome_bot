@@ -1,4 +1,7 @@
 # awesome_bot
+# 1.7.1
+
+- [fix] parse issues with links in `adoc` files, reported by [Ibragimov Ruslan](https://github.com/IRus)
 
 # 1.7.0
 - [cli] invalid options error
