@@ -86,7 +86,6 @@ Changes by [Daniel Khamsing][] unless otherwise noted.
 ## Contact
 
 - [Daniel Khamsing][]
-- [twitter.com/dkhamsing](https://twitter.com/dkhamsing)
 
 [Daniel Khamsing]:https://github.com/dkhamsing
 [Colby M. White]:https://github.com/colbywhite
