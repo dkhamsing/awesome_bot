@@ -15,6 +15,8 @@ module AwesomeBot
             x.gsub(/\)\).*/, ')')
           elsif x.scan(')').count > 0
             x.gsub(/\).*/, '')
+          elsif x.include? '[' # adoc
+            x.gsub(/\[.*/, '')
           else
             x
           end
