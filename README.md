@@ -98,7 +98,7 @@ No issues :-)
 
 ## Validate Pull Requests
 
-Does your GitHub README contain a lot of links? `awesome_bot` can help you validate them when a [pull request](https://github.com/dkhamsing/open-source-ios-apps/pull/159) is created. It is used by
+Does your GitHub README contain a lot of links? `awesome_bot` can help you validate them when a [pull request](https://github.com/dkhamsing/open-source-ios-apps/pull/159) is created (or a commit is pushed). It is used by: 
 
 - https://github.com/tiimgreen/github-cheat-sheet
 - https://github.com/vinta/awesome-python
@@ -109,6 +109,7 @@ Does your GitHub README contain a lot of links? `awesome_bot` can help you valid
 
 and [more](status/status.md).
 
+Tip: Use the keyword `[ci skip]` in your commit title/message to selectively skip verification (if you are let's say working on a bunch of changes).
 
 ### Travis CI
 
@@ -143,6 +144,30 @@ test:
     - awesome_bot README.md
 ```
 
+### More
+
+Circle CI, [Codeship](https://codeship.com/), and [Semaphore CI](https://semaphoreci.com/) support running tests without adding a file to the repo. Doing so however can help others contribute to tweaking the configuration :sweat_smile:
+
+```
+# Codeship
+Setup
+rvm use 2.2.0 --install
+gem install awesome_bot
+
+Test
+awesome_bot README.md
+```
+
+```
+# Semaphore CI
+Language: Ruby
+Ruby version: 2.2
+Databases for: don't generate 
+Setup: 
+gem install awesome_bot
+awesome_bot README.md
+```
+
 ### Status Badge
 
 [![Build Status](https://travis-ci.org/unixorn/awesome-zsh-plugins.png)](https://travis-ci.org/unixorn/awesome-zsh-plugins)
@@ -162,16 +187,7 @@ As it happens, the default code snippet provided contain a redirect so adding a 
 - awesome_bot README.md --white-list travis-ci
 ```
 
-[![Circle CI](https://circleci.com/gh/dkhamsing/awesome_bot.svg?style=svg)](https://circleci.com/gh/dkhamsing/awesome_bot)
-
-To add the Circle CI build status badge above to your project, use the following code
-
-```
-[![Circle CI](https://circleci.com/gh/<username>/<project>.svg?style=svg)](https://circleci.com/gh/<username>/<project>)
-
-i.e.
-[![Circle CI](https://circleci.com/gh/dkhamsing/awesome_bot.svg?style=svg)](https://circleci.com/gh/dkhamsing/awesome_bot)
-```
+You can also add a badge for other CI tools, I recommend checking out [shields.io](http://shields.io/).
 
 ## Credits
 
