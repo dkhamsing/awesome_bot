@@ -146,7 +146,7 @@ test:
 
 ### More
 
-Circle CI, [Codeship](https://codeship.com/), and [Semaphore CI](https://semaphoreci.com/) support running tests without adding a file to the repo. Doing so however can help others contribute to tweaking the configuration :sweat_smile:
+Circle CI, [Codeship](https://codeship.com/), and [Semaphore CI](https://semaphoreci.com/) support running tests without adding a file to the repo (a public configuration file can however help others contribute). 
 
 ```
 # Codeship
