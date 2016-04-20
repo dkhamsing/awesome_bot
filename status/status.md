@@ -1,6 +1,6 @@
 # Awesome Status 
 
-Build status for **88** projects using https://github.com/dkhamsing/awesome_bot 
+Build status for **89** projects using https://github.com/dkhamsing/awesome_bot 
 
 Status | Config | Repo 
 ---    | ---    | ---  
@@ -92,3 +92,4 @@ Status | Config | Repo
 [![Build Status](https://travis-ci.org/stve/awesome-dropwizard.svg)](https://travis-ci.org/stve/awesome-dropwizard) | [`config`](https://github.com/stve/awesome-dropwizard/blob/master/.travis.yml) | [stve/awesome-dropwizard](https://github.com/stve/awesome-dropwizard) 
 [![Build Status](https://travis-ci.org/ramitsurana/awesome-openstack.svg)](https://travis-ci.org/ramitsurana/awesome-openstack) | [`config`](https://github.com/ramitsurana/awesome-openstack/blob/master/.travis.yml) | [ramitsurana/awesome-openstack](https://github.com/ramitsurana/awesome-openstack) 
 [![Circle CI](https://img.shields.io/circleci/project/tmcw/awesome-geojson.svg)](https://circleci.com/gh/tmcw/awesome-geojson) | [`config`](https://github.com/tmcw/awesome-geojson/blob/master/circle.yml) | [tmcw/awesome-geojson](https://github.com/tmcw/awesome-geojson) 
+[![Build Status](https://travis-ci.org/fisherman/awesome-fish.svg?branch=master)](https://travis-ci.org/fisherman/awesome-fish) | [`config`](https://github.com/fisherman/awesome-fish/blob/master/.travis.yml) | [fisherman/awesome-fish](https://github.com/fisherman/awesome-fish) 
