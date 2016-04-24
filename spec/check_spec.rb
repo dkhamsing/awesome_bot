@@ -4,19 +4,12 @@ describe AwesomeBot do
   describe "check" do
     context "given 2 dupes" do
       it "returns 2" do
-        dupes = %(
-          https://github.com
-          https://github.com
-        )
+        dupes = %(https://github.com https://github.com)
         expect(AwesomeBot::check(dupes).dupes.count).to eql(2)
       end
     end
 
-    nodupes = %(
-      1. https://twitter.com
-      2. http://github.com
-      3. https://github.com
-    )
+    nodupes = %(1. https://twitter.com 2. http://github.com 3. https://github.com)
 
     context "given no dupes" do
       it "returns 0" do
@@ -31,7 +24,7 @@ describe AwesomeBot do
     end
 
     context "given a bad link" do
-      bad = 'http://localhost:11029 bad'
+      bad = 'http://example.org:11029 bad'
       r = AwesomeBot::check(bad)
       item = r.statuses_issues[0]
 
@@ -59,10 +52,7 @@ describe AwesomeBot do
     end
 
     context "given links, one with issue" do
-      content = %(
-        https://twitter.com
-        http://github.com
-      )
+      content = %(https://twitter.com http://github.com)
       r = AwesomeBot::check content
 
       expected = 1
@@ -79,10 +69,7 @@ describe AwesomeBot do
     end
 
     context "given links with no issues" do
-      content = %(
-        https://twitter.com/
-        https://github.com/
-      )
+      content = %(https://twitter.com/ https://github.com/)
       r = AwesomeBot::check content
 
       expected = 0

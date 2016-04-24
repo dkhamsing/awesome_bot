@@ -26,6 +26,7 @@ module AwesomeBot
     end
 
     def check(content, white_listed = nil, skip_dupe = false, log = Log.new)
+      content = GitHub::Markup.render('README.md', content)
       log.add '> Will allow duplicate links' if skip_dupe
 
       temp = links_filter(links_find(content))
