@@ -20,8 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.required_ruby_version = '>= 2.0.0'
-
-  spec.add_runtime_dependency 'faraday', '~> 0.9.2'  # validate urls
+  
   spec.add_runtime_dependency 'parallel', '~> 1.6.1' # threading
 
   spec.add_development_dependency 'rspec', '~> 3.4.0' # tests'

@@ -36,7 +36,7 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 
     awesome_bot <file> [--allow-dupe] [--allow-redirect] [--allow-timeout] [--set-timeout d] [--white-list item1,item2,..]
       file             Path to file, required as first argument
-      --allow-dupe     Duplicate URLs are allowed 
+      --allow-dupe     Duplicate URLs are allowed
       --allow-redirect Redirected URLs are allowed
       --allow-timeout  URLs that time out are allowed
       --set-timeout    Set connection timeout (seconds)
@@ -45,7 +45,7 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 By default, `awesome_bot` flags duplicates and URL redirects.
 
 - Use option `--allow-dupe` to allow duplicates.
-- Use option `--allow-redirect` to all redirects. 
+- Use option `--allow-redirect` to all redirects.
 - You can also white list specific links that will not be flagged (for dupe or redirect). `--white-list domain1.com/post/article,domain2.com` white lists `domain1.com/post/article` and all links matching `domain2.com`.
 
 ### Examples
@@ -98,7 +98,7 @@ No issues :-)
 
 ## Validate Pull Requests
 
-Does your GitHub README contain a lot of links? `awesome_bot` can help you validate them when a [pull request](https://github.com/dkhamsing/open-source-ios-apps/pull/159) is created (or a commit is pushed). It is used by: 
+Does your GitHub README contain a lot of links? `awesome_bot` can help you validate them when a [pull request](https://github.com/dkhamsing/open-source-ios-apps/pull/159) is created (or a commit is pushed). It is used by:
 
 - https://github.com/tiimgreen/github-cheat-sheet
 - https://github.com/vinta/awesome-python
@@ -146,7 +146,7 @@ test:
 
 ### More
 
-Circle CI, [Codeship](https://codeship.com/), and [Semaphore CI](https://semaphoreci.com/) support running tests without adding a file to the repo (a public configuration file can however help others contribute). 
+Circle CI, [Codeship](https://codeship.com/), and [Semaphore CI](https://semaphoreci.com/) support running tests without adding a file to the repo (a public configuration file can however help others contribute).
 
 ```
 # Codeship
@@ -162,8 +162,8 @@ awesome_bot README.md
 # Semaphore CI
 Language: Ruby
 Ruby version: 2.2
-Databases for: don't generate 
-Setup: 
+Databases for: don't generate
+Setup:
 gem install awesome_bot
 awesome_bot README.md
 ```
@@ -188,11 +188,6 @@ As it happens, the default code snippet provided contain a redirect so adding a 
 ```
 
 You can also add a badge for other CI tools, I recommend checking out [shields.io](http://shields.io/).
-
-## Credits
-
-- [`faraday` and `parallel`](awesome_bot.gemspec)
-- [giphy](http://gph.is/XM6gMT)
 
 ## Contact
 

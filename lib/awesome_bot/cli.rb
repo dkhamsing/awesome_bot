@@ -110,10 +110,16 @@ module AwesomeBot
         allow_timeouts = false
       end
 
-      Faraday.options.timeout = timeout unless timeout.nil?
+      # Faraday.options.timeout = timeout unless timeout.nil?
 
       log = Log.new(true)
-      r = check(content, white_listed, skip_dupe, log)
+
+      options = {
+        'whitelist' => white_listed,
+        'allowdupe' => skip_dupe,
+        'timeout' => timeout
+      }
+      r = check(content, options, log)
 
       unless r.white_listed.nil?
         puts "\n> White listed:"
