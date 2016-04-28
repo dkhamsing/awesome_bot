@@ -25,5 +25,19 @@ describe AwesomeBot do
         expect(value).to eql(expected)
       end
     end
+
+    context "given a link with a comma" do
+      content = %(
+      #### JavaScript [Ecma International/TC39]
+      - [ECMAScript 1 (PDF)](http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262,%201st%20edition,%20June%201997.pdf) [Standard ECMA-262, 1st Edition June 1997]
+      )
+      list = AwesomeBot::links_find content
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262%2c%201st%20edition%2c%20June%201997.pdf'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+    end
   end
 end
