@@ -25,7 +25,17 @@ module AwesomeBot
       end
     end
 
-    def check(content, white_listed = nil, skip_dupe = false, log = Log.new)
+    def check(content, options=nil, log = Log.new)
+      if options.nil?
+        white_listed = nil
+        skip_dupe = false
+        timeout = nil
+      else
+        white_listed = options['whitelist']
+        skip_dupe = options['allowdupe']
+        timeout = options['timeout']
+      end
+
       log.add '> Will allow duplicate links' if skip_dupe
 
       temp = links_filter(links_find(content))
@@ -46,7 +56,7 @@ module AwesomeBot
 
       log.addp 'Checking URLs: ' if r.links.count > 0
       r.status =
-        statuses(r.links.uniq, NUMBER_OF_THREADS) do |s|
+        statuses(r.links.uniq, NUMBER_OF_THREADS, timeout) do |s|
           log_status s, log
         end
       log.add ''
@@ -55,7 +65,7 @@ module AwesomeBot
 
       log.addp 'Checking white listed URLs: '
       r.white_listed =
-        statuses(r.links_white_listed.uniq, NUMBER_OF_THREADS, true) do |s|
+        statuses(r.links_white_listed.uniq, NUMBER_OF_THREADS, nil) do |s|
           log_status s, log
         end
       log.add ''

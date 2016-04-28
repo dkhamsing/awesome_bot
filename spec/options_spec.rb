@@ -3,7 +3,8 @@ require 'awesome_bot'
 describe AwesomeBot do
   describe "white list" do
     context "given a white listed redirected link" do
-      r = AwesomeBot::check 'http://github.com', ['github']
+      options = {'whitelist'=>['github']}
+      r = AwesomeBot::check 'http://github.com', options
       expected = 0
       value = r.statuses_issues.count
       it "has no issues" do
@@ -14,7 +15,7 @@ describe AwesomeBot do
 
   describe "dupe" do
     context "given duped link with --allow-dupe" do
-      r = AwesomeBot::check 'https://github.com/dkhamsing https://github.com/dkhamsing', nil, true
+      r = AwesomeBot::check 'https://github.com/dkhamsing https://github.com/dkhamsing'
       expected = 0
       value = r.statuses_issues.count
       it "has no issues" do
@@ -36,7 +37,8 @@ describe AwesomeBot do
 
   describe "multiple options" do
     context "given problem links" do
-      r = AwesomeBot::check 'http://github.com http://www.apple.com/ http://www.apple.com/', ['github']
+      options = {'whitelist'=>['github']}
+      r = AwesomeBot::check 'http://github.com http://www.apple.com/ http://www.apple.com/', options
       expected = 0
       value = r.statuses_issues(true).count
       it "has no issues with --allow-redirect and --allow-dupe" do

@@ -2,6 +2,11 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.8.0
+
+- remove `faraday`
+- [fix] parse links with commas (url encode)
+
 # 1.7.1
 
 - [fix] parse issues with links in `adoc` files, reported by [Ibragimov Ruslan](https://github.com/IRus)
