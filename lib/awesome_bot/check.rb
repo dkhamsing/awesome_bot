@@ -52,7 +52,10 @@ module AwesomeBot
       uniq = r.links.uniq.count
       log.addp ", #{uniq} unique" if uniq != r.links.count
       log.add ''
-      r.links.uniq.each_with_index { |u, j| log.add "  #{j + 1}. #{u}" }
+      r.links.uniq.each_with_index do |u, j|
+        format = "%0#{r.links.uniq.count.to_s.size}d"
+        log.add "  #{sprintf format, j + 1}. #{u}"
+      end
 
       log.addp 'Checking URLs: ' if r.links.count > 0
       r.status =

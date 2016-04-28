@@ -27,7 +27,7 @@ module AwesomeBot
       Parallel.each(links, in_threads: threads) do |u|
         begin
           response = net_status u, head, timeout
-          status = response.code.nil? 200 : response.code.to_i
+          status = response.code==nil ? 200 : response.code.to_i
           headers = {}
           response.each { |k, v| headers[k] = v }
           error = nil # nil (success)
