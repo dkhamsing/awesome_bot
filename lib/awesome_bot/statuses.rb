@@ -9,9 +9,8 @@ module AwesomeBot
   STATUS_ERROR = -1
 
   class << self
-    def net_status(url, head, timeout)
+    def net_status(url, head, timeout=30)
       uri = URI.parse url
-      timeout = 60 if timeout.nil?
       Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https', :open_timeout => timeout) do |http|
        request = Net::HTTP::Get.new uri
        response = http.request request
@@ -28,8 +27,7 @@ module AwesomeBot
       Parallel.each(links, in_threads: threads) do |u|
         begin
           response = net_status u, head, timeout
-          status = response.code.to_i
-          status = 200 if status.nil?
+          status = response.code==nil ? 200 : response.code.to_i
           headers = {}
           response.each { |k, v| headers[k] = v }
           error = nil # nil (success)

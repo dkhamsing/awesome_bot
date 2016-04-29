@@ -2,10 +2,16 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.8.1
+
+- [output] show link line number, suggested by [Daniel Gomez Rico](https://github.com/danielgomezrico)
+- [output] improve enumeration with padding
+- set default open link timeout to 30 seconds 
+
 # 1.8.0
 
 - remove `faraday`
-- [fix] parse links with commas (url encode)
+- [fix] parse links with commas (url encode), reported by [Kishan Bagaria](https://github.com/KishanBagaria)
 
 # 1.7.1
 
