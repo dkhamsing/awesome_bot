@@ -5,5 +5,5 @@ module AwesomeBot
                         'Great for "awesome" projects.'
   PROJECT_URL = 'https://github.com/dkhamsing/awesome_bot'
 
-  VERSION = '1.8.0'
+  VERSION = '1.8.1'
 end
