@@ -1,5 +1,4 @@
 require 'awesome_bot/check'
-require 'awesome_bot/log'
 require 'awesome_bot/output'
 require 'awesome_bot/result'
 require 'awesome_bot/statuses'
@@ -103,14 +102,14 @@ module AwesomeBot
         allow_timeouts = false
       end
 
-      log = Log.new(true)
-
       options = {
         'whitelist' => white_listed,
         'allowdupe' => skip_dupe,
         'timeout' => timeout
       }
-      r = check(content, options, log)
+      r = check content, options do |o|
+        print o
+      end
 
       digits = number_of_digits content
       unless r.white_listed.nil?

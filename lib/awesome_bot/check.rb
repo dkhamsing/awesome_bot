@@ -1,5 +1,4 @@
 require 'awesome_bot/links'
-require 'awesome_bot/log'
 require 'awesome_bot/output'
 require 'awesome_bot/result'
 require 'awesome_bot/statuses'
@@ -9,7 +8,7 @@ module AwesomeBot
   NUMBER_OF_THREADS = 10
 
   class << self
-    def check(content, options=nil, log = Log.new)
+    def check(content, options=nil)
       if options.nil?
         white_listed = nil
         skip_dupe = false
@@ -20,42 +19,43 @@ module AwesomeBot
         timeout = options['timeout']
       end
 
-      log.add '> Will allow duplicate links' if skip_dupe
+      yield "> Will allow duplicate links \n" if skip_dupe && block_given?
 
       temp = links_filter(links_find(content))
 
       r = Result.new(temp, white_listed)
       r.skip_dupe = skip_dupe
 
-      log.add "> White list links matching: #{white_listed.join ', '}" if r.white_listing
+      yield "> White list links matching: #{white_listed.join ', '} \n" if r.white_listing && block_given?
 
       r.dupes = r.links.select { |e| r.links.count(e) > 1 }
 
-      log.addp "Links to check: #{r.links.count}"
-      log.addp ", #{r.links_white_listed.count} white listed" if r.white_listing
+      yield "Links to check: #{r.links.count}" if block_given?
+      yield ", #{r.links_white_listed.count} white listed" if r.white_listing && block_given?
       uniq = r.links.uniq.count
-      log.addp ", #{uniq} unique" if uniq != r.links.count
-      log.add ''
+
+      yield ", #{uniq} unique" if uniq != r.links.count && block_given?
+      yield "\n" if block_given?
       total = pad_list r.links.uniq
       r.links.uniq.each_with_index do |u, j|
-        log.add "  #{pad_text j + 1, total}. #{u}"
+        yield "  #{pad_text j + 1, total}. #{u} \n" if block_given?
       end
 
-      log.addp 'Checking URLs: ' if r.links.count > 0
+      yield 'Checking URLs: ' if block_given? && r.links.count > 0
       r.status =
         statuses(r.links.uniq, NUMBER_OF_THREADS, timeout) do |s|
-          log.addp log_status s
+          yield log_status s if block_given?
         end
-      log.add ''
+      yield "\n" if block_given?
 
       return r if !r.white_listing || (r.links_white_listed.count == 0)
 
-      log.addp 'Checking white listed URLs: '
+      yield 'Checking white listed URLs: ' if block_given?
       r.white_listed =
         statuses(r.links_white_listed.uniq, NUMBER_OF_THREADS, nil) do |s|
-          log.addp log_status s
+          yield log_status s if block_given?
         end
-      log.add ''
+      yield "\n" if block_given?
 
       r
     end # check
