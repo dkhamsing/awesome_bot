@@ -1,5 +1,6 @@
 require 'awesome_bot/links'
 require 'awesome_bot/log'
+require 'awesome_bot/output'
 require 'awesome_bot/result'
 require 'awesome_bot/statuses'
 
@@ -52,9 +53,9 @@ module AwesomeBot
       uniq = r.links.uniq.count
       log.addp ", #{uniq} unique" if uniq != r.links.count
       log.add ''
+      total = pad_list r.links.uniq
       r.links.uniq.each_with_index do |u, j|
-        format = "%0#{r.links.uniq.count.to_s.size}d"
-        log.add "  #{sprintf format, j + 1}. #{u}"
+        log.add "  #{pad_text j + 1, total}. #{u}"
       end
 
       log.addp 'Checking URLs: ' if r.links.count > 0

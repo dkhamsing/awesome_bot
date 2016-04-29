@@ -1,5 +1,6 @@
 require 'awesome_bot/check'
 require 'awesome_bot/log'
+require 'awesome_bot/output'
 require 'awesome_bot/result'
 require 'awesome_bot/statuses'
 require 'awesome_bot/version'
@@ -17,47 +18,6 @@ module AwesomeBot
   class << self
     def make_option(o)
       "--#{o}"
-    end
-
-    def loc_formatted(loc, largest=3)
-      format = "%0#{largest}d"
-      line = "#{sprintf format, loc}"
-      "[L#{line}] "
-    end
-
-    def loc(x, content)
-      count = 0
-      lines = content.split "\n"
-      lines.each do |l|
-        count += 1
-        return count if l.include? x
-      end
-    end
-
-    def number_of_digits(content)
-      lines = content.split "\n"
-      return lines.count.to_s.size
-    end
-
-    def order_by_loc(list, content)
-      list.each do |x|
-        x['loc'] = loc x['url'], content
-      end
-
-      s = list.sort_by { |h| h['loc'] }
-      return s
-    end
-
-    def output(x, k, total, largest)
-      format = "%0#{total}d"
-      print "  #{sprintf format, k + 1}. "
-      s = x['status']
-      print loc_formatted x['loc'], largest
-      print "#{s} " unless s== STATUS_ERROR
-      print "#{x['url']}"
-      print " #{x['error']}" if s == STATUS_ERROR
-      print " #{STATUS_REDIRECT} #{x['headers']['location']}" if status_is_redirected? s
-      puts ''
     end
 
     def cli
@@ -155,7 +115,7 @@ module AwesomeBot
         puts "\n> White listed:"
         o = order_by_loc r.white_listed, content
         o.each_with_index do |x, k|
-          output x, k, o.count.to_s.size, digits
+          puts output x, k, pad_list(o), digits
         end
       end
 
@@ -171,7 +131,7 @@ module AwesomeBot
         else
           o = order_by_loc r.statuses_issues(allow_redirects, allow_timeouts), content
           o.each_with_index do |x, k|
-              output x, k, o.count.to_s.size, digits
+            puts output x, k, pad_list(o), digits
           end
         end
 
