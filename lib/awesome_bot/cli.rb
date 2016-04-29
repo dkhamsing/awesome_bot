@@ -140,7 +140,19 @@ module AwesomeBot
           if r.success_dupe
             puts "  None #{STATUS_OK}"
           else
-            r.dupes.uniq.each_with_index { |d, m| puts "  #{m + 1}. #{d}" }
+            dupe_hash = r.dupes.uniq.map do |x|
+              temp = {}
+              temp['url'] = x
+              temp
+            end
+            o = order_by_loc dupe_hash, content
+            largest = o.last['loc'].to_s.size
+            o.each_with_index do |d, index|
+              print "  #{pad_text index + 1, pad_list(r.dupes.uniq)}. "
+              url = d['url']
+              print loc_formatted d['loc'], largest
+              puts url
+            end
           end
         end
 
