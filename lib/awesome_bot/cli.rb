@@ -21,11 +21,11 @@ module AwesomeBot
     end
 
     def cli
-      option_d = make_option OPTION_DUPE
-      option_r = make_option OPTION_REDIRECT
-      option_t = make_option OPTION_TIMEOUT_SET
+      option_d   = make_option OPTION_DUPE
+      option_r   = make_option OPTION_REDIRECT
+      option_t   = make_option OPTION_TIMEOUT_SET
       option_t_a = make_option OPTION_TIMEOUT_ALLOW
-      option_w = make_option OPTION_WHITE_LIST
+      option_w   = make_option OPTION_WHITE_LIST
 
       options = [
         option_d,
