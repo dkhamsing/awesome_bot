@@ -15,6 +15,8 @@ module AwesomeBot
             x.gsub(/\).*/, '')
           elsif x.include? '[' # adoc
             x.gsub(/\[.*/, '')
+          elsif x[-1]=='.'
+            x[0..-2]
           else
             x
           end
