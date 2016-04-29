@@ -13,6 +13,8 @@ module AwesomeBot
   OPTION_TIMEOUT_SET = 'set-timeout'
   OPTION_WHITE_LIST = 'white-list'
 
+  RESULTS_FILE = 'results.json'
+
   USAGE = "\t"
 
   class << self
@@ -121,7 +123,7 @@ module AwesomeBot
 
       if r.success(allow_redirects, allow_timeouts) == true
         puts 'No issues :-)'
-        # exit ?
+        r.write RESULTS_FILE
       else
         puts "\nIssues :-("
 
@@ -155,6 +157,10 @@ module AwesomeBot
             end
           end
         end
+
+        # write results json
+        r.write RESULTS_FILE
+        puts "\nWrote results to #{RESULTS_FILE}"
 
         exit 1
       end
