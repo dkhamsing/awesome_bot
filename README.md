@@ -45,34 +45,33 @@ Links found: 56, 37 unique
   37. https://github.com/dkhamsing
   Checking URLs: ✓✓✓→?✓→✓→→✓✓→✓✓✓→✓✓✓✓✓✓✓✓✓✓✓→✓✓✓✓✓→✓✓
 
-  Issues :-(
-  > Links
-    1. [L007] 301 https://travis-ci.org/dkhamsing/awesome_bot.svg → https://api.travis-ci.org/dkhamsing/awesome_bot.svg
-    2. [L008] 302 https://badge.fury.io/rb/awesome_bot → http://rubygems.org/gems/awesome_bot
+Issues :-(
+> Links
+  1. [L007] 301 https://travis-ci.org/dkhamsing/awesome_bot.svg → https://api.travis-ci.org/dkhamsing/awesome_bot.svg
+  2. [L008] 302 https://badge.fury.io/rb/awesome_bot → http://rubygems.org/gems/awesome_bot
 # ...
-  > Dupes
-    1. https://github.com/sindresorhus/awesome
-    2. http://i.giphy.com/urvsFBDfR6N32.gif
+> Dupes
+  1. [L03] https://github.com/sindresorhus/awesome
+  2. [L05] http://i.giphy.com/urvsFBDfR6N32.gif
 # ...
 ```
 
 ```shell
-$ awesome_bot README.md --allow-dupe --white-list travis,badge,rubydoc,rubygems,giphy,gph
+$ awesome_bot README.md --allow-dupe --allow-redirect --white-list rubydoc,giphy
 > Checking links in README.md
+> Will allow redirects
 > Will allow duplicate links
-> White list links matching: travis, badge, rubydoc, rubygems, giphy, gph
-Links to check: 21, 27 white listed, 16 unique
+> White list links matching: rubydoc, giphy
+Links to check: 41, 5 white listed, 29 unique
   01. https://github.com/sindresorhus/awesome
-  02. https://circleci.com/gh/dkhamsing/awesome_bot
-  03. https://github.com/dkhamsing
+  02. https://travis-ci.org/dkhamsing/awesome_bot.svg
 # ...
-Checking URLs: ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓
-Checking white listed URLs: ✓✓✓→→?✓→→✓→✓→✓→✓→✓
+Checking URLs: ✓✓→✓✓→→→✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓→✓✓✓→✓
+Checking white listed URLs: ?✓
 
 > White listed:
-  01. [L005] 200 http://i.giphy.com/urvsFBDfR6N32.gif
-  02. [L007] 200 https://img.shields.io/badge/tests-circle%20ci-brightgreen.svg
-# ...
+  1. [L005] 200 http://i.giphy.com/urvsFBDfR6N32.gif
+  2. [L093] 202 http://www.rubydoc.info/gems/awesome_bot
 No issues :-)
 ```
 
