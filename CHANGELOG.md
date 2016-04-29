@@ -5,7 +5,7 @@ Changes by [Daniel Khamsing][] unless otherwise noted.
 # 1.8.0
 
 - remove `faraday`
-- [fix] parse links with commas (url encode)
+- [fix] parse links with commas (url encode), reported by [Kishan Bagaria](https://github.com/KishanBagaria)
 
 # 1.7.1
 
