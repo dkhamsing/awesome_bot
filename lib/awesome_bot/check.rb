@@ -8,24 +8,7 @@ require 'awesome_bot/statuses'
 module AwesomeBot
   NUMBER_OF_THREADS = 10
 
-  STATUS_OK = '✓'
-  STATUS_OTHER = '?'
-  STATUS_400s = 'x'
-  STATUS_REDIRECT = '→'
-
   class << self
-    def log_status(s, log)
-      if status_is_redirected? s
-        log.addp STATUS_REDIRECT
-      elsif s == 200
-        log.addp STATUS_OK
-      elsif (s > 399 && s < 500)
-        log.addp STATUS_400s
-      else
-        log.addp STATUS_OTHER
-      end
-    end
-
     def check(content, options=nil, log = Log.new)
       if options.nil?
         white_listed = nil
@@ -61,7 +44,7 @@ module AwesomeBot
       log.addp 'Checking URLs: ' if r.links.count > 0
       r.status =
         statuses(r.links.uniq, NUMBER_OF_THREADS, timeout) do |s|
-          log_status s, log
+          log.addp log_status s
         end
       log.add ''
 
@@ -70,7 +53,7 @@ module AwesomeBot
       log.addp 'Checking white listed URLs: '
       r.white_listed =
         statuses(r.links_white_listed.uniq, NUMBER_OF_THREADS, nil) do |s|
-          log_status s, log
+          log.addp log_status s
         end
       log.add ''
 

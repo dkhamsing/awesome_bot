@@ -1,5 +1,10 @@
 # Output helpers
 module AwesomeBot
+  STATUS_OK = '✓'
+  STATUS_OTHER = '?'
+  STATUS_400s = 'x'
+  STATUS_REDIRECT = '→'
+
   class << self
     def loc(x, content)
       count = 0
@@ -12,7 +17,19 @@ module AwesomeBot
 
     def loc_formatted(loc, largest=3)
       line = pad_text loc, largest
-      "[L#{line}] "
+      "[L#{line}]"
+    end
+
+    def log_status(s)
+      if status_is_redirected? s
+        return STATUS_REDIRECT
+      elsif s == 200
+        return STATUS_OK
+      elsif (s > 399 && s < 500)
+        return STATUS_400s
+      else
+        return STATUS_OTHER
+      end
     end
 
     def number_of_digits(content)
@@ -33,7 +50,7 @@ module AwesomeBot
       s = x['status']
 
       "  #{pad_text index + 1, total}. " \
-      "#{loc_formatted x['loc'], largest}" \
+      "#{loc_formatted x['loc'], largest} " \
       "#{s == STATUS_ERROR ? '' : s} " \
       "#{x['url']} " \
       "#{s == STATUS_ERROR ? x['error'] : ''}" \

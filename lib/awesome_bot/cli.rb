@@ -151,7 +151,7 @@ module AwesomeBot
               print "  #{pad_text index + 1, pad_list(r.dupes.uniq)}. "
               url = d['url']
               print loc_formatted d['loc'], largest
-              puts url
+              puts " #{url}"
             end
           end
         end
