@@ -1,7 +1,7 @@
 require 'awesome_bot'
 
 describe AwesomeBot do
-  describe "check" do
+  describe "parse" do
     context "given adoc link" do
       content = 'https://www.linkedin.com/topic/group/kotlin-developers?gid=7417237[LinkedIn: Kotlin Developers (Join!)^]'
       list = AwesomeBot::links_find content
