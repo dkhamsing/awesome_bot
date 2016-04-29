@@ -16,22 +16,6 @@ Verify links in [awesome](https://github.com/sindresorhus/awesome) projects
 
 ## Usage
 
-### Library
-
-```ruby
-irb(main):001:0> require 'awesome_bot'
-=> true
-irb(main):002:0> content = File.read 'README.md'
-=> "..."
-irb(main):003:0> result = AwesomeBot.check content
-=> #<AwesomeBot::Result:0x007fdde39f4408 @links=...>
-# AwesomeBot Result with success, statuses_issues, dupes and more
-irb(main):004:0> puts result.success ? 'No errors' : ':-('
-:-(
-```
-
-More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
-
 ### Command Line
 
     awesome_bot <file> [--allow-dupe] [--allow-redirect] [--allow-timeout] [--set-timeout d] [--white-list item1,item2,..]
@@ -95,6 +79,22 @@ Checking white listed URLs: →→✓x✓✓✓→✓✓→→→
 
 No issues :-)
 ```
+
+### Library
+
+```ruby
+irb(main):001:0> require 'awesome_bot'
+=> true
+irb(main):002:0> content = File.read 'README.md'
+=> "..."
+irb(main):003:0> result = AwesomeBot.check content
+=> #<AwesomeBot::Result:0x007fdde39f4408 @links=...>
+# AwesomeBot Result with success, statuses_issues, dupes and more
+irb(main):004:0> puts result.success ? 'No errors' : ':-('
+:-(
+```
+
+More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 
 ## Validate Pull Requests
 
