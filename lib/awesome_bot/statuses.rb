@@ -40,7 +40,7 @@ module AwesomeBot
           error = e
         end
 
-        yield status, u if block_given?
+        yield status, u, headers if block_given?
         statuses.push('url' => u, 'status' => status, 'error' => error, 'headers' => headers)
       end # Parallel
 
