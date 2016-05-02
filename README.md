@@ -108,7 +108,7 @@ Tip: Use the keyword `[ci skip]` in your commit title/message to selectively ski
 
 ### Travis CI
 
-To use `awesome_bot` with Travis CI, [connect your repo](https://travis-ci.org/) and create a [`.travis.yml` file](https://github.com/dkhamsing/open-source-ios-apps/blob/master/.travis.yml).
+To use `awesome_bot` with Travis CI, [connect your repo](https://travis-ci.org/) and create a [`.travis.yml` file](https://github.com/ziadoz/awesome-php/blob/master/.travis.yml).
 
 ```yml
 language: ruby
