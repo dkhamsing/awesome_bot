@@ -58,5 +58,21 @@ module AwesomeBot
     def white_listing
       !@w.nil?
     end
+
+    def write(filename)
+      require 'json'
+
+      r = write_artifacts
+      File.open(filename, 'w') { |f| f.write r.to_json }
+    end
+
+    def write_artifacts
+      require 'date'
+      {
+        'date'=>Time.now,
+        'links'=>@links,
+        'results'=>statuses_issues
+      }
+    end
   end # class
 end

@@ -1,5 +1,5 @@
 require 'awesome_bot/check'
-require 'awesome_bot/log'
+require 'awesome_bot/output'
 require 'awesome_bot/result'
 require 'awesome_bot/statuses'
 require 'awesome_bot/version'
@@ -12,6 +12,8 @@ module AwesomeBot
   OPTION_TIMEOUT_SET = 'set-timeout'
   OPTION_WHITE_LIST = 'white-list'
 
+  RESULTS_FILE = 'results.json'
+
   USAGE = "\t"
 
   class << self
@@ -19,53 +21,12 @@ module AwesomeBot
       "--#{o}"
     end
 
-    def loc_formatted(loc, largest=3)
-      format = "%0#{largest}d"
-      line = "#{sprintf format, loc}"
-      "[L#{line}] "
-    end
-
-    def loc(x, content)
-      count = 0
-      lines = content.split "\n"
-      lines.each do |l|
-        count += 1
-        return count if l.include? x
-      end
-    end
-
-    def number_of_digits(content)
-      lines = content.split "\n"
-      return lines.count.to_s.size
-    end
-
-    def order_by_loc(list, content)
-      list.each do |x|
-        x['loc'] = loc x['url'], content
-      end
-
-      s = list.sort_by { |h| h['loc'] }
-      return s
-    end
-
-    def output(x, k, total, largest)
-      format = "%0#{total}d"
-      print "  #{sprintf format, k + 1}. "
-      s = x['status']
-      print loc_formatted x['loc'], largest
-      print "#{s} " unless s== STATUS_ERROR
-      print "#{x['url']}"
-      print " #{x['error']}" if s == STATUS_ERROR
-      print " #{STATUS_REDIRECT} #{x['headers']['location']}" if status_is_redirected? s
-      puts ''
-    end
-
     def cli
-      option_d = make_option OPTION_DUPE
-      option_r = make_option OPTION_REDIRECT
-      option_t = make_option OPTION_TIMEOUT_SET
+      option_d   = make_option OPTION_DUPE
+      option_r   = make_option OPTION_REDIRECT
+      option_t   = make_option OPTION_TIMEOUT_SET
       option_t_a = make_option OPTION_TIMEOUT_ALLOW
-      option_w = make_option OPTION_WHITE_LIST
+      option_w   = make_option OPTION_WHITE_LIST
 
       options = [
         option_d,
@@ -141,27 +102,27 @@ module AwesomeBot
         allow_timeouts = false
       end
 
-      log = Log.new(true)
-
       options = {
         'whitelist' => white_listed,
         'allowdupe' => skip_dupe,
         'timeout' => timeout
       }
-      r = check(content, options, log)
+      r = check content, options do |o|
+        print o
+      end
 
       digits = number_of_digits content
       unless r.white_listed.nil?
         puts "\n> White listed:"
         o = order_by_loc r.white_listed, content
         o.each_with_index do |x, k|
-          output x, k, o.count.to_s.size, digits
+          puts output x, k, pad_list(o), digits
         end
       end
 
       if r.success(allow_redirects, allow_timeouts) == true
         puts 'No issues :-)'
-        # exit ?
+        r.write RESULTS_FILE
       else
         puts "\nIssues :-("
 
@@ -171,7 +132,7 @@ module AwesomeBot
         else
           o = order_by_loc r.statuses_issues(allow_redirects, allow_timeouts), content
           o.each_with_index do |x, k|
-              output x, k, o.count.to_s.size, digits
+            puts output x, k, pad_list(o), digits
           end
         end
 
@@ -180,9 +141,25 @@ module AwesomeBot
           if r.success_dupe
             puts "  None #{STATUS_OK}"
           else
-            r.dupes.uniq.each_with_index { |d, m| puts "  #{m + 1}. #{d}" }
+            dupe_hash = r.dupes.uniq.map do |x|
+              temp = {}
+              temp['url'] = x
+              temp
+            end
+            o = order_by_loc dupe_hash, content
+            largest = o.last['loc'].to_s.size
+            o.each_with_index do |d, index|
+              print "  #{pad_text index + 1, pad_list(r.dupes.uniq)}. "
+              url = d['url']
+              print loc_formatted d['loc'], largest
+              puts " #{url}"
+            end
           end
         end
+
+        # write results json
+        r.write RESULTS_FILE
+        puts "\nWrote results to #{RESULTS_FILE}"
 
         exit 1
       end

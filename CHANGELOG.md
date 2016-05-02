@@ -2,11 +2,18 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.8.2
+
+- [output] add link line number for dupes
+- [fix] output line of link default value, reported by [Julien Bisconti][]
+- write `json` results file
+- isolate and cleanup
+
 # 1.8.1
 
 - [output] show link line number, suggested by [Daniel Gomez Rico](https://github.com/danielgomezrico)
 - [output] improve enumeration with padding
-- set default open link timeout to 30 seconds 
+- set default open link timeout to 30 seconds
 
 # 1.8.0
 
@@ -50,7 +57,7 @@ Changes by [Daniel Khamsing][] unless otherwise noted.
 
 # 1.3.2
 
-- [fix] another error with `)` in link parsing, reported by [Julien Bisconti](https://github.com/veggiemonk)
+- [fix] another error with `)` in link parsing, reported by [Julien Bisconti][]
 
 # 1.3.1
 
@@ -100,4 +107,5 @@ Changes by [Daniel Khamsing][] unless otherwise noted.
 
 [Daniel Khamsing]:https://github.com/dkhamsing
 [Colby M. White]:https://github.com/colbywhite
+[Julien Bisconti]:https://github.com/veggiemonk
 [R.I. Pienaar]:https://github.com/ripienaar

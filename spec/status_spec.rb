@@ -1,7 +1,7 @@
 require 'awesome_bot'
 
 describe AwesomeBot do
-  describe "check" do
+  describe "status" do
     context "given a redirect" do
       r = AwesomeBot::check 'https://github.com/supermarin/Alcatraz redirect'
       s = r.status[0]

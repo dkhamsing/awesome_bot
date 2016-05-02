@@ -1,7 +1,5 @@
 # Get and filter links
 module AwesomeBot
-  require 'uri'
-
   class << self
     def links_filter(list)
       list.reject { |x| x.length < 9 }
@@ -17,6 +15,8 @@ module AwesomeBot
             x.gsub(/\).*/, '')
           elsif x.include? '[' # adoc
             x.gsub(/\[.*/, '')
+          elsif x[-1]=='.'
+            x[0..-2]
           else
             x
           end
@@ -24,6 +24,7 @@ module AwesomeBot
     end
 
     def links_find(content)
+      require 'uri'
       URI.extract(content, /http()s?/)
     end
   end # class

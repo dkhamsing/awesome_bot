@@ -1,7 +1,7 @@
 require 'awesome_bot'
 
 describe AwesomeBot do
-  describe "check" do
+  describe "parse" do
     context "given adoc link" do
       content = 'https://www.linkedin.com/topic/group/kotlin-developers?gid=7417237[LinkedIn: Kotlin Developers (Join!)^]'
       list = AwesomeBot::links_find content
@@ -35,6 +35,17 @@ describe AwesomeBot do
       f = AwesomeBot::links_filter list
       value = f[0]
       expected = 'http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262%2c%201st%20edition%2c%20June%201997.pdf'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+    end
+
+    context "given a link that ends with a period" do
+      content = 'https://github.com/alloy/lowdown.'
+      list = AwesomeBot::links_find content
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'https://github.com/alloy/lowdown'
       it "parses correctly" do
         expect(value).to eql(expected)
       end
