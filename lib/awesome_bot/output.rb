@@ -13,6 +13,7 @@ module AwesomeBot
         count += 1
         return count if l.include? x
       end
+      return count
     end
 
     def loc_formatted(loc, largest=3)
