@@ -3,36 +3,40 @@ module AwesomeBot
   STATUS_ERROR = -1
 
   class << self
-    def net_status(url, timeout=30)
+    def net_status(url, timeout=30, head=true)
       require 'net/http'
       require 'openssl'
       require 'uri'
 
       uri = URI.parse url
       Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https', :open_timeout => timeout) do |http|
-       request = Net::HTTP::Get.new uri
-       response = http.request request
+        if head
+          request = Net::HTTP::Head.new uri
+        else
+          request = Net::HTTP::Get.new uri
+        end
+        response = http.request request
 
-       code = response.code==nil ? 200 : response.code.to_i
+        code = response.code==nil ? 200 : response.code.to_i
 
-       headers = {}
-       response.each { |k, v| headers[k] = v }
+        headers = {}
+        response.each { |k, v| headers[k] = v }
 
-       return [code, headers]
-     end
+        return [code, headers]
+      end
     end
 
     def status_is_redirected?(status)
       (status > 299) && (status < 400)
     end
 
-    def statuses(links, threads, timeout)
+    def statuses(links, threads, timeout, head=true)
       require 'parallel'
 
       statuses = []
       Parallel.each(links, in_threads: threads) do |u|
         begin
-          status, headers = net_status u, timeout
+          status, headers = net_status u, timeout, head
           error = nil # nil (success)
         rescue => e
           status = STATUS_ERROR
