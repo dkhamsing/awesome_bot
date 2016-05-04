@@ -17,6 +17,8 @@ module AwesomeBot
             x.gsub(/\[.*/, '')
           elsif x[-1]=='.'
             x[0..-2]
+          elsif x[-3..-1]=='%2c'
+            x[0..-4]
           else
             x
           end

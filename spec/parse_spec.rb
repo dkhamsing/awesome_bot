@@ -40,6 +40,17 @@ describe AwesomeBot do
       end
     end
 
+    context "given links spearated by comma" do
+      content = 'https://github.com/dkhamsing, https://twitter.com/dkhamsing'
+      list = AwesomeBot::links_find content
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'https://github.com/dkhamsing'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+    end
+
     context "given a link that ends with a period" do
       content = 'https://github.com/alloy/lowdown.'
       list = AwesomeBot::links_find content
