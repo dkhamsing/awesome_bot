@@ -1,7 +1,6 @@
 require 'awesome_bot/check'
 require 'awesome_bot/output'
 require 'awesome_bot/result'
-require 'awesome_bot/statuses'
 require 'awesome_bot/version'
 
 # Command line interface
@@ -12,7 +11,7 @@ module AwesomeBot
   OPTION_TIMEOUT_SET = 'set-timeout'
   OPTION_WHITE_LIST = 'white-list'
 
-  RESULTS_FILE = 'results.json'
+  RESULTS_FILE = 'ab-results.json'
 
   USAGE = "\t"
 

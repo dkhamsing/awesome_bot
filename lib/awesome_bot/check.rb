@@ -1,7 +1,7 @@
 require 'awesome_bot/links'
+require 'awesome_bot/net'
 require 'awesome_bot/output'
 require 'awesome_bot/result'
-require 'awesome_bot/statuses'
 
 # Check links
 module AwesomeBot

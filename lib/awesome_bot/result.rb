@@ -1,6 +1,5 @@
 # Result
 module AwesomeBot
-  require 'awesome_bot/statuses'
   require 'awesome_bot/white_list'
 
   # Result

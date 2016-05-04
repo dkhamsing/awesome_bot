@@ -2,6 +2,14 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.8.3
+
+- restore `head` request option 
+- rename `net`
+- [cli] rename ab-results.json
+- [status] yield `headers` (library usage)
+- [gem] update `parallel` dependency to `1.8`
+
 # 1.8.2
 
 - [output] add link line number for dupes
