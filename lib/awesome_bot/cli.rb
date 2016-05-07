@@ -20,6 +20,19 @@ module AwesomeBot
       "--#{o}"
     end
 
+    def divide(argv)
+      params = { :files => [], :options => [] }
+      argv.each_with_index do |a, i|
+        if a !~ /^--.*/
+          params[:files].push(a)
+        else
+          params[:options] = argv[i..argv.length]
+          break
+        end
+      end
+      return params
+    end
+
     def cli
       option_d   = make_option OPTION_DUPE
       option_r   = make_option OPTION_REDIRECT
@@ -27,7 +40,7 @@ module AwesomeBot
       option_t_a = make_option OPTION_TIMEOUT_ALLOW
       option_w   = make_option OPTION_WHITE_LIST
 
-      options = [
+      uoptions = [
         option_d,
         option_r,
         option_t,
@@ -49,118 +62,121 @@ module AwesomeBot
         exit
       end
 
-      filename = ARGV[0]
+      argv = divide ARGV
 
-      if options.include? filename
-        puts "Usage: #{PROJECT} <file> [options] \n"\
+      if argv[:files].empty?
+        puts "Usage: #{PROJECT} <file> [uoptions] \n"\
              '                   Path to file, requried as first argument'
         exit 1
       end
 
-      # Check options
-      user_options = ARGV.select { |o| o.include? '--' }
-      options_diff = user_options - options
-      if options_diff.count > 0
-        puts "Error, invalid options: #{options_diff.join ', '} \n"
-        puts "Valid options are #{options.join ', '}"
-        exit 1
-      end
+      argv[:files].each do |filename|
 
-      begin
-        content = File.read filename
-      rescue => error
-        puts "File open error: #{error}"
-        exit 1
-      end
-
-      puts "> Checking links in #{filename}"
-
-      if ARGV.count > 1
-        options = ARGV.drop 1
-
-        skip_dupe = options.include? option_d
-
-        allow_redirects = options.include? option_r
-        puts '> Will allow redirects' if allow_redirects == true
-
-        allow_timeouts = options.include? option_t_a
-        puts '> Will allow network timeouts' if allow_timeouts == true
-
-        if options.include? option_w
-          i = options.find_index(option_w) + 1
-          white_listed = options[i].split ','
+        # Check options
+        user_options = ARGV.select { |o| o.include? '--' }
+        options_diff = user_options - uoptions
+        if options_diff.count > 0
+          puts "Error, invalid options: #{options_diff.join ', '} \n"
+          puts "Valid options are #{uoptions.join ', '}"
+          exit 1
         end
 
-        if options.include? option_t
-          i = options.find_index(option_t) + 1
-          timeout = options[i].to_i
-          puts "> Connection timeout = #{timeout}s"
+        begin
+          content = File.read filename
+        rescue => error
+          puts "File open error: #{error}"
+          exit 1
         end
-      else
-        allow_redirects = false
-        allow_timeouts = false
-      end
 
-      options = {
-        'whitelist' => white_listed,
-        'allowdupe' => skip_dupe,
-        'timeout' => timeout
-      }
-      r = check content, options do |o|
-        print o
-      end
+        puts "> Checking links in #{filename}"
 
-      digits = number_of_digits content
-      unless r.white_listed.nil?
-        puts "\n> White listed:"
-        o = order_by_loc r.white_listed, content
-        o.each_with_index do |x, k|
-          puts output x, k, pad_list(o), digits
-        end
-      end
+        if argv[:options].count > 1
+          options = argv[:options]
 
-      if r.success(allow_redirects, allow_timeouts) == true
-        puts 'No issues :-)'
-        r.write RESULTS_FILE
-      else
-        puts "\nIssues :-("
+          skip_dupe = options.include? option_d
 
-        print "> Links \n"
-        if r.success_links(allow_redirects, allow_timeouts)
-          puts "  All OK #{STATUS_OK}"
+          allow_redirects = options.include? option_r
+          puts '> Will allow redirects' if allow_redirects == true
+
+          allow_timeouts = options.include? option_t_a
+          puts '> Will allow network timeouts' if allow_timeouts == true
+
+          if options.include? option_w
+            i = options.find_index(option_w) + 1
+            white_listed = options[i].split ','
+          end
+
+          if options.include? option_t
+            i = options.find_index(option_t) + 1
+            timeout = options[i].to_i
+            puts "> Connection timeout = #{timeout}s"
+          end
         else
-          o = order_by_loc r.statuses_issues(allow_redirects, allow_timeouts), content
+          allow_redirects = false
+          allow_timeouts = false
+        end
+
+        options = {
+          'whitelist' => white_listed,
+          'allowdupe' => skip_dupe,
+          'timeout' => timeout
+        }
+        r = check content, options do |o|
+          print o
+        end
+
+        digits = number_of_digits content
+        unless r.white_listed.nil?
+          puts "\n> White listed:"
+          o = order_by_loc r.white_listed, content
           o.each_with_index do |x, k|
             puts output x, k, pad_list(o), digits
           end
         end
 
-        unless skip_dupe
-          print "> Dupes \n"
-          if r.success_dupe
-            puts "  None #{STATUS_OK}"
+        if r.success(allow_redirects, allow_timeouts) == true
+          puts "\nNo issues :-) \n\n"
+          r.write RESULTS_FILE
+        else
+          puts "\nIssues :-( \n"
+
+          print "> Links \n"
+          if r.success_links(allow_redirects, allow_timeouts)
+            puts "  All OK #{STATUS_OK}"
           else
-            dupe_hash = r.dupes.uniq.map do |x|
-              temp = {}
-              temp['url'] = x
-              temp
-            end
-            o = order_by_loc dupe_hash, content
-            largest = o.last['loc'].to_s.size
-            o.each_with_index do |d, index|
-              print "  #{pad_text index + 1, pad_list(r.dupes.uniq)}. "
-              url = d['url']
-              print loc_formatted d['loc'], largest
-              puts " #{url}"
+            o = order_by_loc r.statuses_issues(allow_redirects, allow_timeouts), content
+            o.each_with_index do |x, k|
+              puts output x, k, pad_list(o), digits
             end
           end
+
+          unless skip_dupe
+            print "> Dupes \n"
+            if r.success_dupe
+              puts "  None #{STATUS_OK}"
+            else
+              dupe_hash = r.dupes.uniq.map do |x|
+                temp = {}
+                temp['url'] = x
+                temp
+              end
+              o = order_by_loc dupe_hash, content
+              largest = o.last['loc'].to_s.size
+              o.each_with_index do |d, index|
+                print "  #{pad_text index + 1, pad_list(r.dupes.uniq)}. "
+                url = d['url']
+                print loc_formatted d['loc'], largest
+                puts " #{url}"
+              end
+            end
+          end
+
+          # write results json
+          r.write RESULTS_FILE
+          puts "\nWrote results to #{RESULTS_FILE}"
+
+          exit 1
         end
-
-        # write results json
-        r.write RESULTS_FILE
-        puts "\nWrote results to #{RESULTS_FILE}"
-
-        exit 1
       end
     end
   end # class
