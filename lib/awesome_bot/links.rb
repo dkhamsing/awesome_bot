@@ -4,7 +4,7 @@ module AwesomeBot
     def links_filter(list)
       list.reject { |x| x.length < 9 }
         .map do |x|
-          x.gsub(',','%2c').gsub(/'.*/, '').gsub(/,.*/, '').gsub('/:', '/')
+          x.gsub(',','%2c').gsub(/'.*/, '').gsub(/,.*/, '')
         end
         .map do |x|
           if x.include? ')]'
@@ -15,6 +15,8 @@ module AwesomeBot
             x.gsub(/\).*/, '')
           elsif x.include? '[' # adoc
             x.gsub(/\[.*/, '')
+          elsif x[-1]=='.' || x[-1]==':'
+            x[0..-2]
           elsif x[-1]=='.'
             x[0..-2]
           elsif x[-3..-1]=='%2c'
