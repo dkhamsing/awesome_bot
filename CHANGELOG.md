@@ -2,9 +2,14 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.8.4
+
+- [fix] parsing links with colon
+- [fix] parsing links separated by comma
+
 # 1.8.3
 
-- restore `head` request option 
+- restore `head` request option
 - rename `net`
 - [cli] rename ab-results.json
 - [status] yield `headers` (library usage)
