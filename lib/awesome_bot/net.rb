@@ -3,7 +3,7 @@ module AwesomeBot
   STATUS_ERROR = -1
 
   class << self
-    def net_status(url, timeout=30, head=true)
+    def net_status(url, timeout=30, head)
       require 'net/http'
       require 'openssl'
       require 'uri'
@@ -30,7 +30,7 @@ module AwesomeBot
       (status > 299) && (status < 400)
     end
 
-    def statuses(links, threads, timeout, head=true)
+    def statuses(links, threads, timeout, head=false)
       require 'parallel'
 
       statuses = []
