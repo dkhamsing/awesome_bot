@@ -41,5 +41,16 @@ describe AwesomeBot do
         expect(value).to_not eql(expected)
       end
     end
+
+    context "given a problematic link" do
+      link = 'https://developer.apple.com/testflight/ '
+      r = AwesomeBot::check link
+      s = r.status[0]
+      value = s['status']
+      expected = 200
+      it "has a 200 status" do
+        expect(value).to eql(expected)
+      end
+    end
   end
 end
