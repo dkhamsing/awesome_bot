@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.8.5
+
+- [fix] request errors (make `get` requests), reported by [Richard Littauer](https://github.com/RichardLitt)
+
 # 1.8.4
 
 - [fix] parsing links with colon

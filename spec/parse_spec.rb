@@ -67,7 +67,6 @@ describe AwesomeBot do
       list = AwesomeBot::links_find content
       f = AwesomeBot::links_filter list
       value = f[0]
-      puts value
       expected = 'http://img.shields.io/:license-apache-blue.svg'
       it "parses correctly" do
         expect(value).to eql(expected)
@@ -83,6 +82,6 @@ describe AwesomeBot do
       it "parses correctly" do
         expect(value).to eql(expected)
       end
-    end     
+    end
   end
 end
