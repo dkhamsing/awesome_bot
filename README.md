@@ -18,19 +18,24 @@ Verify links in [awesome](https://github.com/sindresorhus/awesome) projects
 
 ### Command Line
 
-    awesome_bot <file> [--allow-dupe] [--allow-redirect] [--allow-timeout] [--set-timeout d] [--white-list item1,item2,..]
-      file             Path to file, required as first argument
-      --allow-dupe     Duplicate URLs are allowed
-      --allow-redirect Redirected URLs are allowed
-      --allow-timeout  URLs that time out are allowed
-      --set-timeout    Set connection timeout (seconds)
-      --white-list     Comma separated URLs/domains to white list
+```
+Usage: awesome_bot [file or files]
+       awesome_bot [options]
+    -f, --files [files]              Comma separated files to check
+        --allow-dupe                 Duplicate URLs are allowed
+        --allow-redirect             Redirected URLs are allowed
+        --allow-timeout              URLs that time out are allowed
+    -t, --set-timeout [seconds]      Set connection timeout
+    -w, --white-list [urls]          Comma separated URLs to white list
+```
 
-By default, `awesome_bot` flags duplicates and URL redirects.
+- You can check multiple files (comma separated or `*` pattern, look below for details).
 
-- Use option `--allow-dupe` to allow duplicates.
-- Use option `--allow-redirect` to all redirects.
-- You can also white list specific links that will not be flagged (for dupe or redirect). `--white-list domain1.com/post/article,domain2.com` white lists `domain1.com/post/article` and all links matching `domain2.com`.
+- By default, `awesome_bot` flags duplicates and URL redirects.
+
+  - Use option `--allow-dupe` to allow duplicates.
+  - Use option `--allow-redirect` to all redirects.
+  - You can white list links so that they won't be flagged. `-w domain1.com/post/article,domain2.com` white lists `domain1.com/post/article` and all links matching `domain2.com`.
 
 ### Examples
 

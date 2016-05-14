@@ -5,7 +5,7 @@ require 'awesome_bot/version'
 
 # Command line interface
 module AwesomeBot
-  RESULTS_FILE = 'ab-results.json'
+  RESULTS_PREFIX = 'ab-results'
 
   class << self
     def cli
@@ -15,15 +15,15 @@ module AwesomeBot
 
       options = {}
       ARGV.options do |opts|
-        opts.banner = "Usage: #{PROJECT} [file] \n"\
+        opts.banner = "Usage: #{PROJECT} [file or files] \n"\
                       "       #{PROJECT} [options]"
 
-        opts.on("--files", Array, 'Files to check')  { |val| options['files'] = val }
+        opts.on("-f", "--files [files]", Array, 'Comma separated files to check')  { |val| options['files'] = val }
         opts.on("--allow-dupe", TrueClass, 'Duplicate URLs are allowed')  { |val| options['allow_dupe'] = val }
         opts.on("--allow-redirect", TrueClass, 'Redirected URLs are allowed')  { |val| options['allow_redirect'] = val }
         opts.on("--allow-timeout", TrueClass, 'URLs that time out are allowed')  { |val| options['allow_timeout'] = val }
-        opts.on("--set-timeout [seconds]", Integer, 'Set connection timeout')  { |val| options['timeout'] = val }
-        opts.on("--white-list [urls]", String, 'Comma separated URLs to white list')  { |val| options['white_list'] = val }
+        opts.on("-t", "--set-timeout [seconds]", Integer, 'Set connection timeout')  { |val| options['timeout'] = val }
+        opts.on("-w", "--white-list [urls]", Array, 'Comma separated URLs to white list')  { |val| options['white_list'] = val }
 
         opts.on_tail("--help") do
           puts opts
@@ -32,18 +32,43 @@ module AwesomeBot
         opts.parse!
       end
 
-      # warn ARGV
-      # warn options
-
       files = options['files']
-      files = ARGV[0] if files.nil?
-      filename = files
+      if files.nil?
+        files = []
+        ARGV.each do |a|
+          files.push a if a !~ /^--.*/
+        end
+      end
 
+      summary = {}
+      files.each do |f|
+        summary[f] = cli_process(f, options)
+      end
+
+      if summary.count>1
+        puts "\nSummary"
+
+        largest = 0
+        summary.each do |k, v|
+          s = k.size
+          largest = s if s>largest
+        end
+
+        summary.each do |k, v|
+          k_display = "%#{largest}.#{largest}s" % k
+          puts "#{k_display}: #{v}"
+        end
+      end
+
+      summary.each { |k, v| exit 1 unless v==STATUS_OK }
+    end
+
+    def cli_process(filename, options)
       begin
         content = File.read filename
       rescue => error
         puts "File open error: #{error}"
-        exit 1
+        return error
       end
 
       puts "> Checking links in #{filename}"
@@ -56,8 +81,7 @@ module AwesomeBot
       allow_timeouts = options['allow_timeout']
       puts '> Will allow network timeouts' if allow_timeouts == true
 
-      wl = options['white_list']
-      white_listed = wl.split ',' unless wl.nil?
+      white_listed = options['white_list']
 
       timeout = options['timeout']
       puts "> Connection timeout = #{timeout}s" unless timeout.nil?
@@ -80,9 +104,13 @@ module AwesomeBot
         end
       end
 
+      allow_redirects = false if allow_redirects.nil?
+      allow_timeouts = false if allow_timeouts.nil?
+
       if r.success(allow_redirects, allow_timeouts) == true
         puts 'No issues :-)'
-        r.write RESULTS_FILE
+        cli_write_results(filename, r)
+        return STATUS_OK
       else
         puts "\nIssues :-("
 
@@ -117,12 +145,16 @@ module AwesomeBot
           end
         end
 
-        # write results json
-        r.write RESULTS_FILE
-        puts "\nWrote results to #{RESULTS_FILE}"
-
-        exit 1
+        cli_write_results(filename, r)
+        return 'Issues'
       end
+    end
+
+    def cli_write_results(f, r)
+      results_file_filter = f.gsub('/','-')
+      results_file = "#{RESULTS_PREFIX}-#{results_file_filter}.json"
+      r.write results_file
+      puts "\nWrote results to #{results_file}"
     end
   end # class
 end
