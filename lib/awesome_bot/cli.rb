@@ -5,66 +5,39 @@ require 'awesome_bot/version'
 
 # Command line interface
 module AwesomeBot
-  OPTION_DUPE = 'allow-dupe'
-  OPTION_REDIRECT = 'allow-redirect'
-  OPTION_TIMEOUT_ALLOW = 'allow-timeout'
-  OPTION_TIMEOUT_SET = 'set-timeout'
-  OPTION_WHITE_LIST = 'white-list'
-
   RESULTS_FILE = 'ab-results.json'
 
-  USAGE = "\t"
-
   class << self
-    def make_option(o)
-      "--#{o}"
-    end
-
     def cli
-      option_d   = make_option OPTION_DUPE
-      option_r   = make_option OPTION_REDIRECT
-      option_t   = make_option OPTION_TIMEOUT_SET
-      option_t_a = make_option OPTION_TIMEOUT_ALLOW
-      option_w   = make_option OPTION_WHITE_LIST
+      require 'optparse'
 
-      options = [
-        option_d,
-        option_r,
-        option_t,
-        option_t_a,
-        option_w
-      ]
+      ARGV << '-h' if ARGV.empty?
 
-      if ARGV.count == 0
-        puts "Usage: #{PROJECT} <file> [#{option_d}] [#{option_r}] "\
-             "[#{option_t_a}] [#{option_t} d] "\
-             "[#{option_w} item1,item2,..]\n"\
-             "#{USAGE} file             Path to file, required as first argument\n"\
-             "#{USAGE} #{option_d}     Duplicate URLs are allowed \n"\
-             "#{USAGE} #{option_r} Redirected URLs are allowed \n"\
-             "#{USAGE} #{option_t_a}  URLs that time out are allowed \n"\
-             "#{USAGE} #{option_t}    Set connection timeout (seconds) \n"\
-             "#{USAGE} #{option_w}     Comma separated URLs to white list \n"\
-             "\nVersion #{VERSION}, see #{PROJECT_URL} for more information"
-        exit
+      options = {}
+      ARGV.options do |opts|
+        opts.banner = "Usage: #{PROJECT} [file] \n"\
+                      "       #{PROJECT} [options]"
+
+        opts.on("--files", Array, 'Files to check')  { |val| options['files'] = val }
+        opts.on("--allow-dupe", TrueClass, 'Duplicate URLs are allowed')  { |val| options['allow_dupe'] = val }
+        opts.on("--allow-redirect", TrueClass, 'Redirected URLs are allowed')  { |val| options['allow_redirect'] = val }
+        opts.on("--allow-timeout", TrueClass, 'URLs that time out are allowed')  { |val| options['allow_timeout'] = val }
+        opts.on("--set-timeout [seconds]", Integer, 'Set connection timeout')  { |val| options['timeout'] = val }
+        opts.on("--white-list [urls]", String, 'Comma separated URLs to white list')  { |val| options['white_list'] = val }
+
+        opts.on_tail("--help") do
+          puts opts
+          exit
+        end
+        opts.parse!
       end
 
-      filename = ARGV[0]
+      # warn ARGV
+      # warn options
 
-      if options.include? filename
-        puts "Usage: #{PROJECT} <file> [options] \n"\
-             '                   Path to file, requried as first argument'
-        exit 1
-      end
-
-      # Check options
-      user_options = ARGV.select { |o| o.include? '--' }
-      options_diff = user_options - options
-      if options_diff.count > 0
-        puts "Error, invalid options: #{options_diff.join ', '} \n"
-        puts "Valid options are #{options.join ', '}"
-        exit 1
-      end
+      files = options['files']
+      files = ARGV[0] if files.nil?
+      filename = files
 
       begin
         content = File.read filename
@@ -75,31 +48,19 @@ module AwesomeBot
 
       puts "> Checking links in #{filename}"
 
-      if ARGV.count > 1
-        options = ARGV.drop 1
+      skip_dupe = options['allow_dupe']
 
-        skip_dupe = options.include? option_d
+      allow_redirects = options['allow_redirect']
+      puts '> Will allow redirects' if allow_redirects == true
 
-        allow_redirects = options.include? option_r
-        puts '> Will allow redirects' if allow_redirects == true
+      allow_timeouts = options['allow_timeout']
+      puts '> Will allow network timeouts' if allow_timeouts == true
 
-        allow_timeouts = options.include? option_t_a
-        puts '> Will allow network timeouts' if allow_timeouts == true
+      wl = options['white_list']
+      white_listed = wl.split ',' unless wl.nil?
 
-        if options.include? option_w
-          i = options.find_index(option_w) + 1
-          white_listed = options[i].split ','
-        end
-
-        if options.include? option_t
-          i = options.find_index(option_t) + 1
-          timeout = options[i].to_i
-          puts "> Connection timeout = #{timeout}s"
-        end
-      else
-        allow_redirects = false
-        allow_timeouts = false
-      end
+      timeout = options['timeout']
+      puts "> Connection timeout = #{timeout}s" unless timeout.nil?
 
       options = {
         'whitelist' => white_listed,
