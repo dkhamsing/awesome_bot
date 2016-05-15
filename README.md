@@ -62,22 +62,17 @@ Issues :-(
 ```
 
 ```shell
-$ awesome_bot README.md --allow-dupe --allow-redirect --white-list rubydoc,giphy
-> Checking links in README.md
-> Will allow redirects
-> Will allow duplicate links
-> White list links matching: rubydoc, giphy
-Links to check: 41, 5 white listed, 29 unique
-  01. https://github.com/sindresorhus/awesome
-  02. https://travis-ci.org/dkhamsing/awesome_bot.svg
-# ...
-Checking URLs: ✓✓→✓✓→→→✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓→✓✓✓→✓
-Checking white listed URLs: ?✓
+$ awesome_bot README.md --allow-dupe --allow-redirect --w rubydoc,giphy
+# allow redirects, dupes and white list all links matching rubydoc and giphy
 
-> White listed:
-  1. [L005] 200 http://i.giphy.com/urvsFBDfR6N32.gif
-  2. [L093] 202 http://www.rubydoc.info/gems/awesome_bot
-No issues :-)
+$ awesome_bot README.md,README-zh.md
+# check links in 2 files
+
+$ awesome_bot docs/*.md
+# check all markdown files in docs/ directory
+
+$ awesome_bot README.md --allow-timeout --t 5
+# speed up validation by setting a timeout of 5s per link request and allowing timeouts
 ```
 
 ### Library
@@ -101,15 +96,15 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 Does your GitHub README contain a lot of links? `awesome_bot` can help you validate them when a [pull request](https://github.com/dkhamsing/open-source-ios-apps/pull/159) is created (or a commit is pushed). It is used by:
 
 - https://github.com/tiimgreen/github-cheat-sheet
-- https://github.com/vinta/awesome-python
 - https://github.com/enaqx/awesome-react
+- https://github.com/ziadoz/awesome-php
 - https://github.com/vsouza/awesome-ios
 - https://github.com/alebcay/awesome-shell
 - https://github.com/matteocrippa/awesome-swift
 
 and [more](status/status.md).
 
-Tip: Use the keyword `[ci skip]` in your commit title/message to selectively skip verification (if you are let's say working on a bunch of changes).
+Tip: Use the keyword `[ci skip]` in your commit title/message to skip verification.
 
 ### Travis CI
 
@@ -187,7 +182,7 @@ As it happens, the default code snippet provided contain a redirect so adding a 
 - awesome_bot README.md --white-list travis-ci
 ```
 
-You can also add a badge for other CI tools, I recommend checking out [shields.io](http://shields.io/).
+You can also add a badge for other CI tools, check out [shields.io](http://shields.io/).
 
 ## Contact
 
