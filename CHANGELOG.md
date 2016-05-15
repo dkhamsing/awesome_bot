@@ -2,6 +2,11 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.9.0
+
+- [cli] support checking multiple files (comma separated or `*` pattern  i.e. `docs/*.md`), suggested by [Sota Yamashita](https://github.com/sotayamashita)
+- [cli] use `optparse`
+
 # 1.8.5
 
 - [fix] request errors (make `get` requests), reported by [Richard Littauer](https://github.com/RichardLitt)
