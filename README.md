@@ -18,19 +18,24 @@ Verify links in [awesome](https://github.com/sindresorhus/awesome) projects
 
 ### Command Line
 
-    awesome_bot <file> [--allow-dupe] [--allow-redirect] [--allow-timeout] [--set-timeout d] [--white-list item1,item2,..]
-      file             Path to file, required as first argument
-      --allow-dupe     Duplicate URLs are allowed
-      --allow-redirect Redirected URLs are allowed
-      --allow-timeout  URLs that time out are allowed
-      --set-timeout    Set connection timeout (seconds)
-      --white-list     Comma separated URLs/domains to white list
+```
+Usage: awesome_bot [file or files]
+       awesome_bot [options]
+    -f, --files [files]              Comma separated files to check
+        --allow-dupe                 Duplicate URLs are allowed
+        --allow-redirect             Redirected URLs are allowed
+        --allow-timeout              URLs that time out are allowed
+    -t, --set-timeout [seconds]      Set connection timeout
+    -w, --white-list [urls]          Comma separated URLs to white list
+```
 
-By default, `awesome_bot` flags duplicates and URL redirects.
+- You can check multiple files (comma separated or `*` pattern, look below for details).
 
-- Use option `--allow-dupe` to allow duplicates.
-- Use option `--allow-redirect` to all redirects.
-- You can also white list specific links that will not be flagged (for dupe or redirect). `--white-list domain1.com/post/article,domain2.com` white lists `domain1.com/post/article` and all links matching `domain2.com`.
+- By default, `awesome_bot` flags duplicates and URL redirects.
+
+  - Use option `--allow-dupe` to allow duplicates.
+  - Use option `--allow-redirect` to all redirects.
+  - You can white list links so that they won't be flagged. `-w domain1.com/post/article,domain2.com` white lists `domain1.com/post/article` and all links matching `domain2.com`.
 
 ### Examples
 
@@ -57,22 +62,17 @@ Issues :-(
 ```
 
 ```shell
-$ awesome_bot README.md --allow-dupe --allow-redirect --white-list rubydoc,giphy
-> Checking links in README.md
-> Will allow redirects
-> Will allow duplicate links
-> White list links matching: rubydoc, giphy
-Links to check: 41, 5 white listed, 29 unique
-  01. https://github.com/sindresorhus/awesome
-  02. https://travis-ci.org/dkhamsing/awesome_bot.svg
-# ...
-Checking URLs: ✓✓→✓✓→→→✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓→✓✓✓→✓
-Checking white listed URLs: ?✓
+$ awesome_bot README.md --allow-dupe --allow-redirect --w rubydoc,giphy
+# allow redirects, dupes and white list all links matching rubydoc and giphy
 
-> White listed:
-  1. [L005] 200 http://i.giphy.com/urvsFBDfR6N32.gif
-  2. [L093] 202 http://www.rubydoc.info/gems/awesome_bot
-No issues :-)
+$ awesome_bot README.md,README-zh.md
+# check links in 2 files
+
+$ awesome_bot docs/*.md
+# check all markdown files in docs/ directory
+
+$ awesome_bot README.md --allow-timeout --t 5
+# speed up validation by setting a timeout of 5s per link request and allowing timeouts
 ```
 
 ### Library
@@ -96,15 +96,15 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 Does your GitHub README contain a lot of links? `awesome_bot` can help you validate them when a [pull request](https://github.com/dkhamsing/open-source-ios-apps/pull/159) is created (or a commit is pushed). It is used by:
 
 - https://github.com/tiimgreen/github-cheat-sheet
-- https://github.com/vinta/awesome-python
 - https://github.com/enaqx/awesome-react
+- https://github.com/ziadoz/awesome-php
 - https://github.com/vsouza/awesome-ios
 - https://github.com/alebcay/awesome-shell
 - https://github.com/matteocrippa/awesome-swift
 
 and [more](status/status.md).
 
-Tip: Use the keyword `[ci skip]` in your commit title/message to selectively skip verification (if you are let's say working on a bunch of changes).
+Tip: Use the keyword `[ci skip]` in your commit title/message to skip verification.
 
 ### Travis CI
 
@@ -182,7 +182,7 @@ As it happens, the default code snippet provided contain a redirect so adding a 
 - awesome_bot README.md --white-list travis-ci
 ```
 
-You can also add a badge for other CI tools, I recommend checking out [shields.io](http://shields.io/).
+You can also add a badge for other CI tools, check out [shields.io](http://shields.io/).
 
 ## Contact
 

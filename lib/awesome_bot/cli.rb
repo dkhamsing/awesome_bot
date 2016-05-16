@@ -5,101 +5,86 @@ require 'awesome_bot/version'
 
 # Command line interface
 module AwesomeBot
-  OPTION_DUPE = 'allow-dupe'
-  OPTION_REDIRECT = 'allow-redirect'
-  OPTION_TIMEOUT_ALLOW = 'allow-timeout'
-  OPTION_TIMEOUT_SET = 'set-timeout'
-  OPTION_WHITE_LIST = 'white-list'
-
-  RESULTS_FILE = 'ab-results.json'
-
-  USAGE = "\t"
+  RESULTS_PREFIX = 'ab-results'
 
   class << self
-    def make_option(o)
-      "--#{o}"
+    def cli
+      require 'optparse'
+
+      ARGV << '-h' if ARGV.empty?
+
+      options = {}
+      ARGV.options do |opts|
+        opts.banner = "Usage: #{PROJECT} [file or files] \n"\
+                      "       #{PROJECT} [options]"
+
+        opts.on("-f", "--files [files]", Array, 'Comma separated files to check')  { |val| options['files'] = val }
+        opts.on("--allow-dupe", TrueClass, 'Duplicate URLs are allowed')  { |val| options['allow_dupe'] = val }
+        opts.on("--allow-redirect", TrueClass, 'Redirected URLs are allowed')  { |val| options['allow_redirect'] = val }
+        opts.on("--allow-timeout", TrueClass, 'URLs that time out are allowed')  { |val| options['allow_timeout'] = val }
+        opts.on("-t", "--set-timeout [seconds]", Integer, 'Set connection timeout')  { |val| options['timeout'] = val }
+        opts.on("-w", "--white-list [urls]", Array, 'Comma separated URLs to white list')  { |val| options['white_list'] = val }
+
+        opts.on_tail("--help") do
+          puts opts
+          exit
+        end
+        opts.parse!
+      end
+
+      files = options['files']
+      if files.nil?
+        files = []
+        ARGV.each do |a|
+          files.push a if a !~ /^--.*/
+        end
+      end
+
+      summary = {}
+      files.each do |f|
+        summary[f] = cli_process(f, options)
+      end
+
+      if summary.count>1
+        puts "\nSummary"
+
+        largest = 0
+        summary.each do |k, v|
+          s = k.size
+          largest = s if s>largest
+        end
+
+        summary.each do |k, v|
+          k_display = "%#{largest}.#{largest}s" % k
+          puts "#{k_display}: #{v}"
+        end
+      end
+
+      summary.each { |k, v| exit 1 unless v==STATUS_OK }
     end
 
-    def cli
-      option_d   = make_option OPTION_DUPE
-      option_r   = make_option OPTION_REDIRECT
-      option_t   = make_option OPTION_TIMEOUT_SET
-      option_t_a = make_option OPTION_TIMEOUT_ALLOW
-      option_w   = make_option OPTION_WHITE_LIST
-
-      options = [
-        option_d,
-        option_r,
-        option_t,
-        option_t_a,
-        option_w
-      ]
-
-      if ARGV.count == 0
-        puts "Usage: #{PROJECT} <file> [#{option_d}] [#{option_r}] "\
-             "[#{option_t_a}] [#{option_t} d] "\
-             "[#{option_w} item1,item2,..]\n"\
-             "#{USAGE} file             Path to file, required as first argument\n"\
-             "#{USAGE} #{option_d}     Duplicate URLs are allowed \n"\
-             "#{USAGE} #{option_r} Redirected URLs are allowed \n"\
-             "#{USAGE} #{option_t_a}  URLs that time out are allowed \n"\
-             "#{USAGE} #{option_t}    Set connection timeout (seconds) \n"\
-             "#{USAGE} #{option_w}     Comma separated URLs to white list \n"\
-             "\nVersion #{VERSION}, see #{PROJECT_URL} for more information"
-        exit
-      end
-
-      filename = ARGV[0]
-
-      if options.include? filename
-        puts "Usage: #{PROJECT} <file> [options] \n"\
-             '                   Path to file, requried as first argument'
-        exit 1
-      end
-
-      # Check options
-      user_options = ARGV.select { |o| o.include? '--' }
-      options_diff = user_options - options
-      if options_diff.count > 0
-        puts "Error, invalid options: #{options_diff.join ', '} \n"
-        puts "Valid options are #{options.join ', '}"
-        exit 1
-      end
-
+    def cli_process(filename, options)
       begin
         content = File.read filename
       rescue => error
         puts "File open error: #{error}"
-        exit 1
+        return error
       end
 
       puts "> Checking links in #{filename}"
 
-      if ARGV.count > 1
-        options = ARGV.drop 1
+      skip_dupe = options['allow_dupe']
 
-        skip_dupe = options.include? option_d
+      allow_redirects = options['allow_redirect']
+      puts '> Will allow redirects' if allow_redirects == true
 
-        allow_redirects = options.include? option_r
-        puts '> Will allow redirects' if allow_redirects == true
+      allow_timeouts = options['allow_timeout']
+      puts '> Will allow network timeouts' if allow_timeouts == true
 
-        allow_timeouts = options.include? option_t_a
-        puts '> Will allow network timeouts' if allow_timeouts == true
+      white_listed = options['white_list']
 
-        if options.include? option_w
-          i = options.find_index(option_w) + 1
-          white_listed = options[i].split ','
-        end
-
-        if options.include? option_t
-          i = options.find_index(option_t) + 1
-          timeout = options[i].to_i
-          puts "> Connection timeout = #{timeout}s"
-        end
-      else
-        allow_redirects = false
-        allow_timeouts = false
-      end
+      timeout = options['timeout']
+      puts "> Connection timeout = #{timeout}s" unless timeout.nil?
 
       options = {
         'whitelist' => white_listed,
@@ -119,9 +104,13 @@ module AwesomeBot
         end
       end
 
+      allow_redirects = false if allow_redirects.nil?
+      allow_timeouts = false if allow_timeouts.nil?
+
       if r.success(allow_redirects, allow_timeouts) == true
         puts 'No issues :-)'
-        r.write RESULTS_FILE
+        cli_write_results(filename, r)
+        return STATUS_OK
       else
         puts "\nIssues :-("
 
@@ -156,12 +145,16 @@ module AwesomeBot
           end
         end
 
-        # write results json
-        r.write RESULTS_FILE
-        puts "\nWrote results to #{RESULTS_FILE}"
-
-        exit 1
+        cli_write_results(filename, r)
+        return 'Issues'
       end
+    end
+
+    def cli_write_results(f, r)
+      results_file_filter = f.gsub('/','-')
+      results_file = "#{RESULTS_PREFIX}-#{results_file_filter}.json"
+      r.write results_file
+      puts "\nWrote results to #{results_file}"
     end
   end # class
 end
