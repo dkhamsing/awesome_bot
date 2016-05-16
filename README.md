@@ -1,6 +1,6 @@
 # awesome_bot
 
-Verify links in [awesome](https://github.com/sindresorhus/awesome) projects
+Verify links in [awesome](status/status.md) projects
 
 ![](http://i.giphy.com/urvsFBDfR6N32.gif)
 
