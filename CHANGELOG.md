@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.9.1
+
+- [fix] url redirect location encoding, reported by [@hoppfrosch](https://github.com/hoppfrosch)
+
 # 1.9.0
 
 - [cli] support checking multiple files (comma separated or `*` pattern  i.e. `docs/*.md`), suggested by [Sota Yamashita](https://github.com/sotayamashita)
