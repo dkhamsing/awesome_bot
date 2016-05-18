@@ -20,7 +20,13 @@ module AwesomeBot
         code = response.code==nil ? 200 : response.code.to_i
 
         headers = {}
-        response.each { |k, v| headers[k] = v }
+        response.each do |k, v|
+          if k=='location'
+            headers[k] = v.force_encoding("utf-8") 
+          else
+            headers[k] = v
+          end
+        end
 
         return [code, headers]
       end
