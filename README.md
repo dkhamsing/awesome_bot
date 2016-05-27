@@ -75,6 +75,27 @@ Checking white listed URLs: ?✓
 No issues :-)
 ```
 
+```shell
+(master) $ git branch
+* master
+(master) $ git checkout -b new-branch
+Switched to a new branch 'new-branch'
+(new-branch) $ touch new-readme.md && echo 'https://github.com/dkhamsing' >> new-readme.md
+(new-branch) $ git add new-readme.md
+(new-branch) $ git commit -m 'Testing'
+[new-branch ef47336] Testing
+ 1 file changed, 1 insertion(+)
+ create mode 100644 new-readme.md
+(new-branch) $ git diff master.. --name-only | grep '.md' | xargs awesome_bot
+> Checking links in new-readme.md
+Links to check: 1
+  1. https://github.com/dkhamsing 
+Checking URLs: ✓
+No issues :-)
+
+Wrote results to ab-results-new-readme.md.json
+```
+
 ### Library
 
 ```ruby
