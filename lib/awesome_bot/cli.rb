@@ -8,7 +8,7 @@ module AwesomeBot
   RESULTS_PREFIX = 'ab-results'
 
   class << self
-    def cli
+    def cli()
       require 'optparse'
 
       ARGV << '-h' if ARGV.empty?
@@ -18,12 +18,13 @@ module AwesomeBot
         opts.banner = "Usage: #{PROJECT} [file or files] \n"\
                       "       #{PROJECT} [options]"
 
-        opts.on("-f", "--files [files]", Array, 'Comma separated files to check')  { |val| options['files'] = val }
-        opts.on("--allow-dupe", TrueClass, 'Duplicate URLs are allowed')  { |val| options['allow_dupe'] = val }
-        opts.on("--allow-redirect", TrueClass, 'Redirected URLs are allowed')  { |val| options['allow_redirect'] = val }
-        opts.on("--allow-timeout", TrueClass, 'URLs that time out are allowed')  { |val| options['allow_timeout'] = val }
-        opts.on("-t", "--set-timeout [seconds]", Integer, 'Set connection timeout')  { |val| options['timeout'] = val }
-        opts.on("-w", "--white-list [urls]", Array, 'Comma separated URLs to white list')  { |val| options['white_list'] = val }
+        opts.on('-f', '--files [files]',         Array,     'Comma separated files to check')     { |val| options['files'] = val }
+        opts.on('--allow-dupe',                  TrueClass, 'Duplicate URLs are allowed')         { |val| options['allow_dupe'] = val }
+        opts.on('--allow-ssl',                   TrueClass, 'SSL errors are allowed')             { |val| options['allow_ssl'] = val }
+        opts.on('--allow-redirect',              TrueClass, 'Redirected URLs are allowed')        { |val| options['allow_redirect'] = val }
+        opts.on('--allow-timeout',               TrueClass, 'URLs that time out are allowed')     { |val| options['allow_timeout'] = val }
+        opts.on('-t', '--set-timeout [seconds]', Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
+        opts.on('-w', '--white-list [urls]',     Array,     'Comma separated URLs to white list') { |val| options['white_list'] = val }
 
         opts.on_tail("--help") do
           puts opts
@@ -74,9 +75,13 @@ module AwesomeBot
       puts "> Checking links in #{filename}"
 
       skip_dupe = options['allow_dupe']
+      puts '> Will allow duplicate links' if skip_dupe == true
 
       allow_redirects = options['allow_redirect']
       puts '> Will allow redirects' if allow_redirects == true
+
+      allow_ssl = options['allow_ssl']
+      puts '> Will allow SSL errors' if allow_ssl == true
 
       allow_timeouts = options['allow_timeout']
       puts '> Will allow network timeouts' if allow_timeouts == true
@@ -86,10 +91,12 @@ module AwesomeBot
       timeout = options['timeout']
       puts "> Connection timeout = #{timeout}s" unless timeout.nil?
 
+      puts "> White list links matching: #{white_listed.join ', '} " unless white_listed.nil?
+
       options = {
-        'whitelist' => white_listed,
         'allowdupe' => skip_dupe,
-        'timeout' => timeout
+        'timeout'   => timeout,
+        'whitelist' => white_listed
       }
       r = check content, options do |o|
         print o
@@ -105,9 +112,16 @@ module AwesomeBot
       end
 
       allow_redirects = false if allow_redirects.nil?
+      allow_ssl = false if allow_ssl.nil?
       allow_timeouts = false if allow_timeouts.nil?
 
-      if r.success(allow_redirects, allow_timeouts) == true
+      options = {
+        'redirect' => allow_redirects,
+        'ssl'      => allow_ssl,
+        'timeout'  => allow_timeouts
+      }
+
+      if r.success(options) == true
         puts 'No issues :-)'
         cli_write_results(filename, r)
         return STATUS_OK
@@ -115,10 +129,10 @@ module AwesomeBot
         puts "\nIssues :-("
 
         print "> Links \n"
-        if r.success_links(allow_redirects, allow_timeouts)
+        if r.success_links(options)
           puts "  All OK #{STATUS_OK}"
         else
-          o = order_by_loc r.statuses_issues(allow_redirects, allow_timeouts), content
+          o = order_by_loc r.statuses_issues(options), content
           o.each_with_index do |x, k|
             puts output x, k, pad_list(o), digits
           end

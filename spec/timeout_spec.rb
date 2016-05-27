@@ -18,7 +18,13 @@ describe AwesomeBot do
     context "given a timeout link and setting timeout to 1s with --allow-timeout" do
       r = AwesomeBot::check timeoutlink, options
       expected = 0
-      value = r.statuses_issues(false, true).count
+
+      options = {
+        'redirect'=>false,
+        'ssl'=>false,
+        'timeout'=>true
+      }
+      value = r.statuses_issues(options).count
       it "has no issues" do
         expect(value).to eql(expected)
       end

@@ -23,6 +23,7 @@ Usage: awesome_bot [file or files]
        awesome_bot [options]
     -f, --files [files]              Comma separated files to check
         --allow-dupe                 Duplicate URLs are allowed
+        --allow-ssl                  SSL errors are allowed
         --allow-redirect             Redirected URLs are allowed
         --allow-timeout              URLs that time out are allowed
     -t, --set-timeout [seconds]      Set connection timeout
