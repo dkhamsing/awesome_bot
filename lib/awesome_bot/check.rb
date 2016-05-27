@@ -19,14 +19,10 @@ module AwesomeBot
         timeout = options['timeout']
       end
 
-      yield "> Will allow duplicate links \n" if skip_dupe && block_given?
+      links = links_filter(links_find(content))
 
-      temp = links_filter(links_find(content))
-
-      r = Result.new(temp, white_listed)
+      r = Result.new(links, white_listed)
       r.skip_dupe = skip_dupe
-
-      yield "> White list links matching: #{white_listed.join ', '} \n" if r.white_listing && block_given?
 
       r.dupes = r.links.select { |e| r.links.count(e) > 1 }
 

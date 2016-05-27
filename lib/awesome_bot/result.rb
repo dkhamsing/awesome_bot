@@ -21,28 +21,36 @@ module AwesomeBot
       @links = links.partition { |u| AwesomeBot.white_list @w, u }
     end
 
-    def statuses_issues(allow_redirects = false, allow_timeouts = false)
-      s = status.select { |x| x['status'] != 200 }
-      r = s.reject { |x| AwesomeBot.status_is_redirected? x['status'] }
-      t = s.reject do |x|
-        (x['status'] == STATUS_ERROR) && ((x['error'].message == 'Net::ReadTimeout') || (x['error'].message == 'execution expired'))
-      end
+    def statuses_issues(options=nil)
+      options = {
+        'timeout'=>false,
+        'ssl'=>false,
+        'redirect'=>false
+      } if options.nil?
 
-      if (allow_redirects == false) && (allow_timeouts == false)
-        return s
-      elsif (allow_redirects == true) && (allow_timeouts == false)
-        return r
-      elsif (allow_redirects == false) && (allow_timeouts == true)
-        return t
-      else
-        return r.reject do |x|
-          (x['status'] == STATUS_ERROR) && ((x['error'].message == 'Net::ReadTimeout') || (x['error'].message == 'execution expired'))
+      s = status.select { |x| x['status'] != 200 }
+
+      if options['timeout']
+        s = s.reject do |x|
+          ( (x['error'].message == 'Net::ReadTimeout') || (x['error'].message == 'execution expired') || (x['error'].message.include? 'timed out') ) unless x['error'].nil?
         end
       end
+
+      if options['redirect']
+        s = s.reject { |x| AwesomeBot.status_is_redirected? x['status'] }
+      end
+
+      if options['ssl']
+        s =  s.reject do |x|
+          ( (x['error'].message.include? 'server certificate') || (x['error'].message.include? 'SSL_connect') ) unless x['error'].nil?
+        end
+      end
+
+      s
     end
 
-    def success(allow_redirects = false, allow_timeouts = false)
-      success_dupe && success_links(allow_redirects, allow_timeouts)
+    def success(options)
+      success_dupe && success_links(options)
     end
 
     def success_dupe
@@ -50,8 +58,8 @@ module AwesomeBot
       links.uniq.count == links.count
     end
 
-    def success_links(allow_redirects = false, allow_timeouts = false)
-      statuses_issues(allow_redirects, allow_timeouts).count == 0
+    def success_links(options)
+      statuses_issues(options).count==0
     end
 
     def white_listing

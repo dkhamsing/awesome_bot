@@ -28,7 +28,13 @@ describe AwesomeBot do
     context "given a redirected link with --allow-redirect" do
       r = AwesomeBot::check 'http://github.com'
       expected = 0
-      value = r.statuses_issues(true).count
+
+      options = {
+        'redirect'=>true,
+        'ssl'=>false,
+        'timeout'=>false
+      }
+      value = r.statuses_issues(options).count
       it "has no issues" do
         expect(value).to eql(expected)
       end
@@ -40,7 +46,13 @@ describe AwesomeBot do
       options = {'whitelist'=>['github']}
       r = AwesomeBot::check 'http://github.com http://www.apple.com/ http://www.apple.com/', options
       expected = 0
-      value = r.statuses_issues(true).count
+
+      options = {
+        'redirect'=>true,
+        'ssl'=>false,
+        'timeout'=>false
+      }
+      value = r.statuses_issues(options).count
       it "has no issues" do
         expect(value).to eql(expected)
       end

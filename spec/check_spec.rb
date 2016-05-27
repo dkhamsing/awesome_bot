@@ -51,7 +51,6 @@ describe AwesomeBot do
       r = AwesomeBot::check(link)
       item = r.statuses_issues[0]
       redirect = item['headers']['location']
-      url = item['url']
       expected = 'http://www.google.com/'
       it "has a redirect" do
         expect(redirect).to eql(expected)
