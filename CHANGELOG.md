@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.10.0
+
+- add `allow-ssl` option, suggested by [Joe Block](https://github.com/unixorn)
+
 # 1.9.1
 
 - [fix] url redirect location encoding, reported by [@hoppfrosch](https://github.com/hoppfrosch)
