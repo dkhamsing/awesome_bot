@@ -70,7 +70,7 @@ module AwesomeBot
       require 'json'
 
       r = write_artifacts
-      File.open(filename, 'w') { |f| f.write r.to_json }
+      File.open(filename, 'w') { |f| f.write JSON.pretty_generate(r) }
     end
 
     def write_artifacts
@@ -78,7 +78,8 @@ module AwesomeBot
       {
         'date'=>Time.now,
         'links'=>@links,
-        'results'=>statuses_issues
+        'issues'=>statuses_issues,
+        'all'=>status
       }
     end
   end # class

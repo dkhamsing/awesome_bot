@@ -5,7 +5,7 @@ describe AwesomeBot do
     context "given a result" do
       r = AwesomeBot::check 'https://github.com/supermarin/Alcatraz'
       h = r.write_artifacts
-      expected = 3
+      expected = 4
       value = h.keys.count
       it "has a json artifact" do
         expect(value).to eql(expected)
@@ -20,7 +20,11 @@ describe AwesomeBot do
       end
 
       it "has a results key" do
-        expect(h.keys).to include('results')
+        expect(h.keys).to include('issues')
+      end
+
+      it "has a results key" do
+        expect(h.keys).to include('all')
       end
     end
   end
