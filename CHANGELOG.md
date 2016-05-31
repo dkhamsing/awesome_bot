@@ -2,6 +2,12 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.11.0
+
+- [net] set `awesome_bot` user agent
+- pretty print `json` file
+- include `all` links status in results
+
 # 1.10.0
 
 - add `allow-ssl` option, suggested by [Joe Block](https://github.com/unixorn)
