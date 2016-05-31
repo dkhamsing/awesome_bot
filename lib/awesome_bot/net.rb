@@ -10,10 +10,11 @@ module AwesomeBot
 
       uri = URI.parse url
       Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https', :open_timeout => timeout) do |http|
+        ua = {'User-Agent' => 'awesome_bot'}
         if head
-          request = Net::HTTP::Head.new uri
+          request = Net::HTTP::Head.new(uri,ua)
         else
-          request = Net::HTTP::Get.new uri
+          request = Net::HTTP::Get.new(uri,ua)
         end
         response = http.request request
 
@@ -22,7 +23,7 @@ module AwesomeBot
         headers = {}
         response.each do |k, v|
           if k=='location'
-            headers[k] = v.force_encoding("utf-8") 
+            headers[k] = v.force_encoding("utf-8")
           else
             headers[k] = v
           end
@@ -43,7 +44,7 @@ module AwesomeBot
       Parallel.each(links, in_threads: threads) do |u|
         begin
           status, headers = net_status u, timeout, head
-          error = nil # nil (success)
+          error = nil
         rescue => e
           status = STATUS_ERROR
           headers = {}
