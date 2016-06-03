@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.12.0
+
+- add `allow` option to allow specific error status codes, i.e. `--allow 301` or `--allow 403,429`
+
 # 1.11.0
 
 - [net] set `awesome_bot` user agent
