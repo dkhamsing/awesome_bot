@@ -65,7 +65,7 @@ Issues :-(
 ```
 
 ```shell
-$ awesome_bot README.md --allow-dupe --allow-redirect --w rubydoc,giphy
+$ awesome_bot README.md --allow-dupe --allow-redirect -w rubydoc,giphy
 # allow redirects, dupes and white list all links matching rubydoc and giphy
 
 $ awesome_bot README.md,README-zh.md
@@ -74,7 +74,7 @@ $ awesome_bot README.md,README-zh.md
 $ awesome_bot docs/*.md
 # check all markdown files in docs/ directory
 
-$ awesome_bot README.md --allow-timeout --t 5
+$ awesome_bot README.md --allow-timeout -t 5
 # speed up validation by setting a timeout of 5s per link request and allowing timeouts
 
 $ awesome_bot README.md --allow 403,429
@@ -96,7 +96,7 @@ Switched to a new branch 'new-branch'
 (new-branch) $ git diff master.. --name-only | grep '.md' | xargs awesome_bot
 > Checking links in new-readme.md
 Links to check: 1
-  1. https://github.com/dkhamsing 
+  1. https://github.com/dkhamsing
 Checking URLs: ✓
 No issues :-)
 
