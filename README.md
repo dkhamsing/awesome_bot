@@ -22,6 +22,7 @@ Verify links in [awesome](status/status.md) projects
 Usage: awesome_bot [file or files]
        awesome_bot [options]
     -f, --files [files]              Comma separated files to check
+    -a, --allow [errors]             Status code errors to allow
         --allow-dupe                 Duplicate URLs are allowed
         --allow-ssl                  SSL errors are allowed
         --allow-redirect             Redirected URLs are allowed
@@ -32,11 +33,12 @@ Usage: awesome_bot [file or files]
 
 - You can check multiple files (comma separated or `*` pattern, look below for details).
 
-- By default, `awesome_bot` flags duplicates and URL redirects.
+- By default, duplicate URLs or any status code other than `200` are flagged as failures.
 
   - Use option `--allow-dupe` to allow duplicates.
-  - Use option `--allow-redirect` to all redirects.
-  - You can white list links so that they won't be flagged. `-w domain1.com/post/article,domain2.com` white lists `domain1.com/post/article` and all links matching `domain2.com`.
+  - Use option `--allow-redirect` to allow redirects.
+  - Use option `--allow` to allow specific status code errors.
+  - Use option `--white-list` (`-w` for short) to prevent links from being flagged: `-w domain1.com/post/article,domain2.com` white lists `domain1.com/post/article` and all links matching `domain2.com`.
 
 ### Examples
 
@@ -74,6 +76,10 @@ $ awesome_bot docs/*.md
 
 $ awesome_bot README.md --allow-timeout --t 5
 # speed up validation by setting a timeout of 5s per link request and allowing timeouts
+
+$ awesome_bot README.md --allow 403,429
+# allow status code errors 403 and 429
+# --allow 301 would be similar to --allow-redirect
 ```
 
 ```shell

@@ -19,6 +19,7 @@ module AwesomeBot
                       "       #{PROJECT} [options]"
 
         opts.on('-f', '--files [files]',         Array,     'Comma separated files to check')     { |val| options['files'] = val }
+        opts.on('-a', '--allow [errors]',        Array,     'Status code errors to allow')        { |val| options['errors'] = val }
         opts.on('--allow-dupe',                  TrueClass, 'Duplicate URLs are allowed')         { |val| options['allow_dupe'] = val }
         opts.on('--allow-ssl',                   TrueClass, 'SSL errors are allowed')             { |val| options['allow_ssl'] = val }
         opts.on('--allow-redirect',              TrueClass, 'Redirected URLs are allowed')        { |val| options['allow_redirect'] = val }
@@ -74,6 +75,9 @@ module AwesomeBot
 
       puts "> Checking links in #{filename}"
 
+      errors = options['errors']
+      puts "> Will allow errors: #{errors.join ','}" unless errors.nil?
+
       skip_dupe = options['allow_dupe']
       puts '> Will allow duplicate links' if skip_dupe == true
 
@@ -116,6 +120,7 @@ module AwesomeBot
       allow_timeouts = false if allow_timeouts.nil?
 
       options = {
+        'errors' => errors,
         'redirect' => allow_redirects,
         'ssl'      => allow_ssl,
         'timeout'  => allow_timeouts
