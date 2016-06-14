@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.12.1
+
+- handle invalid byte sequence, reported by [Manu Zhang](https://github.com/manuzhang)
+
 # 1.12.0
 
 - add `allow` option to allow specific error status codes, i.e. `--allow 301` or `--allow 403,429`
