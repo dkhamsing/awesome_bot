@@ -53,7 +53,7 @@ module AwesomeBot
       loc = x['loc']
       status = s == STATUS_ERROR ? '' : s
       link = x['url']
-      redirect = output_redirect x
+      redirect = status_is_redirected?(s) ? x['headers']['location'] : ''
       error = s == STATUS_ERROR ? x['error'] : ''
 
       hash = {
@@ -70,7 +70,7 @@ module AwesomeBot
       "#{status} " \
       "#{link} " \
       "#{error}" \
-      "#{redirect} \n"
+      "#{output_redirect x} \n"
 
       [o, hash]
     end
