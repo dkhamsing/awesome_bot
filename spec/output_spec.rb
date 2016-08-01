@@ -82,7 +82,7 @@ describe AwesomeBot do
         'status'=>200
       }
       index = 10
-      value = AwesomeBot::output(hash, index, 1, 1)
+      value, _ = AwesomeBot::output(hash, index, 1, 1)
       expected = url
       it "should display the url" do
         expect(value).to include(expected)
@@ -105,7 +105,7 @@ describe AwesomeBot do
         'loc'=>0,
         'error'=>error
       }
-      value = AwesomeBot::output(hash, 1, 1, 1)
+      value, _ = AwesomeBot::output(hash, 1, 1, 1)
       expected = AwesomeBot::STATUS_ERROR.to_s
       it "should not display the status" do
         expect(value).not_to include(expected)
@@ -123,7 +123,7 @@ describe AwesomeBot do
         'loc'=>0,
         'headers'=>{'location'=>'redirect'}
       }
-      value = AwesomeBot::output(hash, 1, 1, 1)
+      value, _ = AwesomeBot::output(hash, 1, 1, 1)
       expected = status.to_s
       it "should display the status" do
         expect(value).to include(expected)
@@ -136,7 +136,7 @@ describe AwesomeBot do
         'status'=>301,
         'headers'=>{'location'=>redirect}
       }
-      value = AwesomeBot::output_redirect hash
+      value, _ = AwesomeBot::output_redirect hash
       expected = " #{AwesomeBot::STATUS_REDIRECT} #{redirect}"
       it "outputs a redirect" do
         expect(value).to eql(expected)
@@ -148,7 +148,7 @@ describe AwesomeBot do
       hash = {
         'status'=>200
       }
-      value = AwesomeBot::output_redirect hash
+      value, _ = AwesomeBot::output_redirect hash
       expected = ''
       it "outputs nothing" do
         expect(value).to eql(expected)

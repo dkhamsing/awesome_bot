@@ -33,7 +33,7 @@ describe AwesomeBot do
     end
 
     context "given an uncommon link" do
-      r = AwesomeBot::check 'http://www.rubydoc.info/gems/awesome_bot other'
+      r = AwesomeBot::check 'http://httpstat.us/503 other'
       s = r.status[0]
       value = s['status']
       expected = 200

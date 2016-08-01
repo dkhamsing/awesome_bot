@@ -107,12 +107,16 @@ module AwesomeBot
         print o
       end
 
+      filtered_issues = []
+      
       digits = number_of_digits content
       unless r.white_listed.nil?
         puts "\n> White listed:"
         o = order_by_loc r.white_listed, content
         o.each_with_index do |x, k|
-          puts output x, k, pad_list(o), digits
+          temp, h = output(x, k, pad_list(o), digits)
+          filtered_issues.push h
+          puts temp
         end
       end
 
@@ -140,7 +144,9 @@ module AwesomeBot
         else
           o = order_by_loc r.statuses_issues(options), content
           o.each_with_index do |x, k|
-            puts output x, k, pad_list(o), digits
+            temp, h = output(x, k, pad_list(o), digits)
+            filtered_issues.push h
+            puts temp
           end
         end
 
@@ -166,6 +172,7 @@ module AwesomeBot
         end
 
         cli_write_results(filename, r)
+        cli_write_results_filtered(filename, filtered_issues)
         return 'Issues'
       end
     end
@@ -175,6 +182,14 @@ module AwesomeBot
       results_file = "#{RESULTS_PREFIX}-#{results_file_filter}.json"
       r.write results_file
       puts "\nWrote results to #{results_file}"
+    end
+
+    def cli_write_results_filtered(file, filtered)
+        require 'json'
+        results_file_filter = file.gsub('/','-')
+        results_file = "#{RESULTS_PREFIX}-#{results_file_filter}-filtered.json"
+        File.open(results_file, 'w') { |f| f.write JSON.pretty_generate(filtered) }
+        puts "Wrote filtered results to #{results_file}"
     end
   end # class
 end
