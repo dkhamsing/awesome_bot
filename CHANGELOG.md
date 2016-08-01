@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.13.0
+
+- add filtered issues artifacts that can be used to [generate a report](https://github.com/dkhamsing/awesome_bot/issues/95) (this changes an internal `output` format)
+
 # 1.12.1
 
 - handle invalid byte sequence, reported by [Manu Zhang](https://github.com/manuzhang)
