@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.13.1
+
+- add `error` (and dupes) to filtered issues
+
 # 1.13.0
 
 - add filtered issues artifacts that can be used to [generate a report](https://github.com/dkhamsing/awesome_bot/issues/95) (this changes an internal `output` format)
