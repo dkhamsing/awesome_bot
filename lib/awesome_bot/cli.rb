@@ -107,15 +107,14 @@ module AwesomeBot
         print o
       end
 
-      filtered_issues = []
-      
+
+
       digits = number_of_digits content
       unless r.white_listed.nil?
         puts "\n> White listed:"
         o = order_by_loc r.white_listed, content
         o.each_with_index do |x, k|
-          temp, h = output(x, k, pad_list(o), digits)
-          filtered_issues.push h
+          temp, _ = output(x, k, pad_list(o), digits)
           puts temp
         end
       end
@@ -136,6 +135,8 @@ module AwesomeBot
         cli_write_results(filename, r)
         return STATUS_OK
       else
+        filtered_issues = []
+
         puts "\nIssues :-("
 
         print "> Links \n"
@@ -163,9 +164,19 @@ module AwesomeBot
             o = order_by_loc dupe_hash, content
             largest = o.last['loc'].to_s.size
             o.each_with_index do |d, index|
-              print "  #{pad_text index + 1, pad_list(r.dupes.uniq)}. "
+              loc = d['loc']
               url = d['url']
-              print loc_formatted d['loc'], largest
+              error = 'Dupe'
+
+              hash = {
+                'loc'=> loc,
+                'link'=> url,
+                'error'=> error
+              }
+              filtered_issues.push hash              
+
+              print "  #{pad_text index + 1, pad_list(r.dupes.uniq)}. "
+              print loc_formatted loc, largest
               puts " #{url}"
             end
           end

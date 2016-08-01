@@ -54,12 +54,14 @@ module AwesomeBot
       status = s == STATUS_ERROR ? '' : s
       link = x['url']
       redirect = output_redirect x
+      error = s == STATUS_ERROR ? x['error'] : ''
 
       hash = {
         'loc'=> loc,
         'status'=> s,
         'link'=> link,
-        'redirect'=> redirect
+        'redirect'=> redirect,
+        'error'=> error
       }
 
       o =
@@ -67,7 +69,7 @@ module AwesomeBot
       "#{loc_formatted loc, largest} " \
       "#{status} " \
       "#{link} " \
-      "#{s == STATUS_ERROR ? x['error'] : ''}" \
+      "#{error}" \
       "#{redirect} \n"
 
       [o, hash]
