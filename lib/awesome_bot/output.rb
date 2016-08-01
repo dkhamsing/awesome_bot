@@ -50,12 +50,27 @@ module AwesomeBot
     def output(x, index, total, largest)
       s = x['status']
 
+      loc = x['loc']
+      status = s == STATUS_ERROR ? '' : s
+      link = x['url']
+      redirect = output_redirect x
+
+      hash = {
+        'loc'=> loc,
+        'status'=> s,
+        'link'=> link,
+        'redirect'=> redirect
+      }
+
+      o =
       "  #{pad_text index + 1, total}. " \
-      "#{loc_formatted x['loc'], largest} " \
-      "#{s == STATUS_ERROR ? '' : s} " \
-      "#{x['url']} " \
+      "#{loc_formatted loc, largest} " \
+      "#{status} " \
+      "#{link} " \
       "#{s == STATUS_ERROR ? x['error'] : ''}" \
-      "#{output_redirect x} \n"
+      "#{redirect} \n"
+
+      [o, hash]
     end
 
     def output_redirect(x)
