@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.13.2
+
+- correct `redirect` in filtered issues
+
 # 1.13.1
 
 - add `error` (and dupes) to filtered issues
