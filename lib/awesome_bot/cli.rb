@@ -133,6 +133,7 @@ module AwesomeBot
       if r.success(options) == true
         puts 'No issues :-)'
         cli_write_results(filename, r)
+        cli_write_markdown_results(filename, nil)
         return STATUS_OK
       else
         filtered_issues = []
@@ -183,7 +184,8 @@ module AwesomeBot
         end
 
         cli_write_results(filename, r)
-        cli_write_results_filtered(filename, filtered_issues)
+        filtered = cli_write_results_filtered(filename, filtered_issues)
+        cli_write_markdown_results(filename, filtered)
         return 'Issues'
       end
     end
@@ -201,6 +203,51 @@ module AwesomeBot
         results_file = "#{RESULTS_PREFIX}-#{results_file_filter}-filtered.json"
         File.open(results_file, 'w') { |f| f.write JSON.pretty_generate(filtered) }
         puts "Wrote filtered results to #{results_file}"
+
+        return results_file
+    end
+
+    def cli_write_markdown_results(filename, filtered)
+      payload =
+      if filtered.nil?
+        {'error'=>false}
+      else
+        title = 'Found links issues'
+        message = "#### Link issues by [`awesome_bot`](https://github.com/dkhamsing/awesome_bot)\n\n"
+        message << "  Line | Status | Link\n"
+        message << "| ---: | :----: | --- |\n"
+
+        results = File.read filtered
+        require 'json'
+        j = JSON.parse results
+        j.sort_by { |h| h['loc'] }.each do |i|
+          error = i['error']
+          loc   = i['loc']
+          link  = i['link']
+          s     = i['status']
+          r     = i['redirect']
+
+          if error=='Dupe'
+            message << "#{loc} | Dupe | #{link} "
+          else
+            message << "#{loc} | [#{s}](https://httpstatuses.com/#{s}) | #{link} "
+            message << "<br> #{error}" unless error ==''
+            message << "redirects to<br>#{r}" unless r==''
+          end
+          message << "\n"
+        end
+
+        {
+          'error'  => true,
+          'title'  => title,
+          'message'=> message
+        }
+      end
+
+      results_file_filter = filename.gsub('/','-')
+      results_file = "#{RESULTS_PREFIX}-#{results_file_filter}-markdown-table.json"
+      File.open(results_file, 'w') { |f| f.write JSON.pretty_generate(payload) }
+      puts "Wrote markdown table results to #{results_file}"
     end
   end # class
 end
