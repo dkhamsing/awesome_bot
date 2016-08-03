@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.13.3
+
+- add markdown results table artifacts to use with [`danger`](https://github.com/danger/danger)
+
 # 1.13.2
 
 - correct `redirect` in filtered issues
