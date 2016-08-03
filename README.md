@@ -212,6 +212,27 @@ As it happens, the default code snippet provided contain a redirect so adding a 
 
 You can also add a badge for other CI tools, check out [shields.io](http://shields.io/).
 
+### Danger
+
+You can integrate `awesome_bot` with [`danger`](https://github.com/danger/danger)
+
+![danger](https://cloud.githubusercontent.com/assets/4723115/17375716/0cdd37cc-5967-11e6-8ae3-829060a786dc.png)
+
+The above is from an actual [pull request](https://github.com/vsouza/awesome-ios/pull/1001).
+
+Here's the step in your **Dangerfile**:
+
+```ruby
+# Check links
+require 'json'
+results = File.read 'ab-results-README.md-markdown-table.json'
+j = JSON.parse results
+if j['error']==true
+  fail j['title']
+  markdown j['message']
+end
+```
+
 ## Contact
 
 - [github.com/dkhamsing](https://github.com/dkhamsing)
