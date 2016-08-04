@@ -6,6 +6,7 @@ Changes by [Daniel Khamsing][] unless otherwise noted.
 
 - cleanup `-1` error in markdown table
 - isolate `write`
+- display number of links in markdown table results
 
 # 1.13.3
 
