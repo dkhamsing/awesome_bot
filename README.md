@@ -132,7 +132,10 @@ Does your GitHub README contain a lot of links? `awesome_bot` can help you valid
 
 and [more](status/status.md).
 
-Tip: Use the keyword `[ci skip]` in your commit title/message to skip verification.
+Tips
+
+- Use the keyword `[ci skip]` in your commit title/message to skip verification.
+- Use [Danger](#danger).
 
 ### Travis CI
 
@@ -214,11 +217,9 @@ You can also add a badge for other CI tools, check out [shields.io](http://shiel
 
 ### Danger
 
-You can integrate `awesome_bot` with [`danger`](https://github.com/danger/danger)
+Integrate `awesome_bot` with [Danger](https://github.com/danger/danger) and have results reported back to the [pull request](https://github.com/vsouza/awesome-ios/pull/1001)).
 
 ![danger](https://cloud.githubusercontent.com/assets/4723115/17375716/0cdd37cc-5967-11e6-8ae3-829060a786dc.png)
-
-The above is from an actual [pull request](https://github.com/vsouza/awesome-ios/pull/1001).
 
 Here's the step in your **Dangerfile**:
 
