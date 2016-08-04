@@ -2,11 +2,10 @@ require 'awesome_bot/check'
 require 'awesome_bot/output'
 require 'awesome_bot/result'
 require 'awesome_bot/version'
+require 'awesome_bot/write'
 
 # Command line interface
 module AwesomeBot
-  RESULTS_PREFIX = 'ab-results'
-
   class << self
     def cli()
       require 'optparse'
@@ -132,8 +131,8 @@ module AwesomeBot
 
       if r.success(options) == true
         puts 'No issues :-)'
-        cli_write_results(filename, r)
-        cli_write_markdown_results(filename, nil)
+        write_results(filename, r)
+        write_markdown_results(filename, nil)
         return STATUS_OK
       else
         filtered_issues = []
@@ -174,7 +173,7 @@ module AwesomeBot
                 'link'=> url,
                 'error'=> error
               }
-              filtered_issues.push hash              
+              filtered_issues.push hash
 
               print "  #{pad_text index + 1, pad_list(r.dupes.uniq)}. "
               print loc_formatted loc, largest
@@ -183,71 +182,11 @@ module AwesomeBot
           end
         end
 
-        cli_write_results(filename, r)
-        filtered = cli_write_results_filtered(filename, filtered_issues)
-        cli_write_markdown_results(filename, filtered)
+        write_results(filename, r)
+        filtered = write_results_filtered(filename, filtered_issues)
+        write_markdown_results(filename, filtered)
         return 'Issues'
       end
-    end
-
-    def cli_write_results(f, r)
-      results_file_filter = f.gsub('/','-')
-      results_file = "#{RESULTS_PREFIX}-#{results_file_filter}.json"
-      r.write results_file
-      puts "\nWrote results to #{results_file}"
-    end
-
-    def cli_write_results_filtered(file, filtered)
-        require 'json'
-        results_file_filter = file.gsub('/','-')
-        results_file = "#{RESULTS_PREFIX}-#{results_file_filter}-filtered.json"
-        File.open(results_file, 'w') { |f| f.write JSON.pretty_generate(filtered) }
-        puts "Wrote filtered results to #{results_file}"
-
-        return results_file
-    end
-
-    def cli_write_markdown_results(filename, filtered)
-      payload =
-      if filtered.nil?
-        {'error'=>false}
-      else
-        title = 'Found links issues'
-        message = "#### Link issues by [`awesome_bot`](https://github.com/dkhamsing/awesome_bot)\n\n"
-        message << "  Line | Status | Link\n"
-        message << "| ---: | :----: | --- |\n"
-
-        results = File.read filtered
-        require 'json'
-        j = JSON.parse results
-        j.sort_by { |h| h['loc'] }.each do |i|
-          error = i['error']
-          loc   = i['loc']
-          link  = i['link']
-          s     = i['status']
-          r     = i['redirect']
-
-          if error=='Dupe'
-            message << "#{loc} | Dupe | #{link} "
-          else
-            message << "#{loc} | [#{s}](https://httpstatuses.com/#{s}) | #{link} "
-            message << "<br> #{error}" unless error ==''
-            message << "redirects to<br>#{r}" unless r==''
-          end
-          message << "\n"
-        end
-
-        {
-          'error'  => true,
-          'title'  => title,
-          'message'=> message
-        }
-      end
-
-      results_file_filter = filename.gsub('/','-')
-      results_file = "#{RESULTS_PREFIX}-#{results_file_filter}-markdown-table.json"
-      File.open(results_file, 'w') { |f| f.write JSON.pretty_generate(payload) }
-      puts "Wrote markdown table results to #{results_file}"
     end
   end # class
 end

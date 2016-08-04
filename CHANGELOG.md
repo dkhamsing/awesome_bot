@@ -2,6 +2,11 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.13.4
+
+- cleanup `-1` error in markdown table
+- isolate `write`
+
 # 1.13.3
 
 - add markdown results table artifacts to use with [`danger`](https://github.com/danger/danger)
