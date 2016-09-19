@@ -22,11 +22,7 @@ module AwesomeBot
 
         headers = {}
         response.each do |k, v|
-          if k=='location'
-            headers[k] = v.force_encoding("utf-8")
-          else
-            headers[k] = v
-          end
+          headers[k] = v.force_encoding("utf-8")
         end
 
         return [code, headers]
