@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.13.5
+
+- fix header encoding
+
 # 1.13.4
 
 - cleanup `-1` error in markdown table
