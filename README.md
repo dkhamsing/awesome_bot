@@ -75,7 +75,7 @@ $ awesome_bot docs/*.md
 # check all markdown files in docs/ directory
 
 $ awesome_bot README.md --allow-timeout -t 5
-# speed up validation by setting a timeout of 5s per link request and allowing timeouts
+# speed up validation by setting a timeout of 5 seconds per link request and allowing timeouts
 
 $ awesome_bot README.md --allow 403,429
 # allow status code errors 403 and 429
