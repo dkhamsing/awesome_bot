@@ -5,8 +5,8 @@ ziadoz/awesome-php
 matteocrippa/awesome-swift
 herrbischoff/awesome-osx-command-line
 cjwirth/awesome-ios-ui
-wsargent/docker-cheat-sheet
 alebcay/awesome-shell
+wsargent/docker-cheat-sheet
 gztchan/awesome-design
 hangtwenty/dive-into-machine-learning
 neutraltone/awesome-stock-resources
@@ -48,8 +48,8 @@ dotfiles/dotfiles.github.com
 matiassingers/awesome-readme
 AchoArnold/discount-for-student-dev
 RichardLitt/awesome-conferences
-HQarroum/awesome-iot
 caesar0301/awesome-pcaptools
+HQarroum/awesome-iot
 hackerkid/Mind-Expanding-Books
 afonsopacifer/awesome-flexbox
 FriendsOfCake/awesome-cakephp
@@ -57,7 +57,6 @@ lnishan/awesome-competitive-programming
 matteofigus/awesome-speaking
 ramitsurana/awesome-kubernetes
 burningtree/awesome-json
-vredniy/awesome-newsletters
 vredniy/awesome-newsletters
 aleksandar-todorovic/awesome-c
 ahkscript/awesome-AutoHotkey
@@ -77,6 +76,7 @@ MakinGiants/awesome-mobile-dev
 brabadu/awesome-fonts
 vinkla/awesome-fuse
 filipelinhares/awesome-slack
+shime/creative-commons-media
 christian-bromann/awesome-selenium
 unixorn/git-extra-commands
 RichardLitt/endangered-languages
