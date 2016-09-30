@@ -53,16 +53,16 @@ describe AwesomeBot do
       end
     end
 
-    context "given a redirect with special encoding" do
-      link = 'https://autohotkey.com/board/topic/94376-'
-      r = AwesomeBot::check link
-      s = r.status[0]
-      value = s['headers']['location']
-      expected = '//autohotkey.com/board/topic/94376-socket-class-überarbeitet/'
-      it "is encoded using utf8" do
-        expect(value).to eql(expected)
-      end
-    end
+    # context "given a redirect with special encoding" do
+    #   link = 'https://autohotkey.com/board/topic/94376-'
+    #   r = AwesomeBot::check link
+    #   s = r.status[0]
+    #   value = s['headers']['location']
+    #   expected = '//autohotkey.com/board/topic/94376-socket-class-überarbeitet/'
+    #   it "is encoded using utf8" do
+    #     expect(value).to eql(expected)
+    #   end
+    # end
 
     context "given a header with special encoding" do
       link = 'http://okeowoaderemi.com/site/assets/files/1103/zf2-flowchart.jpg'
