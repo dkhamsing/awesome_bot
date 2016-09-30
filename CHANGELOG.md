@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.13.6
+
+- handle incomplete redirect
+
 # 1.13.5
 
 - fix header encoding
