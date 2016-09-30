@@ -25,6 +25,16 @@ module AwesomeBot
           headers[k] = v.force_encoding("utf-8")
         end
 
+        # handle incomplete redirect
+        loc = headers['location']
+        unless loc.nil?
+          loc_uri = URI.parse loc
+          if loc_uri.scheme.nil?
+            new_loc = uri.scheme + '://' + uri.host + loc
+            headers['location'] = new_loc
+          end
+        end
+
         return [code, headers]
       end
     end
