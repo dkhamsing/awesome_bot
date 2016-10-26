@@ -14,7 +14,7 @@ script:
   - awesome_bot bin/assets/test-redirect --allow-redirect
   - awesome_bot bin/assets/test-redirect --allow-redirect -a 301
   - awesome_bot bin/assets/test-statuses --white-list bot,bad,super
-  - awesome_bot bin/assets/test-errors --allow-redirect
+  - awesome_bot bin/assets/test-errors --allow-redirect --allow-ssl
   - awesome_bot -f bin/assets/test-no-issues,bin/assets/test-no-links
   - awesome_bot -f bin/assets/test-no-issues,bin/assets/test-redirect --allow-redirect
   - awesome_bot bin/assets/test-no-* --allow-redirect
