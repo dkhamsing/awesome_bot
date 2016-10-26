@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.13.8
+
+- [parse] fix regression introduced in 1.13.7
+
 # 1.13.7
 
 - [parse] support wikipedia links with parentheses
