@@ -94,5 +94,16 @@ describe AwesomeBot do
         expect(value).to eql(expected)
       end
     end
+
+    context 'given a markdown wikipedia link' do
+      content = '[TAL](https://en.wikipedia.org/wiki/Template_Attribute_Language)'
+      list = AwesomeBot::links_find content
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'https://en.wikipedia.org/wiki/Template_Attribute_Language'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+    end
   end
 end

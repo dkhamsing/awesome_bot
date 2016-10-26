@@ -11,8 +11,16 @@ module AwesomeBot
             x.gsub /\)\].*/, ''
           elsif (x.scan(')').count == 2) && (x.scan('(').count == 1)
             x.gsub(/\)\).*/, ')')
-          elsif (x.scan(')').count > 0) && !(x.include? 'wikipedia')
-            x.gsub(/\).*/, '')
+          elsif (x.scan(')').count > 0)
+            if (x.include? 'wikipedia')
+              if (x.scan(')').count == 1) && (x.scan('(').count == 0)
+                x.sub(')','')
+              else
+                x
+              end
+            else
+              x.gsub(/\).*/, '')
+            end
           elsif x.include? '[' # adoc
             x.gsub(/\[.*/, '')
           elsif x[-1]=='.' || x[-1]==':'
