@@ -83,5 +83,16 @@ describe AwesomeBot do
         expect(value).to eql(expected)
       end
     end
+
+    context 'given a wikipedia link with parentheses' do
+      content = 'https://en.wikipedia.org/wiki/Counter_(digital)'
+      list = AwesomeBot::links_find content
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'https://en.wikipedia.org/wiki/Counter_(digital)'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+    end
   end
 end

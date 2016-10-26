@@ -11,7 +11,7 @@ module AwesomeBot
             x.gsub /\)\].*/, ''
           elsif (x.scan(')').count == 2) && (x.scan('(').count == 1)
             x.gsub(/\)\).*/, ')')
-          elsif x.scan(')').count > 0
+          elsif (x.scan(')').count > 0) && !(x.include? 'wikipedia')
             x.gsub(/\).*/, '')
           elsif x.include? '[' # adoc
             x.gsub(/\[.*/, '')
