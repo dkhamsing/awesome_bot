@@ -105,5 +105,16 @@ describe AwesomeBot do
         expect(value).to eql(expected)
       end
     end
+
+    context 'given a markdown wikipedia link with a period' do
+      content = '[Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation).'
+      list = AwesomeBot::links_find content
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'https://en.wikipedia.org/wiki/Hungarian_notation'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+    end
   end
 end
