@@ -14,7 +14,7 @@ module AwesomeBot
           elsif (x.scan(')').count > 0)
             if (x.include? 'wikipedia')
               if (x.scan(')').count == 1) && (x.scan('(').count == 0)
-                x.sub(')','')
+                x.sub(').','').sub(')','')
               else
                 x
               end
