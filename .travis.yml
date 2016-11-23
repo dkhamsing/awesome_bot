@@ -18,7 +18,7 @@ script:
   - awesome_bot -f bin/assets/test-no-issues,bin/assets/test-no-links
   - awesome_bot -f bin/assets/test-no-issues,bin/assets/test-redirect --allow-redirect
   - awesome_bot bin/assets/test-no-* --allow-redirect
-  - awesome_bot bin/assets/test-ssl --allow-ssl  
+  - awesome_bot bin/assets/test-ssl --allow-ssl
   - awesome_bot bin/assets/test-invalid.md --allow-redirect --allow-dupe
-  - awesome_bot README.md --allow-dupe --white-list gph.is,giphy,travis-ci.org,codeload,badge,rubydoc,rubygems,circleci
+  - awesome_bot README.md --allow-dupe --white-list gph.is,giphy,travis-ci.org,codeload,badge,rubydoc,rubygems,circleci,codeship
   - gem install awesome_bot
