@@ -37,7 +37,7 @@ module AwesomeBot
             status = s==-1? 'Error' : "[#{s}](https://httpstatuses.com/#{s})"
             message << "#{loc} | #{status} | #{link} "
             message << "<br> #{error}" unless error ==''
-            message << "redirects to<br>#{r}" unless r==''
+            message << "redirects to <br>#{r}" unless r==''
           end
           message << "\n"
         end
