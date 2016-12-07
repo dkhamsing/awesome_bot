@@ -116,5 +116,25 @@ describe AwesomeBot do
         expect(value).to eql(expected)
       end
     end
+
+    context 'given markdown wikipedia content' do
+      content = 'Unlike [SOAP](https://en.wikipedia.org/wiki/SOAP)-based ...as [HTTP](https://en.wikipedia.org/wiki/HTTP), [URI](https://en.wikipedia.org/wiki/URI), [JSON](https://en.wikipedia.org/wiki/JSON), and [XML](https://en.wikipedia.org/wiki/XML). [[1](#references)]'
+      list = AwesomeBot::links_find content
+      f = AwesomeBot::links_filter list
+
+      value = f[0]
+      expected = 'https://en.wikipedia.org/wiki/SOAP'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+
+      value = f[1]
+      expected = 'https://en.wikipedia.org/wiki/HTTP'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+
+    end
+
   end
 end
