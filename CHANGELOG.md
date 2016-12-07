@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.13.10
+
+- [parse] fix another wikipedia parsing issue
+
 # 1.13.9
 
 - [parse] fix another regression introduced in 1.13.7
