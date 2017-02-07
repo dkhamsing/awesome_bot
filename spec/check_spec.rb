@@ -79,7 +79,7 @@ describe AwesomeBot do
 
     context "given links with no issues" do
       content = %(
-        http://www.nytimes.com/
+        https://www.nytimes.com/
         https://github.com/
       )
       r = AwesomeBot::check content
