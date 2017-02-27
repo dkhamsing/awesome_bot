@@ -13,7 +13,7 @@ describe AwesomeBot do
       end
     end
 
-    context "given  file with a redirect and allowing redirects" do
+    context "given a file with a redirect and allowing redirects" do
       options['allow_redirect'] = true
       value = AwesomeBot.cli_process file, options
       expected = '✓'
