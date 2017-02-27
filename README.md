@@ -27,6 +27,7 @@ Usage: awesome_bot [file or files]
         --allow-ssl                  SSL errors are allowed
         --allow-redirect             Redirected URLs are allowed
         --allow-timeout              URLs that time out are allowed
+    -d, --request-delay [seconds]    Set request delay
     -t, --set-timeout [seconds]      Set connection timeout
     -w, --white-list [urls]          Comma separated URLs to white list
 ```

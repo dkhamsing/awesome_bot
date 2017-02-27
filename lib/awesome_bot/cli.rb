@@ -17,14 +17,15 @@ module AwesomeBot
         opts.banner = "Usage: #{PROJECT} [file or files] \n"\
                       "       #{PROJECT} [options]"
 
-        opts.on('-f', '--files [files]',         Array,     'Comma separated files to check')     { |val| options['files'] = val }
-        opts.on('-a', '--allow [errors]',        Array,     'Status code errors to allow')        { |val| options['errors'] = val }
-        opts.on('--allow-dupe',                  TrueClass, 'Duplicate URLs are allowed')         { |val| options['allow_dupe'] = val }
-        opts.on('--allow-ssl',                   TrueClass, 'SSL errors are allowed')             { |val| options['allow_ssl'] = val }
-        opts.on('--allow-redirect',              TrueClass, 'Redirected URLs are allowed')        { |val| options['allow_redirect'] = val }
-        opts.on('--allow-timeout',               TrueClass, 'URLs that time out are allowed')     { |val| options['allow_timeout'] = val }
-        opts.on('-t', '--set-timeout [seconds]', Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
-        opts.on('-w', '--white-list [urls]',     Array,     'Comma separated URLs to white list') { |val| options['white_list'] = val }
+        opts.on('-f', '--files [files]',           Array,     'Comma separated files to check')     { |val| options['files'] = val }
+        opts.on('-a', '--allow [errors]',          Array,     'Status code errors to allow')        { |val| options['errors'] = val }
+        opts.on('--allow-dupe',                    TrueClass, 'Duplicate URLs are allowed')         { |val| options['allow_dupe'] = val }
+        opts.on('--allow-ssl',                     TrueClass, 'SSL errors are allowed')             { |val| options['allow_ssl'] = val }
+        opts.on('--allow-redirect',                TrueClass, 'Redirected URLs are allowed')        { |val| options['allow_redirect'] = val }
+        opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')     { |val| options['allow_timeout'] = val }
+        opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                  { |val| options['delay'] = val }
+        opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
+        opts.on('-w', '--white-list [urls]',       Array,     'Comma separated URLs to white list') { |val| options['white_list'] = val }
 
         opts.on_tail("--help") do
           puts opts
@@ -90,6 +91,9 @@ module AwesomeBot
       allow_timeouts = options['allow_timeout']
       puts '> Will allow network timeouts' if allow_timeouts == true
 
+      delay = options['delay']
+      puts "> Will delay each request by #{delay} second#{delay==1? '': 's'}" unless delay.nil?
+
       white_listed = options['white_list']
 
       timeout = options['timeout']
@@ -99,10 +103,13 @@ module AwesomeBot
 
       options = {
         'allowdupe' => skip_dupe,
+        'delay' => delay,
         'timeout'   => timeout,
         'whitelist' => white_listed
       }
-      r = check content, options do |o|
+
+      threads = delay == nil ? 10 : 1
+      r = check(content, options, threads) do |o|
         print o
       end
 
