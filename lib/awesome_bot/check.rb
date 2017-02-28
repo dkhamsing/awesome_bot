@@ -5,18 +5,19 @@ require 'awesome_bot/result'
 
 # Check links
 module AwesomeBot
-  NUMBER_OF_THREADS = 10
-
   class << self
-    def check(content, options=nil)
+    def check(content, options=nil, number_of_threads=1)
       if options.nil?
         white_listed = nil
         skip_dupe = false
         timeout = nil
+        delay = 0
       else
         white_listed = options['whitelist']
         skip_dupe = options['allowdupe']
         timeout = options['timeout']
+        delay = options['delay']
+        delay = 0 if delay.nil?
       end
 
       links = links_filter(links_find(content))
@@ -37,9 +38,11 @@ module AwesomeBot
         yield "  #{pad_text j + 1, total}. #{u} \n" if block_given?
       end
 
+      head = false
+
       yield 'Checking URLs: ' if block_given? && r.links.count > 0
       r.status =
-        statuses(r.links.uniq, NUMBER_OF_THREADS, timeout) do |s|
+        statuses(r.links.uniq, number_of_threads, timeout, head, delay) do |s|
           yield log_status s if block_given?
         end
       yield "\n" if block_given?
@@ -48,7 +51,7 @@ module AwesomeBot
 
       yield 'Checking white listed URLs: ' if block_given?
       r.white_listed =
-        statuses(r.links_white_listed.uniq, NUMBER_OF_THREADS, nil) do |s|
+        statuses(r.links_white_listed.uniq, number_of_threads, nil, head, delay) do |s|
           yield log_status s if block_given?
         end
       yield "\n" if block_given?

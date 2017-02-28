@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.14.0
+
+- add support for request delay
+
 # 1.13.10
 
 - [parse] fix another wikipedia parsing issue

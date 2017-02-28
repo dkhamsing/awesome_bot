@@ -43,11 +43,12 @@ module AwesomeBot
       (status > 299) && (status < 400)
     end
 
-    def statuses(links, threads, timeout, head=false)
+    def statuses(links, threads, timeout, head=false, delay=0)
       require 'parallel'
 
       statuses = []
       Parallel.each(links, in_threads: threads) do |u|
+        sleep delay
         begin
           status, headers = net_status u, timeout, head
           error = nil
