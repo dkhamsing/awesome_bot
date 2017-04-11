@@ -9,7 +9,9 @@ module AwesomeBot
       f.gsub('/','-')
     end
 
-    def write_markdown_results(filename, filtered)
+    def write_markdown_results(filename, filtered, silent)
+      return false if silent==true
+
       payload =
       if filtered.nil?
         {'error'=>false}
@@ -53,16 +55,24 @@ module AwesomeBot
       results_file = "#{RESULTS_PREFIX}-#{results_file_filter}-markdown-table.json"
       File.open(results_file, 'w') { |f| f.write JSON.pretty_generate(payload) }
       puts "Wrote markdown table results to #{results_file}"
+
+      return true
     end
 
-    def write_results(f, r)
+    def write_results(f, r, silent)
+      return false if silent==true
+
       results_file_filter = filter_filename f
       results_file = "#{RESULTS_PREFIX}-#{results_file_filter}.json"
       r.write results_file
       puts "\nWrote results to #{results_file}"
+
+      return true
     end
 
-    def write_results_filtered(file, filtered)
+    def write_results_filtered(file, filtered, silent)
+      return nil if silent==true
+
       results_file_filter = filter_filename file
       results_file = "#{RESULTS_PREFIX}-#{results_file_filter}-filtered.json"
       File.open(results_file, 'w') { |f| f.write JSON.pretty_generate(filtered) }

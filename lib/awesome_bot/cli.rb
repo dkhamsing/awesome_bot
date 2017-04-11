@@ -25,6 +25,7 @@ module AwesomeBot
         opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')     { |val| options['allow_timeout'] = val }
         opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                  { |val| options['delay'] = val }
         opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
+        opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                { |val| options['no_results'] = val }        
         opts.on('-w', '--white-list [urls]',       Array,     'Comma separated URLs to white list') { |val| options['white_list'] = val }
 
         opts.on_tail("--help") do
@@ -101,6 +102,13 @@ module AwesomeBot
 
       puts "> White list links matching: #{white_listed.join ', '} " unless white_listed.nil?
 
+      no_results = options['no_results']
+      if no_results == true
+        puts '> Will not save results'
+      else
+        no_results = false
+      end
+
       options = {
         'allowdupe' => skip_dupe,
         'delay' => delay,
@@ -112,8 +120,6 @@ module AwesomeBot
       r = check(content, options, threads) do |o|
         print o
       end
-
-
 
       digits = number_of_digits content
       unless r.white_listed.nil?
@@ -138,8 +144,8 @@ module AwesomeBot
 
       if r.success(options) == true
         puts 'No issues :-)'
-        write_results(filename, r)
-        write_markdown_results(filename, nil)
+        write_results(filename, r, no_results)
+        write_markdown_results(filename, nil, no_results)
         return STATUS_OK
       else
         filtered_issues = []
@@ -189,9 +195,10 @@ module AwesomeBot
           end
         end
 
-        write_results(filename, r)
-        filtered = write_results_filtered(filename, filtered_issues)
-        write_markdown_results(filename, filtered)
+        write_results(filename, r, no_results)
+        filtered = write_results_filtered(filename, filtered_issues, no_results)
+        write_markdown_results(filename, filtered, no_results)
+
         return 'Issues'
       end
     end
