@@ -29,6 +29,7 @@ Usage: awesome_bot [file or files]
         --allow-timeout              URLs that time out are allowed
     -d, --request-delay [seconds]    Set request delay
     -t, --set-timeout [seconds]      Set connection timeout
+        --skip-save-results          Skip saving results
     -w, --white-list [urls]          Comma separated URLs to white list
 ```
 
