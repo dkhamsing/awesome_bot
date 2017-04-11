@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.15.0
+
+- add `--skip-save-results` option
+
 # 1.14.0
 
 - add support for request delay
