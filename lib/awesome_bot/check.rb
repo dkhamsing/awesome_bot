@@ -12,15 +12,17 @@ module AwesomeBot
         skip_dupe = false
         timeout = nil
         delay = 0
+        base = nil
       else
         white_listed = options['whitelist']
         skip_dupe = options['allowdupe']
         timeout = options['timeout']
         delay = options['delay']
         delay = 0 if delay.nil?
+        base = options['baseurl']
       end
 
-      links = links_filter(links_find(content))
+      links = links_filter(links_find(content, base))
 
       r = Result.new(links, white_listed)
       r.skip_dupe = skip_dupe

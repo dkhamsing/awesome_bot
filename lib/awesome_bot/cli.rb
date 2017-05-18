@@ -23,6 +23,7 @@ module AwesomeBot
         opts.on('--allow-ssl',                     TrueClass, 'SSL errors are allowed')             { |val| options['allow_ssl'] = val }
         opts.on('--allow-redirect',                TrueClass, 'Redirected URLs are allowed')        { |val| options['allow_redirect'] = val }
         opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')     { |val| options['allow_timeout'] = val }
+        opts.on('--base-url [base url]',           String,    'Base URL to use for relative links') { |val| options['base_url'] = val }
         opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                  { |val| options['delay'] = val }
         opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
         opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                { |val| options['no_results'] = val }        
@@ -77,6 +78,9 @@ module AwesomeBot
 
       puts "> Checking links in #{filename}"
 
+      base = options['base_url']
+      puts "> Will check relative links with base URL #{base}" unless base.nil?
+
       errors = options['errors']
       puts "> Will allow errors: #{errors.join ','}" unless errors.nil?
 
@@ -113,7 +117,8 @@ module AwesomeBot
         'allowdupe' => skip_dupe,
         'delay' => delay,
         'timeout'   => timeout,
-        'whitelist' => white_listed
+        'whitelist' => white_listed,
+        'baseurl' => base
       }
 
       threads = delay == nil ? 10 : 1
