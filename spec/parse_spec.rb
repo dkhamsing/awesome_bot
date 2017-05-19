@@ -133,7 +133,30 @@ describe AwesomeBot do
       it "parses correctly" do
         expect(value).to eql(expected)
       end
+    end
 
+    context 'given base url and reltive link' do
+      content = '**[Getting Started](notebooks/Getting_Started.ipynb)**: How to connect, some simple data access'
+      base = 'https://github.com/IDR/idr-notebooks/blob/master/'
+      list = AwesomeBot::links_find content, base
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'https://github.com/IDR/idr-notebooks/blob/master/notebooks/Getting_Started.ipynb'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+    end
+
+    context 'given base url and relative link with hover title text' do
+      content = '![oauth login](/includes/login_1.png?raw=true "OAuth login")'
+      base = 'https://github.com/IDR/idr-notebooks/blob/master/'
+      list = AwesomeBot::links_find content, base
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'https://github.com/IDR/idr-notebooks/blob/master//includes/login_1.png?raw=true'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
     end
 
   end
