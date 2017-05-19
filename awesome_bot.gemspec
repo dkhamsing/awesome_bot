@@ -21,5 +21,5 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.0.0'
 
-  spec.add_runtime_dependency 'parallel', '~> 1.8' # threading
+  spec.add_runtime_dependency 'parallel', '1.11.2' # threading
 end
