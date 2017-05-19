@@ -27,6 +27,7 @@ Usage: awesome_bot [file or files]
         --allow-ssl                  SSL errors are allowed
         --allow-redirect             Redirected URLs are allowed
         --allow-timeout              URLs that time out are allowed
+        --base-url [base url]        Base URL to use for relative links
     -d, --request-delay [seconds]    Set request delay
     -t, --set-timeout [seconds]      Set connection timeout
         --skip-save-results          Skip saving results
@@ -82,6 +83,9 @@ $ awesome_bot README.md --allow-timeout -t 5
 $ awesome_bot README.md --allow 403,429
 # allow status code errors 403 and 429
 # --allow 301 would be similar to --allow-redirect
+
+$ awesome_bot README.md --base-url https://github.com/IDR/idr-notebooks/blob/master/
+# will check relative links using the base url provided
 ```
 
 ```shell
