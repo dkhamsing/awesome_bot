@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.16.1
+
+- update dependencies
+
 # 1.16.0
 
 - add `--base-url` option (check markdown relative links)
