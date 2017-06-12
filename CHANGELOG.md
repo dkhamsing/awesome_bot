@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.17.0
+
+- support basic http authentication by [Bill O'Neill](https://github.com/woneill)
+
 # 1.16.1
 
 - update dependencies
