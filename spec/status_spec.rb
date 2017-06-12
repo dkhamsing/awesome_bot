@@ -85,5 +85,22 @@ describe AwesomeBot do
         expect(value).to eql(expected)
       end
     end
+
+    context "given links with basic authentication" do
+      content = %(
+        http://user:passwd@httpbin.org/basic-auth/user/passwd
+        http://user:badpasswd@httpbin.org/basic-auth/user/passwd
+      )
+      r = AwesomeBot::check content
+
+      it "good password has no issues" do
+        expect(r.status[0]['status']).to eql(200)
+      end
+
+      it "bad password has issue" do
+        expect(r.status[1]['status']).to eql(401)
+      end
+    end
+
   end
 end

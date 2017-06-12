@@ -57,7 +57,7 @@ describe AwesomeBot do
       end
     end
 
-    context "given 2 links with basic-auth embedded" do
+    context "given 2 links with basic http authentication" do
       content = %(
         http://user:passwd@httpbin.org/basic-auth/user/passwd
         http://user:badpasswd@httpbin.org/basic-auth/user/passwd
@@ -66,14 +66,6 @@ describe AwesomeBot do
 
       it "returns 2 status results" do
         expect(r.status.count).to eql(2)
-      end
-
-      it "good password has no issues" do
-        expect(r.status[0]['status']).to eql(200)
-      end
-
-      it "bad password has issue" do
-        expect(r.status[1]['status']).to eql(401)
       end
 
       it "has one issue overall" do
