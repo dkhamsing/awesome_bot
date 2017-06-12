@@ -16,6 +16,12 @@ module AwesomeBot
         else
           request = Net::HTTP::Get.new(uri,ua)
         end
+
+        if uri.userinfo
+          auth_user, auth_pass = uri.userinfo.split(/:/)
+          request.basic_auth auth_user, auth_pass
+        end
+
         response = http.request request
 
         code = response.code==nil ? 200 : response.code.to_i
