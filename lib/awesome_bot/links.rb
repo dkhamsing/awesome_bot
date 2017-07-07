@@ -13,7 +13,7 @@ module AwesomeBot
             x.gsub(/\)\).*/, ')')
           elsif (x.scan(')').count > 0)
             if (x.include? 'wikipedia')
-              if (x.scan(')').count == 1) && (x.scan('(').count == 0)
+              if (x.scan(')').count >= 1) && (x.scan('(').count == 0)
                 x.gsub(/\).*/, '')
               else
                 x
