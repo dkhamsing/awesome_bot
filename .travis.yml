@@ -7,6 +7,7 @@ script:
   - awesome_bot
   - awesome_bot bin/assets/test-no-issues
   - awesome_bot bin/assets/test-no-links
+  - awesome_bot bin/assets/test-embedded-link
   - awesome_bot bin/assets/test-parse --white-list coveralls,travis-ci
   - awesome_bot bin/assets/test-dupe --allow-dupe
   - awesome_bot bin/assets/test-timeout --allow-timeout --set-timeout 1
