@@ -2,6 +2,11 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+
+# 1.17.1
+
+- [parse] fix Markdown link issue by [Richard Littauer](https://github.com/RichardLitt)
+
 # 1.17.0
 
 - support basic http authentication by [Bill O'Neill](https://github.com/woneill)
