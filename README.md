@@ -149,7 +149,7 @@ To use `awesome_bot` with Travis CI, [connect your repo](https://travis-ci.org/)
 
 ```yml
 language: ruby
-rvm: 2.2
+rvm: 2.4.1
 before_script: gem install awesome_bot
 script: awesome_bot README.md
 ```
@@ -168,7 +168,7 @@ If you prefer Circle CI, it'll work too. [Connect your repo](https://circleci.co
 ```yml
 machine:
   ruby:
-    version: 2.2.0
+    version: 2.4.1
 test:
   pre:
     - gem install awesome_bot
@@ -183,7 +183,7 @@ Circle CI, [Codeship](https://codeship.com/), and [Semaphore CI](https://semapho
 ```
 # Codeship
 Setup
-rvm use 2.2.0 --install
+rvm use 2.4.1 --install
 gem install awesome_bot
 
 Test
@@ -193,7 +193,7 @@ awesome_bot README.md
 ```
 # Semaphore CI
 Language: Ruby
-Ruby version: 2.2
+Ruby version: 2.4.1
 Databases for: don't generate
 Setup:
 gem install awesome_bot
