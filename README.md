@@ -19,7 +19,7 @@ Verify links in [awesome](status/status.md) projects
 ### Command Line
 
 ```
-Usage: awesome_bot [file or files]
+Usage: awesome_bot [file or files] 
        awesome_bot [options]
     -f, --files [files]              Comma separated files to check
     -a, --allow [errors]             Status code errors to allow
@@ -31,6 +31,7 @@ Usage: awesome_bot [file or files]
     -d, --request-delay [seconds]    Set request delay
     -t, --set-timeout [seconds]      Set connection timeout
         --skip-save-results          Skip saving results
+        --validate-markdown          Report Markdown issues
     -w, --white-list [urls]          Comma separated URLs to white list
 ```
 
@@ -86,6 +87,9 @@ $ awesome_bot README.md --allow 403,429
 
 $ awesome_bot README.md --base-url https://github.com/IDR/idr-notebooks/blob/master/
 # will check relative links using the base url provided
+
+$ awesome_bot README.md --validate-markdown
+# will check for Markdown issues such as space missing between links, i.e. [name] (http://..) 
 ```
 
 ```shell
