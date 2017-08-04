@@ -89,7 +89,7 @@ $ awesome_bot README.md --base-url https://github.com/IDR/idr-notebooks/blob/mas
 # will check relative links using the base url provided
 
 $ awesome_bot README.md --validate-markdown
-# will check for Markdown issues such as space missing between links, i.e. [name] (http://..) 
+# will check for Markdown issues such as space missing between links, i.e. [name] (http://giphy.com)
 ```
 
 ```shell
