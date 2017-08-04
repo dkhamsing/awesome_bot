@@ -76,4 +76,16 @@ describe AwesomeBot do
       end
     end
   end
+
+  describe "options" do 
+    context "given markdown issues with --validate-markdown" do 
+      options = {'markdown'=>true}
+      r = AwesomeBot::check '[something] (https://yahoo.com)', options
+      expected = 1
+      value = r.statuses_issues.count
+      it "has one issues" do
+        expect(value).to eql(expected)
+      end
+    end 
+  end 
 end
