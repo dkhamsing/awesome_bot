@@ -31,15 +31,11 @@ module AwesomeBot
 
       if markdown
         yield "Validating Markdown: "
-        v = content.scan /\[.*\] \(http.*\)/
-        r.validate = v
-
-        if (v.count==0)
-          yield STATUS_OK           
-        else
-          yield STATUS_400s
-        end 
+        v = content.scan /\[.*\] \(http.*\)/        
+        yield v.count==0 ? STATUS_OK : STATUS_400s
         yield "\n" 
+
+        r.validate = v      
       else 
         r.validate = []
       end 
