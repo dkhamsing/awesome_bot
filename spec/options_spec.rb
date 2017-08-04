@@ -80,7 +80,7 @@ describe AwesomeBot do
   describe "options" do 
     c = '[something] (https://www.yahoo.com/)'
 
-    context "given one markdown issue with --validate-markdown" do 
+    context "given only one markdown issue with --validate-markdown" do 
       options = {'markdown'=>true}    
       r = AwesomeBot::check c, options
       expected = 1
@@ -90,7 +90,7 @@ describe AwesomeBot do
       end
     end 
 
-    context "given one markdown issue without --validate-markdown" do 
+    context "given only one markdown issue without --validate-markdown" do 
       r = AwesomeBot::check c 
       expected = 0
       value = r.validate.count
