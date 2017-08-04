@@ -27,6 +27,7 @@ module AwesomeBot
         opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                  { |val| options['delay'] = val }
         opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
         opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                { |val| options['no_results'] = val }        
+        opts.on('--validate-markdown',             TrueClass, 'Report Markdown issues')             { |val| options['markdown'] = val }
         opts.on('-w', '--white-list [urls]',       Array,     'Comma separated URLs to white list') { |val| options['white_list'] = val }
 
         opts.on_tail("--help") do
@@ -78,6 +79,9 @@ module AwesomeBot
 
       puts "> Checking links in #{filename}"
 
+      markdown = options['markdown']
+      puts "> Will validate Markdown" unless markdown.nil?
+
       base = options['base_url']
       puts "> Will check relative links with base URL #{base}" unless base.nil?
 
@@ -116,6 +120,7 @@ module AwesomeBot
       options = {
         'allowdupe' => skip_dupe,
         'delay' => delay,
+        'markdown' => markdown,
         'timeout'   => timeout,
         'whitelist' => white_listed,
         'baseurl' => base
@@ -156,6 +161,25 @@ module AwesomeBot
         filtered_issues = []
 
         puts "\nIssues :-("
+
+        if r.validate.count>0
+          print "> Markdown Validation \n"
+          r.validate.each_with_index do |x, i|
+            locv = loc(x, content)
+            error = 'Markdown (missing space)'
+
+            hash = {
+              'loc'=> locv,
+              'link'=> x,
+              'error'=> error
+            }
+            filtered_issues.push hash            
+
+            print "  #{i+1} "
+            print loc_formatted locv
+            puts " #{x} \n"            
+          end 
+        end
 
         print "> Links \n"
         if r.success_links(options)

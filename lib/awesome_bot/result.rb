@@ -7,6 +7,7 @@ module AwesomeBot
     attr_accessor :dupes
     attr_accessor :skip_dupe
     attr_accessor :status
+    attr_accessor :validate
     attr_accessor :white_listed
 
     attr_reader :links_white_listed
@@ -56,7 +57,7 @@ module AwesomeBot
     end
 
     def success(options)
-      success_dupe && success_links(options)
+      success_dupe && success_links(options) && success_validate
     end
 
     def success_dupe
@@ -67,6 +68,10 @@ module AwesomeBot
     def success_links(options)
       statuses_issues(options).count==0
     end
+
+    def success_validate()
+      return self.validate.count==0
+    end 
 
     def white_listing
       !@w.nil?

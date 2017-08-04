@@ -13,6 +13,7 @@ module AwesomeBot
         timeout = nil
         delay = 0
         base = nil
+        markdown = nil
       else
         white_listed = options['whitelist']
         skip_dupe = options['allowdupe']
@@ -20,12 +21,28 @@ module AwesomeBot
         delay = options['delay']
         delay = 0 if delay.nil?
         base = options['baseurl']
+        markdown = options['markdown']
       end
 
       links = links_filter(links_find(content, base))
 
       r = Result.new(links, white_listed)
       r.skip_dupe = skip_dupe
+
+      if markdown
+        yield "Validating Markdown: "
+        v = content.scan /\[.*\] \(http.*\)/
+        r.validate = v
+
+        if (v.count==0)
+          yield STATUS_OK           
+        else
+          yield STATUS_400s
+        end 
+        yield "\n" 
+      else 
+        r.validate = []
+      end 
 
       r.dupes = r.links.select { |e| r.links.count(e) > 1 }
 
