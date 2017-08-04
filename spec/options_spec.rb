@@ -78,12 +78,23 @@ describe AwesomeBot do
   end
 
   describe "options" do 
+    c = '[something] (https://www.yahoo.com/)'
+
     context "given one markdown issue with --validate-markdown" do 
-      options = {'markdown'=>true}
-      r = AwesomeBot::check '[something] (https://www.yahoo.com/)', options
+      options = {'markdown'=>true}    
+      r = AwesomeBot::check c, options
       expected = 1
       value = r.validate.count
       it "has one issues" do
+        expect(value).to eql(expected)
+      end
+    end 
+
+    context "given one markdown issue without --validate-markdown" do 
+      r = AwesomeBot::check c 
+      expected = 0
+      value = r.validate.count
+      it "has no issues" do
         expect(value).to eql(expected)
       end
     end 
