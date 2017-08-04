@@ -2,6 +2,9 @@
 module AwesomeBot
   require 'awesome_bot/white_list'
 
+  RESULT_ERROR_DUPE = 'Dupe'
+  RESULT_ERROR_MARKDOWN = 'Markdown (missing space)'
+
   # Result
   class Result
     attr_accessor :dupes

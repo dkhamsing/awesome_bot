@@ -33,7 +33,7 @@ module AwesomeBot
           s     = i['status']
           r     = i['redirect']
 
-          if error=='Dupe' || error == 'Markdown'
+          if error==RESULT_ERROR_DUPE || error == RESULT_ERROR_MARKDOWN
             message << "#{loc} | #{error} | #{link} "
           else
             status = s==-1? 'Error' : "[#{s}](https://httpstatuses.com/#{s})"

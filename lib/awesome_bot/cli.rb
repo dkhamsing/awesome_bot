@@ -166,7 +166,7 @@ module AwesomeBot
           print "> Markdown Validation \n"
           r.validate.each_with_index do |x, i|
             locv = loc(x, content)
-            error = 'Markdown (missing space)'
+            error = RESULT_ERROR_MARKDOWN
 
             hash = {
               'loc'=> locv,
@@ -208,7 +208,7 @@ module AwesomeBot
             o.each_with_index do |d, index|
               loc = d['loc']
               url = d['url']
-              error = 'Dupe'
+              error = RESULT_ERROR_DUPE
 
               hash = {
                 'loc'=> loc,
