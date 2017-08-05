@@ -38,6 +38,24 @@ describe AwesomeBot do
       end
     end
 
+    context "given allow_redirect option" do
+      opt = {'allow_redirect'=> true}
+      value = AwesomeBot.output_summary opt
+      expected = AwesomeBot::OUTPUT_SUMMARY_REDIRECT
+      it "will output summary" do
+        expect(value).to include(expected)
+      end
+    end
+
+    context "given allow_ssl option" do
+      opt = {'allow_ssl'=> true}
+      value = AwesomeBot.output_summary opt
+      expected = AwesomeBot::OUTPUT_SUMMARY_SSL
+      it "will output summary" do
+        expect(value).to include(expected)
+      end
+    end
+
     options = {}
     file = 'bin/assets/test-redirect'
     content = File.read file

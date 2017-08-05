@@ -10,6 +10,7 @@ module AwesomeBot
   OUTPUT_SUMMARY_ERRORS = 'Will allow errors'
   OUTPUT_SUMMARY_MARKDOWN = 'Will validate Markdown'
   OUTPUT_SUMMARY_REDIRECT = 'Will allow redirects'
+  OUTPUT_SUMMARY_SSL = 'Will allow SSL errors'
 
   class << self
     def loc(x, content)
@@ -182,7 +183,7 @@ module AwesomeBot
       o << "> #{OUTPUT_SUMMARY_REDIRECT}" if allow_redirects == true
 
       allow_ssl = options['allow_ssl']
-      o << '> Will allow SSL errors' if allow_ssl == true
+      o << "> #{OUTPUT_SUMMARY_SSL}" if allow_ssl == true
 
       allow_timeouts = options['allow_timeout']
       o << '> Will allow network timeouts' if allow_timeouts == true
