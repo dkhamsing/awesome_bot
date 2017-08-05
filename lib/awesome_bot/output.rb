@@ -5,6 +5,8 @@ module AwesomeBot
   STATUS_400s = 'x'
   STATUS_REDIRECT = '→'
 
+  OUTPUT_SUMMARY_BASE = 'Will check relative links with base URL'
+  OUTPUT_SUMMARY_ERRORS = 'Will allow errors'
   OUTPUT_SUMMARY_MARKDOWN = 'Will validate Markdown'
 
   class << self
@@ -166,10 +168,10 @@ module AwesomeBot
       o << "> #{OUTPUT_SUMMARY_MARKDOWN} \n" unless markdown.nil?
 
       base = options['base_url']
-      o << "> Will check relative links with base URL #{base} \n" unless base.nil?
+      o << "> #{OUTPUT_SUMMARY_BASE} #{base} \n" unless base.nil?
 
       errors = options['errors']
-      o << "> Will allow errors: #{errors.join ','}" unless errors.nil?
+      o << "> #{OUTPUT_SUMMARY_ERRORS}: #{errors.join ','}" unless errors.nil?
 
       skip_dupe = options['allow_dupe']
       o << '> Will allow duplicate links' if skip_dupe == true

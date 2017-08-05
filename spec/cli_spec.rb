@@ -2,10 +2,28 @@ require 'awesome_bot'
 
 describe AwesomeBot do
   describe "cli" do
-    context "given options WIP" do
+    context "given markdown option" do
       opt = {'markdown'=> true}
       value = AwesomeBot.output_summary opt
       expected = AwesomeBot::OUTPUT_SUMMARY_MARKDOWN
+      it "will output summary" do
+        expect(value).to include(expected)
+      end
+    end
+
+    context "given base_url option" do
+      opt = {'base_url'=> 'test'}
+      value = AwesomeBot.output_summary opt
+      expected = AwesomeBot::OUTPUT_SUMMARY_BASE
+      it "will output summary" do
+        expect(value).to include(expected)
+      end
+    end
+
+    context "given errors option" do
+      opt = {'errors'=> ['test']}
+      value = AwesomeBot.output_summary opt
+      expected = AwesomeBot::OUTPUT_SUMMARY_ERRORS
       it "will output summary" do
         expect(value).to include(expected)
       end
