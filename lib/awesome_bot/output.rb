@@ -75,7 +75,7 @@ module AwesomeBot
       [o, hash]
     end
 
-    def output_filtered(content, r, options, digits, markdown, skip_dupe)
+    def output_filtered(content, r, options, markdown, skip_dupe)
       filtered_issues = []
 
       unless markdown.nil?
@@ -106,6 +106,7 @@ module AwesomeBot
         puts "  OK #{STATUS_OK}"
       else
         o = order_by_loc r.statuses_issues(options), content
+        digits = number_of_digits content
         o.each_with_index do |x, k|
           temp, h = output(x, k, pad_list(o), digits)
           filtered_issues.push h
