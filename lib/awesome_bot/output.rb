@@ -75,9 +75,10 @@ module AwesomeBot
       [o, hash]
     end
 
-    def output_filtered(content, r, options, markdown, skip_dupe)
+    def output_filtered(content, r, options)
       filtered_issues = []
 
+      markdown = options['markdown']
       unless markdown.nil?
         print "> Markdown Validation \n"
         if r.success_validate
@@ -114,6 +115,7 @@ module AwesomeBot
         end
       end
 
+      skip_dupe = options['skip_dupe']
       unless skip_dupe
         print "> Dupes \n"
         if r.success_dupe

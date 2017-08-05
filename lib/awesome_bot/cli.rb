@@ -146,10 +146,13 @@ module AwesomeBot
       allow_timeouts = false if allow_timeouts.nil?
 
       options = {
-        'errors' => errors,
+        'errors'   => errors,
         'redirect' => allow_redirects,
         'ssl'      => allow_ssl,
-        'timeout'  => allow_timeouts
+        'timeout'  => allow_timeouts,
+
+        'markdown' => markdown,
+        'skip_dupe' => skip_dupe
       }
 
       if r.success(options)
@@ -160,7 +163,7 @@ module AwesomeBot
       else
         puts "\nIssues :-("
 
-        filtered_issues = output_filtered(content, r, options, markdown, skip_dupe)
+        filtered_issues = output_filtered(content, r, options)
         write_results(filename, r, no_results)
         filtered = write_results_filtered(filename, filtered_issues, no_results)
         write_markdown_results(filename, filtered, no_results)
