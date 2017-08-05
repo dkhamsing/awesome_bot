@@ -5,7 +5,7 @@ describe AwesomeBot do
     context "given options WIP" do
       opt = {'markdown'=> true}
       value = AwesomeBot.output_summary opt
-      expected = '> Will validate Markdown'
+      expected = AwesomeBot::OUTPUT_SUMMARY_MARKDOWN
       it "will output summary" do
         expect(value).to include(expected)
       end

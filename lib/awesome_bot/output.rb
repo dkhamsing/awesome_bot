@@ -5,6 +5,8 @@ module AwesomeBot
   STATUS_400s = 'x'
   STATUS_REDIRECT = '→'
 
+  OUTPUT_SUMMARY_MARKDOWN = 'Will validate Markdown'
+
   class << self
     def loc(x, content)
       count = 0
@@ -161,7 +163,7 @@ module AwesomeBot
     def output_summary(options)
       o = ''
       markdown = options['markdown']
-      o << "> Will validate Markdown \n" unless markdown.nil?
+      o << "> #{OUTPUT_SUMMARY_MARKDOWN} \n" unless markdown.nil?
 
       base = options['base_url']
       o << "> Will check relative links with base URL #{base} \n" unless base.nil?
