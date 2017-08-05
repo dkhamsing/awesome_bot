@@ -159,8 +159,8 @@ module AwesomeBot
         return STATUS_OK
       else
         puts "\nIssues :-("
-        
-        filtered_issues = output_filtered(content, r, options, markdown, skip_dupe)
+
+        filtered_issues = output_filtered(content, r, options, digits, markdown, skip_dupe)
         write_results(filename, r, no_results)
         filtered = write_results_filtered(filename, filtered_issues, no_results)
         write_markdown_results(filename, filtered, no_results)
