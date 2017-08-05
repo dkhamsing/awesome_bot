@@ -11,6 +11,7 @@ module AwesomeBot
   OUTPUT_SUMMARY_MARKDOWN = 'Will validate Markdown'
   OUTPUT_SUMMARY_REDIRECT = 'Will allow redirects'
   OUTPUT_SUMMARY_SSL = 'Will allow SSL errors'
+  OUTPUT_SUMMARY_TIMEOUT = 'Will allow network timeouts'
 
   class << self
     def loc(x, content)
@@ -186,7 +187,7 @@ module AwesomeBot
       o << "> #{OUTPUT_SUMMARY_SSL}" if allow_ssl == true
 
       allow_timeouts = options['allow_timeout']
-      o << '> Will allow network timeouts' if allow_timeouts == true
+      o << "> #{OUTPUT_SUMMARY_TIMEOUT}" if allow_timeouts == true
 
       delay = options['delay']
       o << "> Will delay each request by #{delay} second#{delay==1? '': 's'}" unless delay.nil?
