@@ -65,6 +65,15 @@ describe AwesomeBot do
       end
     end
 
+    context "given delay option" do
+      opt = {'delay'=> 1}
+      value = AwesomeBot.output_summary opt
+      expected = AwesomeBot::OUTPUT_SUMMARY_DELAY
+      it "will output summary" do
+        expect(value).to include(expected)
+      end
+    end
+
     options = {}
     file = 'bin/assets/test-redirect'
     content = File.read file

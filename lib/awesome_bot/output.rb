@@ -6,6 +6,7 @@ module AwesomeBot
   STATUS_REDIRECT = '→'
 
   OUTPUT_SUMMARY_BASE = 'Will check relative links with base URL'
+  OUTPUT_SUMMARY_DELAY = 'Will delay each request by'
   OUTPUT_SUMMARY_DUPE = 'Will allow duplicate links'
   OUTPUT_SUMMARY_ERRORS = 'Will allow errors'
   OUTPUT_SUMMARY_MARKDOWN = 'Will validate Markdown'
@@ -190,7 +191,7 @@ module AwesomeBot
       o << "> #{OUTPUT_SUMMARY_TIMEOUT}" if allow_timeouts == true
 
       delay = options['delay']
-      o << "> Will delay each request by #{delay} second#{delay==1? '': 's'}" unless delay.nil?
+      o << "> #{OUTPUT_SUMMARY_DELAY} #{delay} second#{delay==1? '': 's'}" unless delay.nil?
 
       timeout = options['timeout']
       o << "> Connection timeout = #{timeout}s" unless timeout.nil?
