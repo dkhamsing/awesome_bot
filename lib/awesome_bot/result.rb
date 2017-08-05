@@ -72,7 +72,7 @@ module AwesomeBot
       statuses_issues(options).count==0
     end
 
-    def success_validate()
+    def success_validate
       return validate.count==0
     end
 
