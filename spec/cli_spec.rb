@@ -74,6 +74,15 @@ describe AwesomeBot do
       end
     end
 
+    context "given timeout option" do
+      opt = {'timeout'=> 1}
+      value = AwesomeBot.output_summary opt
+      expected = AwesomeBot::OUTPUT_SUMMARY_CONNECTION
+      it "will output summary" do
+        expect(value).to include(expected)
+      end
+    end
+
     options = {}
     file = 'bin/assets/test-redirect'
     content = File.read file
