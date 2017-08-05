@@ -86,7 +86,6 @@ module AwesomeBot
       white_listed = options['white_list']
       base = options['base_url']
 
-      errors = options['errors']
       allow_redirects = options['allow_redirect']
       allow_ssl = options['allow_ssl']
       allow_timeouts = options['allow_timeout']
@@ -119,6 +118,7 @@ module AwesomeBot
       allow_ssl = false if allow_ssl.nil?
       allow_timeouts = false if allow_timeouts.nil?
 
+      errors = options['errors']
       options = {
         'errors'   => errors,
         'redirect' => allow_redirects,
