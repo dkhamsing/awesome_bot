@@ -78,7 +78,7 @@ module AwesomeBot
       end
 
       puts "> Checking links in #{filename}"
-      output_summary(options)
+      puts output_summary(options)
 
       skip_dupe = options['allow_dupe']
       delay = options['delay']

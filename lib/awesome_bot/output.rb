@@ -159,39 +159,41 @@ module AwesomeBot
     end
 
     def output_summary(options)
+      o = ''
       markdown = options['markdown']
-      puts "> Will validate Markdown" unless markdown.nil?
+      o << "> Will validate Markdown \n" unless markdown.nil?
 
       base = options['base_url']
-      puts "> Will check relative links with base URL #{base}" unless base.nil?
+      o << "> Will check relative links with base URL #{base} \n" unless base.nil?
 
       errors = options['errors']
-      puts "> Will allow errors: #{errors.join ','}" unless errors.nil?
+      o << "> Will allow errors: #{errors.join ','}" unless errors.nil?
 
       skip_dupe = options['allow_dupe']
-      puts '> Will allow duplicate links' if skip_dupe == true
+      o << '> Will allow duplicate links' if skip_dupe == true
 
       allow_redirects = options['allow_redirect']
-      puts '> Will allow redirects' if allow_redirects == true
+      o << '> Will allow redirects' if allow_redirects == true
 
       allow_ssl = options['allow_ssl']
-      puts '> Will allow SSL errors' if allow_ssl == true
+      o << '> Will allow SSL errors' if allow_ssl == true
 
       allow_timeouts = options['allow_timeout']
-      puts '> Will allow network timeouts' if allow_timeouts == true
+      o << '> Will allow network timeouts' if allow_timeouts == true
 
       delay = options['delay']
-      puts "> Will delay each request by #{delay} second#{delay==1? '': 's'}" unless delay.nil?
-
-      white_listed = options['white_list']
+      o << "> Will delay each request by #{delay} second#{delay==1? '': 's'}" unless delay.nil?
 
       timeout = options['timeout']
-      puts "> Connection timeout = #{timeout}s" unless timeout.nil?
+      o << "> Connection timeout = #{timeout}s" unless timeout.nil?
 
-      puts "> White list links matching: #{white_listed.join ', '} " unless white_listed.nil?
+      white_listed = options['white_list']
+      o << "> White list links matching: #{white_listed.join ', '} " unless white_listed.nil?
 
       no_results = options['no_results']
-      puts '> Will not save results' if no_results == true
+      o << '> Will not save results' if no_results == true
+
+      o
     end
 
     def pad_list(list)
