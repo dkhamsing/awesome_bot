@@ -9,6 +9,7 @@ module AwesomeBot
   OUTPUT_SUMMARY_DUPE = 'Will allow duplicate links'
   OUTPUT_SUMMARY_ERRORS = 'Will allow errors'
   OUTPUT_SUMMARY_MARKDOWN = 'Will validate Markdown'
+  OUTPUT_SUMMARY_REDIRECT = 'Will allow redirects'
 
   class << self
     def loc(x, content)
@@ -178,7 +179,7 @@ module AwesomeBot
       o << "> #{OUTPUT_SUMMARY_DUPE}" if skip_dupe == true
 
       allow_redirects = options['allow_redirect']
-      o << '> Will allow redirects' if allow_redirects == true
+      o << "> #{OUTPUT_SUMMARY_REDIRECT}" if allow_redirects == true
 
       allow_ssl = options['allow_ssl']
       o << '> Will allow SSL errors' if allow_ssl == true
