@@ -77,7 +77,8 @@ module AwesomeBot
         return error
       end
 
-      output_summary(filename, options)
+      puts "> Checking links in #{filename}"
+      output_summary(options)
 
       skip_dupe = options['allow_dupe']
       delay = options['delay']

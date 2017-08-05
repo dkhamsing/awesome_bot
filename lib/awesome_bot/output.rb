@@ -158,9 +158,7 @@ module AwesomeBot
       end
     end
 
-    def output_summary(filename, options)
-      puts "> Checking links in #{filename}"
-
+    def output_summary(options)
       markdown = options['markdown']
       puts "> Will validate Markdown" unless markdown.nil?
 
