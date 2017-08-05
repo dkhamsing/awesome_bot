@@ -164,7 +164,7 @@ module AwesomeBot
 
         unless markdown.nil?
           print "> Markdown Validation \n"
-          if r.validate.count==0
+          if r.success_validate
             puts "  OK #{STATUS_OK}"
           else
             r.validate.each_with_index do |x, i|
