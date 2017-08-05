@@ -2,6 +2,15 @@ require 'awesome_bot'
 
 describe AwesomeBot do
   describe "cli" do
+    context "given no option" do
+      opt = {}
+      value = AwesomeBot.output_summary opt
+      expected = ''
+      it "will not output summary" do
+        expect(value).to eql(expected)
+      end
+    end
+
     context "given markdown option" do
       opt = {'markdown'=> true}
       value = AwesomeBot.output_summary opt
