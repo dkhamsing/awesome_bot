@@ -30,7 +30,7 @@ describe AwesomeBot do
       end
     end
 
-    context "give --skip-save-results option true (api contract)" do
+    context "given --skip-save-results option true (api contract)" do
       option = true
       r = AwesomeBot.check content
       value = AwesomeBot.write_results file, r, option
