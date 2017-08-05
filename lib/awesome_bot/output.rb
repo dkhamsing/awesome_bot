@@ -182,16 +182,16 @@ module AwesomeBot
       o << "> #{OUTPUT_SUMMARY_ERRORS}: #{errors.join ','}" unless errors.nil?
 
       skip_dupe = options['allow_dupe']
-      o << "> #{OUTPUT_SUMMARY_DUPE}" if skip_dupe == true
+      o << "> #{OUTPUT_SUMMARY_DUPE}" unless skip_dupe.nil?
 
       allow_redirects = options['allow_redirect']
-      o << "> #{OUTPUT_SUMMARY_REDIRECT}" if allow_redirects == true
+      o << "> #{OUTPUT_SUMMARY_REDIRECT}" unless allow_redirects.nil?
 
       allow_ssl = options['allow_ssl']
-      o << "> #{OUTPUT_SUMMARY_SSL}" if allow_ssl == true
+      o << "> #{OUTPUT_SUMMARY_SSL}" unless allow_ssl.nil?
 
       allow_timeouts = options['allow_timeout']
-      o << "> #{OUTPUT_SUMMARY_TIMEOUT}" if allow_timeouts == true
+      o << "> #{OUTPUT_SUMMARY_TIMEOUT}" unless allow_timeouts.nil?
 
       delay = options['delay']
       o << "> #{OUTPUT_SUMMARY_DELAY} #{delay} second#{delay==1? '': 's'}" unless delay.nil?
@@ -203,7 +203,7 @@ module AwesomeBot
       o << "> #{OUTPUT_SUMMARY_WHITELIST}: #{white_listed.join ', '} " unless white_listed.nil?
 
       no_results = options['no_results']
-      o << "> #{OUTPUT_SUMMARY_SAVE}" if no_results == true
+      o << "> #{OUTPUT_SUMMARY_SAVE}" unless no_results.nil?
 
       o
     end
