@@ -77,45 +77,19 @@ module AwesomeBot
         return error
       end
 
-      puts "> Checking links in #{filename}"
+      output_summary(filename, options)
 
       markdown = options['markdown']
-      puts "> Will validate Markdown" unless markdown.nil?
-
       base = options['base_url']
-      puts "> Will check relative links with base URL #{base}" unless base.nil?
-
       errors = options['errors']
-      puts "> Will allow errors: #{errors.join ','}" unless errors.nil?
-
       skip_dupe = options['allow_dupe']
-      puts '> Will allow duplicate links' if skip_dupe == true
-
       allow_redirects = options['allow_redirect']
-      puts '> Will allow redirects' if allow_redirects == true
-
       allow_ssl = options['allow_ssl']
-      puts '> Will allow SSL errors' if allow_ssl == true
-
       allow_timeouts = options['allow_timeout']
-      puts '> Will allow network timeouts' if allow_timeouts == true
-
       delay = options['delay']
-      puts "> Will delay each request by #{delay} second#{delay==1? '': 's'}" unless delay.nil?
-
       white_listed = options['white_list']
-
       timeout = options['timeout']
-      puts "> Connection timeout = #{timeout}s" unless timeout.nil?
-
-      puts "> White list links matching: #{white_listed.join ', '} " unless white_listed.nil?
-
       no_results = options['no_results']
-      if no_results == true
-        puts '> Will not save results'
-      else
-        no_results = false
-      end
 
       options = {
         'allowdupe' => skip_dupe,
