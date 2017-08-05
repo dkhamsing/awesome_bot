@@ -90,7 +90,9 @@ module AwesomeBot
       allow_redirects = options['allow_redirect']
       allow_ssl = options['allow_ssl']
       allow_timeouts = options['allow_timeout']
+      
       no_results = options['no_results']
+      no_results = false if no_results.nil?
 
       options = {
         'allowdupe' => skip_dupe,
