@@ -2,6 +2,18 @@ require 'awesome_bot'
 
 describe AwesomeBot do
   describe "cli" do
+    context "given options WIP" do
+      opt = {'markdown'=> true}
+      value = AwesomeBot.output_summary opt
+      expected = '> Will validate Markdown'
+      it "will output summary" do
+        expect(value).to include(expected)
+      end
+    end
+  end
+
+  end
+  describe "cli" do
     options = {}
     file = 'bin/assets/test-redirect'
     content = File.read file
