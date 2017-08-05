@@ -193,11 +193,7 @@ module AwesomeBot
       puts "> White list links matching: #{white_listed.join ', '} " unless white_listed.nil?
 
       no_results = options['no_results']
-      if no_results == true
-        puts '> Will not save results'
-      else
-        no_results = false
-      end
+      puts '> Will not save results' if no_results == true
     end
 
     def pad_list(list)
