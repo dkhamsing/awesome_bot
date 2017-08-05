@@ -10,10 +10,7 @@ describe AwesomeBot do
         expect(value).to include(expected)
       end
     end
-  end
 
-  end
-  describe "cli" do
     options = {}
     file = 'bin/assets/test-redirect'
     content = File.read file
