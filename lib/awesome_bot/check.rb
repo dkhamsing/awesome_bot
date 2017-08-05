@@ -29,19 +29,19 @@ module AwesomeBot
       r = Result.new(links, white_listed)
       r.skip_dupe = skip_dupe
 
-      if markdown        
-        v = content.scan /\[.*\] \(http.*\)/        
+      if markdown.nil?
+        r.validate = []
+      else
+        v = content.scan /\[.*\] \(http.*\)/
 
         if block_given?
           yield "Validating Markdown: "
           yield v.count==0 ? STATUS_OK : STATUS_400s
-          yield "\n" 
+          yield "\n"
         end
 
-        r.validate = v      
-      else 
-        r.validate = []
-      end 
+        r.validate = v
+      end
 
       r.dupes = r.links.select { |e| r.links.count(e) > 1 }
 

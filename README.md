@@ -19,7 +19,7 @@ Verify links in [awesome](status/status.md) projects
 ### Command Line
 
 ```
-Usage: awesome_bot [file or files] 
+Usage: awesome_bot [file or files]
        awesome_bot [options]
     -f, --files [files]              Comma separated files to check
     -a, --allow [errors]             Status code errors to allow

@@ -73,8 +73,8 @@ module AwesomeBot
     end
 
     def success_validate()
-      return self.validate.count==0
-    end 
+      return validate.count==0
+    end
 
     def white_listing
       !@w.nil?

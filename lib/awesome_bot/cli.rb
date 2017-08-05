@@ -26,8 +26,8 @@ module AwesomeBot
         opts.on('--base-url [base url]',           String,    'Base URL to use for relative links') { |val| options['base_url'] = val }
         opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                  { |val| options['delay'] = val }
         opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
-        opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                { |val| options['no_results'] = val }        
-        opts.on('--validate-markdown',             TrueClass, 'Report Markdown issues')             { |val| options['markdown'] = val }
+        opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                { |val| options['no_results'] = val }
+        opts.on('--validate-markdown',             TrueClass, 'Validate Markdown')                  { |val| options['markdown'] = val }
         opts.on('-w', '--white-list [urls]',       Array,     'Comma separated URLs to white list') { |val| options['white_list'] = val }
 
         opts.on_tail("--help") do
@@ -173,12 +173,12 @@ module AwesomeBot
               'link'=> x,
               'error'=> error
             }
-            filtered_issues.push hash            
+            filtered_issues.push hash
 
             print "  #{i+1} "
             print loc_formatted locv
-            puts " #{x} \n"            
-          end 
+            puts " #{x} \n"
+          end
         end
 
         print "> Links \n"
