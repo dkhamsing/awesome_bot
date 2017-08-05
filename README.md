@@ -31,7 +31,7 @@ Usage: awesome_bot [file or files]
     -d, --request-delay [seconds]    Set request delay
     -t, --set-timeout [seconds]      Set connection timeout
         --skip-save-results          Skip saving results
-        --validate-markdown          Report Markdown issues
+        --validate-markdown          Validate Markdown
     -w, --white-list [urls]          Comma separated URLs to white list
 ```
 
