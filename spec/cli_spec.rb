@@ -83,6 +83,15 @@ describe AwesomeBot do
       end
     end
 
+    context "given white_list option" do
+      opt = {'white_list'=> ['test']}
+      value = AwesomeBot.output_summary opt
+      expected = AwesomeBot::OUTPUT_SUMMARY_WHITELIST
+      it "will output summary" do
+        expect(value).to include(expected)
+      end
+    end
+
     options = {}
     file = 'bin/assets/test-redirect'
     content = File.read file

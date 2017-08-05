@@ -14,6 +14,7 @@ module AwesomeBot
   OUTPUT_SUMMARY_REDIRECT = 'Will allow redirects'
   OUTPUT_SUMMARY_SSL = 'Will allow SSL errors'
   OUTPUT_SUMMARY_TIMEOUT = 'Will allow network timeouts'
+  OUTPUT_SUMMARY_WHITELIST = 'White list links matching'
 
   class << self
     def loc(x, content)
@@ -198,7 +199,7 @@ module AwesomeBot
       o << "> #{OUTPUT_SUMMARY_CONNECTION} = #{timeout}s" unless timeout.nil?
 
       white_listed = options['white_list']
-      o << "> White list links matching: #{white_listed.join ', '} " unless white_listed.nil?
+      o << "> #{OUTPUT_SUMMARY_WHITELIST}: #{white_listed.join ', '} " unless white_listed.nil?
 
       no_results = options['no_results']
       o << '> Will not save results' if no_results == true
