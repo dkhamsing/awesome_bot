@@ -6,6 +6,7 @@ module AwesomeBot
   STATUS_REDIRECT = '→'
 
   OUTPUT_SUMMARY_BASE = 'Will check relative links with base URL'
+  OUTPUT_SUMMARY_DUPE = 'Will allow duplicate links'
   OUTPUT_SUMMARY_ERRORS = 'Will allow errors'
   OUTPUT_SUMMARY_MARKDOWN = 'Will validate Markdown'
 
@@ -174,7 +175,7 @@ module AwesomeBot
       o << "> #{OUTPUT_SUMMARY_ERRORS}: #{errors.join ','}" unless errors.nil?
 
       skip_dupe = options['allow_dupe']
-      o << '> Will allow duplicate links' if skip_dupe == true
+      o << "> #{OUTPUT_SUMMARY_DUPE}" if skip_dupe == true
 
       allow_redirects = options['allow_redirect']
       o << '> Will allow redirects' if allow_redirects == true
