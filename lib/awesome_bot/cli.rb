@@ -79,16 +79,17 @@ module AwesomeBot
 
       output_summary(filename, options)
 
-      markdown = options['markdown']
-      base = options['base_url']
-      errors = options['errors']
       skip_dupe = options['allow_dupe']
+      delay = options['delay']
+      markdown = options['markdown']
+      timeout = options['timeout']
+      white_listed = options['white_list']
+      base = options['base_url']
+
+      errors = options['errors']
       allow_redirects = options['allow_redirect']
       allow_ssl = options['allow_ssl']
-      allow_timeouts = options['allow_timeout']
-      delay = options['delay']
-      white_listed = options['white_list']
-      timeout = options['timeout']
+      allow_timeouts = options['allow_timeout']      
       no_results = options['no_results']
 
       options = {
