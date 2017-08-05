@@ -152,7 +152,7 @@ module AwesomeBot
         'timeout'  => allow_timeouts
       }
 
-      if r.success(options) == true
+      if r.success(options)
         puts 'No issues :-)'
         write_results(filename, r, no_results)
         write_markdown_results(filename, nil, no_results)
