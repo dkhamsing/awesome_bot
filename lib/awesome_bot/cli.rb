@@ -162,28 +162,32 @@ module AwesomeBot
 
         puts "\nIssues :-("
 
-        if r.validate.count>0
+        unless markdown.nil?
           print "> Markdown Validation \n"
-          r.validate.each_with_index do |x, i|
-            locv = loc(x, content)
-            error = RESULT_ERROR_MARKDOWN
+          if r.validate.count==0
+            puts "  OK #{STATUS_OK}"
+          else
+            r.validate.each_with_index do |x, i|
+              locv = loc(x, content)
+              error = RESULT_ERROR_MARKDOWN
 
-            hash = {
-              'loc'=> locv,
-              'link'=> x,
-              'error'=> error
-            }
-            filtered_issues.push hash
+              hash = {
+                'loc'=> locv,
+                'link'=> x,
+                'error'=> error
+              }
+              filtered_issues.push hash
 
-            print "  #{i+1} "
-            print loc_formatted locv
-            puts " #{x} \n"
+              print "  #{i+1} "
+              print loc_formatted locv
+              puts " #{x} \n"
+            end
           end
         end
 
         print "> Links \n"
         if r.success_links(options)
-          puts "  All OK #{STATUS_OK}"
+          puts "  OK #{STATUS_OK}"
         else
           o = order_by_loc r.statuses_issues(options), content
           o.each_with_index do |x, k|
