@@ -89,7 +89,7 @@ module AwesomeBot
       errors = options['errors']
       allow_redirects = options['allow_redirect']
       allow_ssl = options['allow_ssl']
-      allow_timeouts = options['allow_timeout']      
+      allow_timeouts = options['allow_timeout']
       no_results = options['no_results']
 
       options = {
@@ -100,7 +100,6 @@ module AwesomeBot
         'whitelist' => white_listed,
         'baseurl' => base
       }
-
       threads = delay == nil ? 10 : 1
       r = check(content, options, threads) do |o|
         print o
