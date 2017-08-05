@@ -20,7 +20,7 @@ Changes by [Daniel Khamsing][] unless otherwise noted.
 
 # 1.16.0
 
-- add `--base-url` option (check Markdown relative links)
+- add `--base-url` option (check markdown relative links)
 
 # 1.15.0
 
