@@ -75,7 +75,7 @@ module AwesomeBot
       [o, hash]
     end
 
-    def filtered_issues = output_filtered(content, r, options, digits, markdown, skip_dupe)
+    def output_filtered(content, r, options, digits, markdown, skip_dupe)
       filtered_issues = []
 
       unless markdown.nil?
