@@ -4,7 +4,7 @@ Changes by [Daniel Khamsing][] unless otherwise noted.
 
 # 1.18.0
 
-- add `--validate-markdown` option (report missing space in Markdown links) suggested by [Richard Littauer](https://github.com/RichardLitt)
+- add `--validate-markdown` option (find missing space in Markdown links) suggested by [Richard Littauer](https://github.com/RichardLitt)
 
 # 1.17.1
 
