@@ -17,18 +17,18 @@ module AwesomeBot
         opts.banner = "Usage: #{PROJECT} [file or files] \n"\
                       "       #{PROJECT} [options]"
 
-        opts.on('-f', '--files [files]',           Array,     'Comma separated files to check')     { |val| options['files'] = val }
-        opts.on('-a', '--allow [errors]',          Array,     'Status code errors to allow')        { |val| options['errors'] = val }
-        opts.on('--allow-dupe',                    TrueClass, 'Duplicate URLs are allowed')         { |val| options['allow_dupe'] = val }
-        opts.on('--allow-ssl',                     TrueClass, 'SSL errors are allowed')             { |val| options['allow_ssl'] = val }
-        opts.on('--allow-redirect',                TrueClass, 'Redirected URLs are allowed')        { |val| options['allow_redirect'] = val }
-        opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')     { |val| options['allow_timeout'] = val }
-        opts.on('--base-url [base url]',           String,    'Base URL to use for relative links') { |val| options['base_url'] = val }
-        opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                  { |val| options['delay'] = val }
-        opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
-        opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                { |val| options['no_results'] = val }
-        opts.on('--validate-markdown',             TrueClass, 'Validate Markdown')                  { |val| options['markdown'] = val }
-        opts.on('-w', '--white-list [urls]',       Array,     'Comma separated URLs to white list') { |val| options['white_list'] = val }
+        opts.on('-f', '--files [files]',           Array,     'Comma separated files to check')                  { |val| options['files'] = val }
+        opts.on('-a', '--allow [errors]',          Array,     'Status code errors to allow')                     { |val| options['errors'] = val }
+        opts.on('--allow-dupe',                    TrueClass, 'Duplicate URLs are allowed')                      { |val| options['allow_dupe'] = val }
+        opts.on('--allow-ssl',                     TrueClass, 'SSL errors are allowed')                          { |val| options['allow_ssl'] = val }
+        opts.on('--allow-redirect',                TrueClass, 'Redirected URLs are allowed')                     { |val| options['allow_redirect'] = val }
+        opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')                  { |val| options['allow_timeout'] = val }
+        opts.on('--base-url [base url]',           String,    'Base URL to use for relative links')              { |val| options['base_url'] = val }
+        opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                               { |val| options['delay'] = val }
+        opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')                          { |val| options['timeout'] = val }
+        opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                             { |val| options['no_results'] = val }
+        opts.on('--validate-markdown',             TrueClass, 'Validate Markdown (find space missing in links)') { |val| options['markdown'] = val }
+        opts.on('-w', '--white-list [urls]',       Array,     'Comma separated URLs to white list')              { |val| options['white_list'] = val }
 
         opts.on_tail("--help") do
           puts opts
