@@ -12,6 +12,7 @@ module AwesomeBot
   OUTPUT_SUMMARY_ERRORS = 'Will allow errors'
   OUTPUT_SUMMARY_MARKDOWN = 'Will validate Markdown'
   OUTPUT_SUMMARY_REDIRECT = 'Will allow redirects'
+  OUTPUT_SUMMARY_SAVE = 'Will not save results'
   OUTPUT_SUMMARY_SSL = 'Will allow SSL errors'
   OUTPUT_SUMMARY_TIMEOUT = 'Will allow network timeouts'
   OUTPUT_SUMMARY_WHITELIST = 'White list links matching'
@@ -202,7 +203,7 @@ module AwesomeBot
       o << "> #{OUTPUT_SUMMARY_WHITELIST}: #{white_listed.join ', '} " unless white_listed.nil?
 
       no_results = options['no_results']
-      o << '> Will not save results' if no_results == true
+      o << "> #{OUTPUT_SUMMARY_SAVE}" if no_results == true
 
       o
     end
