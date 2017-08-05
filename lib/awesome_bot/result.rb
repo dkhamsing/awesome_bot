@@ -60,7 +60,7 @@ module AwesomeBot
     end
 
     def success(options)
-      success_dupe && success_links(options) && success_validate
+      success_links(options) && success_dupe && && success_validate
     end
 
     def success_dupe
