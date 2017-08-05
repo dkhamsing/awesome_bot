@@ -172,6 +172,7 @@ module AwesomeBot
 
     def output_summary(options)
       o = ''
+      
       markdown = options['markdown']
       o << "> #{OUTPUT_SUMMARY_MARKDOWN} \n" unless markdown.nil?
 
