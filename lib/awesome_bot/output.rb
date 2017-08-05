@@ -76,10 +76,7 @@ module AwesomeBot
     end
 
     def output_filtered(content, r, options, markdown, skip_dupe)
-
       filtered_issues = []
-
-      puts "\nIssues :-("
 
       unless markdown.nil?
         print "> Markdown Validation \n"
@@ -148,7 +145,7 @@ module AwesomeBot
       end
 
       filtered_issues
-    end    
+    end
 
     def output_redirect(x)
       if status_is_redirected? x['status']

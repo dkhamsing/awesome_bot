@@ -158,6 +158,8 @@ module AwesomeBot
         write_markdown_results(filename, nil, no_results)
         return STATUS_OK
       else
+        puts "\nIssues :-("
+        
         filtered_issues = output_filtered(content, r, options, markdown, skip_dupe)
         write_results(filename, r, no_results)
         filtered = write_results_filtered(filename, filtered_issues, no_results)
