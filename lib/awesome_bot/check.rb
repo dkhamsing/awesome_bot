@@ -20,7 +20,7 @@ module AwesomeBot
         timeout = options['timeout']
         delay = options['delay']
         delay = 0 if delay.nil?
-        base_url = options['base_url']
+        base_url = options[CLI_OPT_BASE_URL]
         markdown = options['markdown']
       end
 

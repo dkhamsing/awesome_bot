@@ -21,7 +21,7 @@ describe AwesomeBot do
     end
 
     context "given base_url option" do
-      opt = {'base_url'=> 'test'}
+      opt = {AwesomeBot::CLI_OPT_BASE_URL=> 'test'}
       value = AwesomeBot.output_summary opt
       expected = AwesomeBot::OUTPUT_SUMMARY_BASE
       it "will output summary" do

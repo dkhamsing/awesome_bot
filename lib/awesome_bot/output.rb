@@ -175,7 +175,7 @@ module AwesomeBot
       markdown = options['markdown']
       o << "> #{OUTPUT_SUMMARY_MARKDOWN} \n" unless markdown.nil?
 
-      base = options['base_url']
+      base = options[CLI_OPT_BASE_URL]
       o << "> #{OUTPUT_SUMMARY_BASE} #{base} \n" unless base.nil?
 
       errors = options[CLI_OPT_ERRORS]
