@@ -30,7 +30,7 @@ describe AwesomeBot do
       expected = 0
 
       options = {
-        'allow_redirect'=>true,
+        AwesomeBot::CLI_OPT_ALLOW_REDIRECT=>true,
         AwesomeBot::CLI_OPT_ALLOW_SSL=>false,
         'allow_timeout'=>false
       }
@@ -48,7 +48,7 @@ describe AwesomeBot do
 
       options = {
         AwesomeBot::CLI_OPT_ERRORS=>['301'],
-        'allow_redirect'=>true,
+        AwesomeBot::CLI_OPT_ALLOW_REDIRECT=>true,
         AwesomeBot::CLI_OPT_ALLOW_SSL=>false,
         'allow_timeout'=>false
       }
@@ -66,7 +66,7 @@ describe AwesomeBot do
       expected = 0
 
       options = {
-        'allow_redirect'=>true,
+        AwesomeBot::CLI_OPT_ALLOW_REDIRECT=>true,
         AwesomeBot::CLI_OPT_ALLOW_SSL=>false,
         'allow_timeout'=>false
       }

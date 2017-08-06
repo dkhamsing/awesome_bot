@@ -7,6 +7,7 @@ require 'awesome_bot/write'
 # Command line interface
 module AwesomeBot
   CLI_OPT_ALLOW_DUPE = 'allow_dupe'
+  CLI_OPT_ALLOW_REDIRECT = 'allow_redirect'
   CLI_OPT_ALLOW_SSL = 'allow_ssl'
   CLI_OPT_ERRORS = 'errors'
   CLI_OPT_FILES = 'files'
@@ -26,7 +27,7 @@ module AwesomeBot
         opts.on('-a', '--allow [errors]',          Array,     'Status code errors to allow')                     { |val| options[CLI_OPT_ERRORS] = val }
         opts.on('--allow-dupe',                    TrueClass, 'Duplicate URLs are allowed')                      { |val| options[CLI_OPT_ALLOW_DUPE] = val }
         opts.on('--allow-ssl',                     TrueClass, 'SSL errors are allowed')                          { |val| options[CLI_OPT_ALLOW_SSL] = val }
-        opts.on('--allow-redirect',                TrueClass, 'Redirected URLs are allowed')                     { |val| options['allow_redirect'] = val }
+        opts.on('--allow-redirect',                TrueClass, 'Redirected URLs are allowed')                     { |val| options[CLI_OPT_ALLOW_REDIRECT] = val }
         opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')                  { |val| options['allow_timeout'] = val }
         opts.on('--base-url [base url]',           String,    'Base URL to use for relative links')              { |val| options['base_url'] = val }
         opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                               { |val| options['delay'] = val }
@@ -103,7 +104,7 @@ module AwesomeBot
       no_results = options['no_results']
       no_results = false if no_results.nil?
 
-      allow_redirect = options['allow_redirect']
+      allow_redirect = options[CLI_OPT_ALLOW_REDIRECT]
       allow_redirect = false if allow_redirect.nil?
 
       allow_ssl = options[CLI_OPT_ALLOW_SSL]
@@ -112,7 +113,7 @@ module AwesomeBot
       allow_timeout = options['allow_timeout']
       allow_timeout = false if allow_timeout.nil?
 
-      options['allow_redirect'] = allow_redirect
+      options[CLI_OPT_ALLOW_REDIRECT] = allow_redirect
       options[CLI_OPT_ALLOW_SSL] = allow_ssl
       options['allow_timeout'] = allow_timeout
 

@@ -48,7 +48,7 @@ describe AwesomeBot do
     end
 
     context "given allow_redirect option" do
-      opt = {'allow_redirect'=> true}
+      opt = {AwesomeBot::CLI_OPT_ALLOW_REDIRECT=> true}
       value = AwesomeBot.output_summary opt
       expected = AwesomeBot::OUTPUT_SUMMARY_REDIRECT
       it "will output summary" do
@@ -116,7 +116,7 @@ describe AwesomeBot do
 
     `rm *.json`
     context "given --skip-save-results option true" do
-      options['allow_redirect'] = true
+      options[AwesomeBot::CLI_OPT_ALLOW_REDIRECT] = true
       options['no_results'] = true
       AwesomeBot.cli_process file, options
       value = ''
@@ -158,7 +158,7 @@ describe AwesomeBot do
     end
 
     context "given a file with a redirect and allowing redirects" do
-      options['allow_redirect'] = true
+      options[AwesomeBot::CLI_OPT_ALLOW_REDIRECT] = true
       value = AwesomeBot.cli_process file, options
       expected = '✓'
       it "finds no issues" do

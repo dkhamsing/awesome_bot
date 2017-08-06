@@ -184,7 +184,7 @@ module AwesomeBot
       allow_dupe = options[CLI_OPT_ALLOW_DUPE]
       o << "> #{OUTPUT_SUMMARY_DUPE}" unless allow_dupe.nil?
 
-      allow_redirect = options['allow_redirect']
+      allow_redirect = options[CLI_OPT_ALLOW_REDIRECT]
       o << "> #{OUTPUT_SUMMARY_REDIRECT}" unless allow_redirect.nil?
 
       allow_ssl = options[CLI_OPT_ALLOW_SSL]

@@ -20,7 +20,7 @@ describe AwesomeBot do
       expected = 0
 
       options = {
-        'allow_redirect'=>false,
+        AwesomeBot::CLI_OPT_ALLOW_REDIRECT=>false,
         AwesomeBot::CLI_OPT_ALLOW_SSL=>false,
         'allow_timeout'=>true
       }
