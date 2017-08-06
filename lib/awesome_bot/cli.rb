@@ -80,16 +80,13 @@ module AwesomeBot
       puts "> Checking links in #{filename}"
       puts output_summary(options)
 
-      allow_dupe = options['allow_dupe']
+      # allow_dupe = options['allow_dupe']
       # base_url = options['base_url']
       # delay = options['delay']
-      markdown = options['markdown']
+      # markdown = options['markdown']
       # timeout = options['timeout']
       # white_list = options['white_list']
 
-      allow_redirects = options['allow_redirect']
-      allow_ssl = options['allow_ssl']
-      allow_timeouts = options['allow_timeout']
 
       no_results = options['no_results']
       no_results = false if no_results.nil?
@@ -117,20 +114,28 @@ module AwesomeBot
         end
       end
 
+      allow_redirects = options['allow_redirect']
+      allow_ssl = options['allow_ssl']
+      allow_timeouts = options['allow_timeout']
+
       allow_redirects = false if allow_redirects.nil?
       allow_ssl = false if allow_ssl.nil?
       allow_timeouts = false if allow_timeouts.nil?
 
-      errors = options['errors']
-      options = {
-        'errors'          => errors,
-        'allow_redirects' => allow_redirects,
-        'allow_ssl'       => allow_ssl,
-        'allow_timeouts'  => allow_timeouts,
+      options['allow_redirect'] = allow_redirects
+      options['allow_ssl'] = allow_ssl
+      options['allow_timeouts'] = allow_timeouts
 
-        'markdown' => markdown,
-        'allow_dupe' => allow_dupe
-      }
+      # errors = options['errors']
+      # options = {
+      #   'errors'          => errors,
+      #   'allow_redirects' => allow_redirects,
+      #   'allow_ssl'       => allow_ssl,
+      #   'allow_timeouts'  => allow_timeouts,
+      #
+      #   'markdown' => markdown,
+      #   'allow_dupe' => allow_dupe
+      # }
 
       if r.success(options)
         puts 'No issues :-)'
