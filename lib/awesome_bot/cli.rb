@@ -80,7 +80,7 @@ module AwesomeBot
       puts "> Checking links in #{filename}"
       puts output_summary(options)
 
-      skip_dupe = options['allow_dupe']
+      allow_dupe = options['allow_dupe']
       delay = options['delay']
       markdown = options['markdown']
       timeout = options['timeout']
@@ -90,12 +90,12 @@ module AwesomeBot
       allow_redirects = options['allow_redirect']
       allow_ssl = options['allow_ssl']
       allow_timeouts = options['allow_timeout']
-      
+
       no_results = options['no_results']
       no_results = false if no_results.nil?
 
       options = {
-        'allowdupe' => skip_dupe,
+        'allowdupe' => allow_dupe,
         'delay' => delay,
         'markdown' => markdown,
         'timeout'   => timeout,
@@ -129,7 +129,7 @@ module AwesomeBot
         'timeout'  => allow_timeouts,
 
         'markdown' => markdown,
-        'skip_dupe' => skip_dupe
+        'allow_dupe' => allow_dupe
       }
 
       if r.success(options)

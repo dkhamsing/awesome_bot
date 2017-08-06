@@ -127,8 +127,7 @@ module AwesomeBot
         end
       end
 
-      skip_dupe = options['skip_dupe']
-      unless skip_dupe
+      unless options['allow_dupe']
         print "> Dupes \n"
         if r.success_dupe
           puts "  None #{STATUS_OK}"
@@ -172,7 +171,7 @@ module AwesomeBot
 
     def output_summary(options)
       o = ''
-      
+
       markdown = options['markdown']
       o << "> #{OUTPUT_SUMMARY_MARKDOWN} \n" unless markdown.nil?
 
@@ -182,8 +181,8 @@ module AwesomeBot
       errors = options['errors']
       o << "> #{OUTPUT_SUMMARY_ERRORS}: #{errors.join ','}" unless errors.nil?
 
-      skip_dupe = options['allow_dupe']
-      o << "> #{OUTPUT_SUMMARY_DUPE}" unless skip_dupe.nil?
+      allow_dupe = options['allow_dupe']
+      o << "> #{OUTPUT_SUMMARY_DUPE}" unless allow_dupe.nil?
 
       allow_redirects = options['allow_redirect']
       o << "> #{OUTPUT_SUMMARY_REDIRECT}" unless allow_redirects.nil?
