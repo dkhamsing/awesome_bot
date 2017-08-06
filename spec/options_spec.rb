@@ -32,7 +32,7 @@ describe AwesomeBot do
       options = {
         AwesomeBot::CLI_OPT_ALLOW_REDIRECT=>true,
         AwesomeBot::CLI_OPT_ALLOW_SSL=>false,
-        'allow_timeout'=>false
+        AwesomeBot::CLI_OPT_ALLOW_TIMEOUT=>false
       }
       value = r.statuses_issues(options).count
       it "has no issues" do
@@ -50,7 +50,7 @@ describe AwesomeBot do
         AwesomeBot::CLI_OPT_ERRORS=>['301'],
         AwesomeBot::CLI_OPT_ALLOW_REDIRECT=>true,
         AwesomeBot::CLI_OPT_ALLOW_SSL=>false,
-        'allow_timeout'=>false
+        AwesomeBot::CLI_OPT_ALLOW_TIMEOUT=>false
       }
       value = r.statuses_issues(options).count
       it "has no issues" do
@@ -68,7 +68,7 @@ describe AwesomeBot do
       options = {
         AwesomeBot::CLI_OPT_ALLOW_REDIRECT=>true,
         AwesomeBot::CLI_OPT_ALLOW_SSL=>false,
-        'allow_timeout'=>false
+        AwesomeBot::CLI_OPT_ALLOW_TIMEOUT=>false
       }
       value = r.statuses_issues(options).count
       it "has no issues" do

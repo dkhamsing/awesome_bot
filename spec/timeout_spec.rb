@@ -22,7 +22,7 @@ describe AwesomeBot do
       options = {
         AwesomeBot::CLI_OPT_ALLOW_REDIRECT=>false,
         AwesomeBot::CLI_OPT_ALLOW_SSL=>false,
-        'allow_timeout'=>true
+        AwesomeBot::CLI_OPT_ALLOW_TIMEOUT=>true
       }
       value = r.statuses_issues(options).count
       it "has no issues" do

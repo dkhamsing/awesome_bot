@@ -9,6 +9,7 @@ module AwesomeBot
   CLI_OPT_ALLOW_DUPE = 'allow_dupe'
   CLI_OPT_ALLOW_REDIRECT = 'allow_redirect'
   CLI_OPT_ALLOW_SSL = 'allow_ssl'
+  CLI_OPT_ALLOW_TIMEOUT = 'allow_timeout'
   CLI_OPT_ERRORS = 'errors'
   CLI_OPT_FILES = 'files'
 
@@ -28,7 +29,7 @@ module AwesomeBot
         opts.on('--allow-dupe',                    TrueClass, 'Duplicate URLs are allowed')                      { |val| options[CLI_OPT_ALLOW_DUPE] = val }
         opts.on('--allow-ssl',                     TrueClass, 'SSL errors are allowed')                          { |val| options[CLI_OPT_ALLOW_SSL] = val }
         opts.on('--allow-redirect',                TrueClass, 'Redirected URLs are allowed')                     { |val| options[CLI_OPT_ALLOW_REDIRECT] = val }
-        opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')                  { |val| options['allow_timeout'] = val }
+        opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')                  { |val| options[CLI_OPT_ALLOW_TIMEOUT] = val }
         opts.on('--base-url [base url]',           String,    'Base URL to use for relative links')              { |val| options['base_url'] = val }
         opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                               { |val| options['delay'] = val }
         opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')                          { |val| options['timeout'] = val }
@@ -110,12 +111,12 @@ module AwesomeBot
       allow_ssl = options[CLI_OPT_ALLOW_SSL]
       allow_ssl = false if allow_ssl.nil?
 
-      allow_timeout = options['allow_timeout']
+      allow_timeout = options[CLI_OPT_ALLOW_TIMEOUT]
       allow_timeout = false if allow_timeout.nil?
 
       options[CLI_OPT_ALLOW_REDIRECT] = allow_redirect
       options[CLI_OPT_ALLOW_SSL] = allow_ssl
-      options['allow_timeout'] = allow_timeout
+      options[CLI_OPT_ALLOW_TIMEOUT] = allow_timeout
 
       if r.success(options)
         puts 'No issues :-)'

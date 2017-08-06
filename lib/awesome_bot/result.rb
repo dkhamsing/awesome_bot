@@ -27,14 +27,14 @@ module AwesomeBot
 
     def statuses_issues(options=nil)
       options = {
-        'allow_timeout'=>false,
+        CLI_OPT_ALLOW_TIMEOUT=>false,
         CLI_OPT_ALLOW_SSL=>false,
         CLI_OPT_ALLOW_REDIRECT=>false
       } if options.nil?
 
       s = status.select { |x| x['status'] != 200 }
 
-      if options['allow_timeout']
+      if options[CLI_OPT_ALLOW_TIMEOUT]
         s = s.reject do |x|
           ( (x['error'].message == 'Net::ReadTimeout') || (x['error'].message == 'execution expired') || (x['error'].message.include? 'timed out') ) unless x['error'].nil?
         end
