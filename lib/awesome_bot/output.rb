@@ -127,7 +127,7 @@ module AwesomeBot
         end
       end
 
-      unless options['allow_dupe']
+      unless options[CLI_OPT_ALLOW_DUPE]
         print "> Dupes \n"
         if r.success_dupe
           puts "  None #{STATUS_OK}"
@@ -181,7 +181,7 @@ module AwesomeBot
       errors = options[CLI_OPT_ERRORS]
       o << "> #{OUTPUT_SUMMARY_ERRORS}: #{errors.join ','}" unless errors.nil?
 
-      allow_dupe = options['allow_dupe']
+      allow_dupe = options[CLI_OPT_ALLOW_DUPE]
       o << "> #{OUTPUT_SUMMARY_DUPE}" unless allow_dupe.nil?
 
       allow_redirect = options['allow_redirect']

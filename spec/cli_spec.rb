@@ -39,7 +39,7 @@ describe AwesomeBot do
     end
 
     context "given allow_dupe option" do
-      opt = {'allow_dupe'=> true}
+      opt = {AwesomeBot::CLI_OPT_ALLOW_DUPE=> true}
       value = AwesomeBot.output_summary opt
       expected = AwesomeBot::OUTPUT_SUMMARY_DUPE
       it "will output summary" do

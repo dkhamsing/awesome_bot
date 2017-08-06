@@ -16,7 +16,7 @@ module AwesomeBot
         markdown = nil
       else
         white_list = options['white_list']
-        allow_dupe = options['allow_dupe']
+        allow_dupe = options[CLI_OPT_ALLOW_DUPE]
         timeout = options['timeout']
         delay = options['delay']
         delay = 0 if delay.nil?
