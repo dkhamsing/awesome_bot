@@ -80,12 +80,12 @@ module AwesomeBot
       puts "> Checking links in #{filename}"
       puts output_summary(options)
 
-      allow_dupe = options['allow_dupe']
-      base_url = options['base_url']
-      delay = options['delay']
-      markdown = options['markdown']
-      timeout = options['timeout']
-      white_list = options['white_list']
+      # allow_dupe = options['allow_dupe']
+      # base_url = options['base_url']
+      # delay = options['delay']
+      # markdown = options['markdown']
+      # timeout = options['timeout']
+      # white_list = options['white_list']
 
       allow_redirects = options['allow_redirect']
       allow_ssl = options['allow_ssl']
@@ -94,14 +94,14 @@ module AwesomeBot
       no_results = options['no_results']
       no_results = false if no_results.nil?
 
-      options = {
-        'allow_dupe' => allow_dupe,
-        'base_url' => base_url,
-        'delay' => delay,
-        'markdown' => markdown,
-        'timeout'   => timeout,
-        'white_list' => white_list
-      }
+      # options = {
+      #   'allow_dupe' => allow_dupe,
+      #   'base_url' => base_url,
+      #   'delay' => delay,
+      #   'markdown' => markdown,
+      #   'timeout'   => timeout,
+      #   'white_list' => white_list
+      # }
       threads = delay == nil ? 10 : 1
       r = check(content, options, threads) do |o|
         print o
@@ -121,7 +121,7 @@ module AwesomeBot
       allow_ssl = false if allow_ssl.nil?
       allow_timeouts = false if allow_timeouts.nil?
 
-      errors = options['errors']
+      # errors = options['errors']
       options = {
         'errors'          => errors,
         'allow_redirects' => allow_redirects,
