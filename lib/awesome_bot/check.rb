@@ -9,14 +9,14 @@ module AwesomeBot
     def check(content, options=nil, number_of_threads=1)
       if options.nil?
         white_listed = nil
-        skip_dupe = false
+        allow_dupe = false
         timeout = nil
         delay = 0
         base = nil
         markdown = nil
       else
         white_listed = options['whitelist']
-        skip_dupe = options['allowdupe']
+        allow_dupe = options['allow_dupe']
         timeout = options['timeout']
         delay = options['delay']
         delay = 0 if delay.nil?
@@ -27,7 +27,7 @@ module AwesomeBot
       links = links_filter(links_find(content, base))
 
       r = Result.new(links, white_listed)
-      r.skip_dupe = skip_dupe
+      r.skip_dupe = allow_dupe
 
       r.validate =
         if markdown.nil?

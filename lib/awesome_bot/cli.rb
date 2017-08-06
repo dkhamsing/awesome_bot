@@ -95,7 +95,7 @@ module AwesomeBot
       no_results = false if no_results.nil?
 
       options = {
-        'allowdupe' => allow_dupe,
+        'allow_dupe' => allow_dupe,
         'delay' => delay,
         'markdown' => markdown,
         'timeout'   => timeout,
