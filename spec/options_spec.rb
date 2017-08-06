@@ -32,7 +32,7 @@ describe AwesomeBot do
       options = {
         'allow_redirects'=>true,
         'allow_ssl'=>false,
-        'timeout'=>false
+        'allow_timeouts'=>false
       }
       value = r.statuses_issues(options).count
       it "has no issues" do
@@ -50,7 +50,7 @@ describe AwesomeBot do
         'errors'=>['301'],
         'allow_redirects'=>true,
         'allow_ssl'=>false,
-        'timeout'=>false
+        'allow_timeouts'=>false
       }
       value = r.statuses_issues(options).count
       it "has no issues" do
@@ -68,7 +68,7 @@ describe AwesomeBot do
       options = {
         'allow_redirects'=>true,
         'allow_ssl'=>false,
-        'timeout'=>false
+        'allow_timeouts'=>false
       }
       value = r.statuses_issues(options).count
       it "has no issues" do

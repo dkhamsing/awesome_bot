@@ -126,7 +126,7 @@ module AwesomeBot
         'errors'          => errors,
         'allow_redirects' => allow_redirects,
         'allow_ssl'       => allow_ssl,
-        'timeout'  => allow_timeouts,
+        'allow_timeouts'  => allow_timeouts,
 
         'markdown' => markdown,
         'allow_dupe' => allow_dupe
