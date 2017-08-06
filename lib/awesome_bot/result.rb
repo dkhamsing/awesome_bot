@@ -8,7 +8,7 @@ module AwesomeBot
   # Result
   class Result
     attr_accessor :dupes
-    attr_accessor :skip_dupe
+    attr_accessor :allow_dupe
     attr_accessor :status
     attr_accessor :validate
     attr_accessor :white_listed
@@ -64,7 +64,7 @@ module AwesomeBot
     end
 
     def success_dupe
-      return true if skip_dupe
+      return true if allow_dupe
       links.uniq.count == links.count
     end
 

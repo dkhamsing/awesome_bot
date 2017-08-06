@@ -27,7 +27,7 @@ module AwesomeBot
       links = links_filter(links_find(content, base))
 
       r = Result.new(links, white_listed)
-      r.skip_dupe = allow_dupe
+      r.allow_dupe = allow_dupe
 
       r.validate =
         if markdown.nil?
