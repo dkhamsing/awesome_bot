@@ -187,7 +187,7 @@ module AwesomeBot
       allow_redirect = options['allow_redirect']
       o << "> #{OUTPUT_SUMMARY_REDIRECT}" unless allow_redirect.nil?
 
-      allow_ssl = options['allow_ssl']
+      allow_ssl = options[CLI_OPT_ALLOW_SSL]
       o << "> #{OUTPUT_SUMMARY_SSL}" unless allow_ssl.nil?
 
       allow_timeout = options['allow_timeout']

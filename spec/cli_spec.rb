@@ -57,7 +57,7 @@ describe AwesomeBot do
     end
 
     context "given allow_ssl option" do
-      opt = {'allow_ssl'=> true}
+      opt = {AwesomeBot::CLI_OPT_ALLOW_SSL=> true}
       value = AwesomeBot.output_summary opt
       expected = AwesomeBot::OUTPUT_SUMMARY_SSL
       it "will output summary" do
