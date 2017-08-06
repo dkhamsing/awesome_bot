@@ -80,9 +80,6 @@ module AwesomeBot
       puts "> Checking links in #{filename}"
       puts output_summary(options)
 
-      no_results = options['no_results']
-      no_results = false if no_results.nil?
-
       threads = options['delay'] == nil ? 10 : 1
       r = check(content, options, threads) do |o|
         print o
@@ -109,6 +106,9 @@ module AwesomeBot
       options['allow_redirects'] = allow_redirects
       options['allow_ssl'] = allow_ssl
       options['allow_timeouts'] = allow_timeouts
+
+      no_results = options['no_results']
+      no_results = false if no_results.nil?
 
       if r.success(options)
         puts 'No issues :-)'
