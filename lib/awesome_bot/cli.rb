@@ -103,7 +103,7 @@ module AwesomeBot
       allow_ssl = false if allow_ssl.nil?
       allow_timeouts = false if allow_timeouts.nil?
 
-      options['allow_redirects'] = allow_redirect
+      options['allow_redirect'] = allow_redirect
       options['allow_ssl'] = allow_ssl
       options['allow_timeouts'] = allow_timeouts
 

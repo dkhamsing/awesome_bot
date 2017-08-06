@@ -29,7 +29,7 @@ module AwesomeBot
       options = {
         'allow_timeouts'=>false,
         'allow_ssl'=>false,
-        'allow_redirects'=>false
+        'allow_redirect'=>false
       } if options.nil?
 
       s = status.select { |x| x['status'] != 200 }
@@ -40,7 +40,7 @@ module AwesomeBot
         end
       end
 
-      if options['allow_redirects']
+      if options['allow_redirect']
         s = s.reject { |x| AwesomeBot.status_is_redirected? x['status'] }
       end
 
