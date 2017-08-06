@@ -84,7 +84,7 @@ module AwesomeBot
       delay = options['delay']
       markdown = options['markdown']
       timeout = options['timeout']
-      white_listed = options['white_list']
+      white_list = options['white_list']
       base = options['base_url']
 
       allow_redirects = options['allow_redirect']
@@ -99,7 +99,7 @@ module AwesomeBot
         'delay' => delay,
         'markdown' => markdown,
         'timeout'   => timeout,
-        'whitelist' => white_listed,
+        'white_list' => white_list,
         'baseurl' => base
       }
       threads = delay == nil ? 10 : 1
