@@ -5,7 +5,7 @@ Changes by [Daniel Khamsing][] unless otherwise noted.
 # 1.18.0
 
 - add `--validate-markdown` option (find missing space in markdown links) suggested by [Richard Littauer](https://github.com/RichardLitt)
-- improve `output`
+- cleanup `cli`
 
 # 1.17.1
 
