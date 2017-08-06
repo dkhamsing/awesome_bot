@@ -21,7 +21,7 @@ describe AwesomeBot do
 
       options = {
         'allow_redirects'=>false,
-        'ssl'=>false,
+        'allow_ssl'=>false,
         'timeout'=>true
       }
       value = r.statuses_issues(options).count

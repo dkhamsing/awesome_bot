@@ -28,7 +28,7 @@ module AwesomeBot
     def statuses_issues(options=nil)
       options = {
         'timeout'=>false,
-        'ssl'=>false,
+        'allow_ssl'=>false,
         'allow_redirects'=>false
       } if options.nil?
 
@@ -44,7 +44,7 @@ module AwesomeBot
         s = s.reject { |x| AwesomeBot.status_is_redirected? x['status'] }
       end
 
-      if options['ssl']
+      if options['allow_ssl']
         s =  s.reject do |x|
           ( (x['error'].message.include? 'server certificate') || (x['error'].message.include? 'SSL_connect') ) unless x['error'].nil?
         end

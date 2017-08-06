@@ -123,9 +123,9 @@ module AwesomeBot
 
       errors = options['errors']
       options = {
-        'errors'   => errors,
+        'errors'          => errors,
         'allow_redirects' => allow_redirects,
-        'ssl'      => allow_ssl,
+        'allow_ssl'       => allow_ssl,
         'timeout'  => allow_timeouts,
 
         'markdown' => markdown,
