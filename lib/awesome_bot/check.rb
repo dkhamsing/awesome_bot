@@ -12,7 +12,7 @@ module AwesomeBot
         allow_dupe = false
         timeout = nil
         delay = 0
-        base = nil
+        base_url = nil
         markdown = nil
       else
         white_list = options['white_list']
@@ -20,11 +20,11 @@ module AwesomeBot
         timeout = options['timeout']
         delay = options['delay']
         delay = 0 if delay.nil?
-        base = options['baseurl']
+        base_url = options['base_url']
         markdown = options['markdown']
       end
 
-      links = links_filter(links_find(content, base))
+      links = links_filter(links_find(content, base_url))
 
       r = Result.new(links, white_list)
       r.allow_dupe = allow_dupe
