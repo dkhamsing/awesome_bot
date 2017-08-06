@@ -30,7 +30,7 @@ describe AwesomeBot do
       expected = 0
 
       options = {
-        'redirect'=>true,
+        'allow_redirects'=>true,
         'ssl'=>false,
         'timeout'=>false
       }
@@ -48,7 +48,7 @@ describe AwesomeBot do
 
       options = {
         'errors'=>['301'],
-        'redirect'=>true,
+        'allow_redirects'=>true,
         'ssl'=>false,
         'timeout'=>false
       }
@@ -66,7 +66,7 @@ describe AwesomeBot do
       expected = 0
 
       options = {
-        'redirect'=>true,
+        'allow_redirects'=>true,
         'ssl'=>false,
         'timeout'=>false
       }
