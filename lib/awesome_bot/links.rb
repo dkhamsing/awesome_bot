@@ -35,21 +35,21 @@ module AwesomeBot
         end
     end
 
-    def links_find(content, url_base=nil)
+    def links_find(content, base_url=nil)
       require 'uri'
       ext = URI.extract(content, /http()s?/)
-      return ext if url_base.nil?
+      return ext if base_url.nil?
 
-      rel = get_relative_links content, url_base
+      rel = get_relative_links content, base_url
       return rel + ext
     end
 
-    def get_relative_links(content, base)
+    def get_relative_links(content, base_url)
       links = content.scan /\].*?\)/
       links.reject { |x| x.include?('http') || x.include?('#') }
         .map { |x| x.sub '](', ''}
         .map { |x| x =~ /\S/ ? x.match(/^\S*/) : x }
-        .map { |x| "#{base}#{x}"}
+        .map { |x| "#{base_url}#{x}"}
     end
   end # class
 end
