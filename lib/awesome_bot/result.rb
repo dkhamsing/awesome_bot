@@ -22,7 +22,7 @@ module AwesomeBot
 
       return if @w.nil?
       @links_white_listed,
-      @links = links.partition { |u| AwesomeBot.white_list @w, u }
+      @links = links.partition { |u| AwesomeBot.whitelisted @w, u }
     end
 
     def statuses_issues(options=nil)
