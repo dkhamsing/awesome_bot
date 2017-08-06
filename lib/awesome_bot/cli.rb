@@ -80,10 +80,10 @@ module AwesomeBot
       puts "> Checking links in #{filename}"
       puts output_summary(options)
 
-      # allow_dupe = options['allow_dupe']
+      allow_dupe = options['allow_dupe']
       # base_url = options['base_url']
       # delay = options['delay']
-      # markdown = options['markdown']
+      markdown = options['markdown']
       # timeout = options['timeout']
       # white_list = options['white_list']
 
@@ -102,7 +102,7 @@ module AwesomeBot
       #   'timeout'   => timeout,
       #   'white_list' => white_list
       # }
-      threads = delay == nil ? 10 : 1
+      threads = options['delay'] == nil ? 10 : 1
       r = check(content, options, threads) do |o|
         print o
       end
@@ -121,7 +121,7 @@ module AwesomeBot
       allow_ssl = false if allow_ssl.nil?
       allow_timeouts = false if allow_timeouts.nil?
 
-      # errors = options['errors']
+      errors = options['errors']
       options = {
         'errors'          => errors,
         'allow_redirects' => allow_redirects,
