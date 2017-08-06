@@ -81,12 +81,12 @@ module AwesomeBot
       puts output_summary(options)
 
       allow_dupe = options['allow_dupe']
+      base = options['base_url']
       delay = options['delay']
       markdown = options['markdown']
       timeout = options['timeout']
       white_list = options['white_list']
-      base = options['base_url']
-
+      
       allow_redirects = options['allow_redirect']
       allow_ssl = options['allow_ssl']
       allow_timeouts = options['allow_timeout']
@@ -96,11 +96,11 @@ module AwesomeBot
 
       options = {
         'allow_dupe' => allow_dupe,
+        'baseurl' => base,
         'delay' => delay,
         'markdown' => markdown,
         'timeout'   => timeout,
-        'white_list' => white_list,
-        'baseurl' => base
+        'white_list' => white_list
       }
       threads = delay == nil ? 10 : 1
       r = check(content, options, threads) do |o|
