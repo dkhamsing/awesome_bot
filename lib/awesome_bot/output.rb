@@ -178,7 +178,7 @@ module AwesomeBot
       base = options['base_url']
       o << "> #{OUTPUT_SUMMARY_BASE} #{base} \n" unless base.nil?
 
-      errors = options['errors']
+      errors = options[CLI_OPT_ERRORS]
       o << "> #{OUTPUT_SUMMARY_ERRORS}: #{errors.join ','}" unless errors.nil?
 
       allow_dupe = options['allow_dupe']

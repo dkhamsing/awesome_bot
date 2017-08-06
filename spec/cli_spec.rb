@@ -30,7 +30,7 @@ describe AwesomeBot do
     end
 
     context "given errors option" do
-      opt = {'errors'=> ['test']}
+      opt = {AwesomeBot::CLI_OPT_ERRORS=> ['test']}
       value = AwesomeBot.output_summary opt
       expected = AwesomeBot::OUTPUT_SUMMARY_ERRORS
       it "will output summary" do

@@ -47,7 +47,7 @@ describe AwesomeBot do
       expected = 0
 
       options = {
-        'errors'=>['301'],
+        AwesomeBot::CLI_OPT_ERRORS=>['301'],
         'allow_redirect'=>true,
         'allow_ssl'=>false,
         'allow_timeout'=>false

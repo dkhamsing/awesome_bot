@@ -6,6 +6,9 @@ require 'awesome_bot/write'
 
 # Command line interface
 module AwesomeBot
+  CLI_OPT_ERRORS = 'errors'
+  CLI_OPT_FILES = 'files'
+
   class << self
     def cli()
       require 'optparse'
@@ -17,8 +20,8 @@ module AwesomeBot
         opts.banner = "Usage: #{PROJECT} [file or files] \n"\
                       "       #{PROJECT} [options]"
 
-        opts.on('-f', '--files [files]',           Array,     'Comma separated files to check')                  { |val| options['files'] = val }
-        opts.on('-a', '--allow [errors]',          Array,     'Status code errors to allow')                     { |val| options['errors'] = val }
+        opts.on('-f', '--files [files]',           Array,     'Comma separated files to check')                  { |val| options[CLI_OPT_FILES] = val }
+        opts.on('-a', '--allow [errors]',          Array,     'Status code errors to allow')                     { |val| options[CLI_OPT_ERRORS] = val }
         opts.on('--allow-dupe',                    TrueClass, 'Duplicate URLs are allowed')                      { |val| options['allow_dupe'] = val }
         opts.on('--allow-ssl',                     TrueClass, 'SSL errors are allowed')                          { |val| options['allow_ssl'] = val }
         opts.on('--allow-redirect',                TrueClass, 'Redirected URLs are allowed')                     { |val| options['allow_redirect'] = val }
@@ -37,7 +40,7 @@ module AwesomeBot
         opts.parse!
       end
 
-      files = options['files']
+      files = options[CLI_OPT_FILES]
       if files.nil?
         files = []
         ARGV.each do |a|

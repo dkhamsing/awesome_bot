@@ -50,8 +50,8 @@ module AwesomeBot
         end
       end
 
-      unless options['errors'].nil?
-        options['errors'].each do |c|
+      unless options[CLI_OPT_ERRORS].nil?
+        options[CLI_OPT_ERRORS].each do |c|
           s = s.reject { |x| x['status']==c.to_i }
         end
       end
