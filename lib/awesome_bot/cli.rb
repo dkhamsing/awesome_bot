@@ -97,15 +97,15 @@ module AwesomeBot
 
       allow_redirect = options['allow_redirect']
       allow_ssl = options['allow_ssl']
-      allow_timeouts = options['allow_timeout']
+      allow_timeout = options['allow_timeout']
 
       allow_redirect = false if allow_redirect.nil?
       allow_ssl = false if allow_ssl.nil?
-      allow_timeouts = false if allow_timeouts.nil?
+      allow_timeout = false if allow_timeout.nil?
 
       options['allow_redirect'] = allow_redirect
       options['allow_ssl'] = allow_ssl
-      options['allow_timeouts'] = allow_timeouts
+      options['allow_timeout'] = allow_timeout
 
       no_results = options['no_results']
       no_results = false if no_results.nil?

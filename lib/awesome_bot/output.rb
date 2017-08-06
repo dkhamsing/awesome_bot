@@ -190,8 +190,8 @@ module AwesomeBot
       allow_ssl = options['allow_ssl']
       o << "> #{OUTPUT_SUMMARY_SSL}" unless allow_ssl.nil?
 
-      allow_timeouts = options['allow_timeout']
-      o << "> #{OUTPUT_SUMMARY_TIMEOUT}" unless allow_timeouts.nil?
+      allow_timeout = options['allow_timeout']
+      o << "> #{OUTPUT_SUMMARY_TIMEOUT}" unless allow_timeout.nil?
 
       delay = options['delay']
       o << "> #{OUTPUT_SUMMARY_DELAY} #{delay} second#{delay==1? '': 's'}" unless delay.nil?
