@@ -13,6 +13,7 @@ module AwesomeBot
   CLI_OPT_BASE_URL = 'base_url'
   CLI_OPT_ERRORS = 'errors'
   CLI_OPT_FILES = 'files'
+  CLI_OPT_REQUEST_DELAY = 'delay'
 
   class << self
     def cli()
@@ -32,7 +33,7 @@ module AwesomeBot
         opts.on('--allow-redirect',                TrueClass, 'Redirected URLs are allowed')                     { |val| options[CLI_OPT_ALLOW_REDIRECT] = val }
         opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')                  { |val| options[CLI_OPT_ALLOW_TIMEOUT] = val }
         opts.on('--base-url [base url]',           String,    'Base URL to use for relative links')              { |val| options[CLI_OPT_BASE_URL] = val }
-        opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                               { |val| options['delay'] = val }
+        opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                               { |val| options[CLI_OPT_REQUEST_DELAY] = val }
         opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')                          { |val| options['timeout'] = val }
         opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                             { |val| options['no_results'] = val }
         opts.on('--validate-markdown',             TrueClass, 'Validate Markdown (find space missing in links)') { |val| options['markdown'] = val }
@@ -88,7 +89,7 @@ module AwesomeBot
       puts "> Checking links in #{filename}"
       puts output_summary(options)
 
-      threads = options['delay'] == nil ? 10 : 1
+      threads = options[CLI_OPT_REQUEST_DELAY] == nil ? 10 : 1
       r = check(content, options, threads) do |o|
         print o
       end

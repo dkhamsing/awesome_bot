@@ -193,7 +193,7 @@ module AwesomeBot
       allow_timeout = options[CLI_OPT_ALLOW_TIMEOUT]
       o << "> #{OUTPUT_SUMMARY_TIMEOUT}" unless allow_timeout.nil?
 
-      delay = options['delay']
+      delay = options[CLI_OPT_REQUEST_DELAY]
       o << "> #{OUTPUT_SUMMARY_DELAY} #{delay} second#{delay==1? '': 's'}" unless delay.nil?
 
       timeout = options['timeout']

@@ -18,7 +18,7 @@ module AwesomeBot
         white_list = options['white_list']
         allow_dupe = options[CLI_OPT_ALLOW_DUPE]
         timeout = options['timeout']
-        delay = options['delay']
+        delay = options[CLI_OPT_REQUEST_DELAY]
         delay = 0 if delay.nil?
         base_url = options[CLI_OPT_BASE_URL]
         markdown = options['markdown']

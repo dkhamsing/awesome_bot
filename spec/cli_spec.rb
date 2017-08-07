@@ -75,7 +75,7 @@ describe AwesomeBot do
     end
 
     context "given delay option" do
-      opt = {'delay'=> 1}
+      opt = {AwesomeBot::CLI_OPT_REQUEST_DELAY=> 1}
       value = AwesomeBot.output_summary opt
       expected = AwesomeBot::OUTPUT_SUMMARY_DELAY
       it "will output summary" do
