@@ -161,9 +161,9 @@ notifications:
   email: false
 ```
 
-### Circle CI
+### CircleCI
 
-If you prefer Circle CI, it'll work too. [Connect your repo](https://circleci.com/) and create a [`circle.yml` file](https://github.com/tmcw/awesome-geojson).
+If you prefer CircleCI, it'll work too. [Connect your repo](https://circleci.com/) and create a [`circle.yml` file](https://github.com/tmcw/awesome-geojson).
 
 ```yml
 machine:
@@ -178,7 +178,7 @@ test:
 
 ### More
 
-Circle CI, [Codeship](https://codeship.com/), and [Semaphore CI](https://semaphoreci.com/) support running tests without adding a file to the repo (a public configuration file can however help others contribute).
+CircleCI, [Codeship](https://codeship.com/), and [Semaphore CI](https://semaphoreci.com/) support running tests without adding a file to the repo (a public configuration file can however help others contribute).
 
 ```
 # Codeship
