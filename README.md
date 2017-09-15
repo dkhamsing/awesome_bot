@@ -28,7 +28,7 @@ Usage: awesome_bot [file or files]
         --allow-redirect             Redirected URLs are allowed
         --allow-timeout              URLs that time out are allowed
         --base-url [base url]        Base URL to use for relative links
-    -d, --request-delay [seconds]    Set request delay
+    -d, --request-delay [seconds]    Set request delay. Can use partial seconds. E.g. 0.5
     -t, --set-timeout [seconds]      Set connection timeout
         --skip-save-results          Skip saving results
     -w, --white-list [urls]          Comma separated URLs to white list
