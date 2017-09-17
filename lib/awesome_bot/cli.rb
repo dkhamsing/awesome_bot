@@ -27,7 +27,7 @@ module AwesomeBot
         opts.on('--base-url [base url]',           String,    'Base URL to use for relative links') { |val| options['base_url'] = val }
         opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                  { |val| options['delay'] = val }
         opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
-        opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                { |val| options['no_results'] = val }        
+        opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                { |val| options['no_results'] = val }
         opts.on('-w', '--white-list [urls]',       Array,     'Comma separated URLs to white list') { |val| options['white_list'] = val }
 
         opts.on_tail("--help") do
@@ -101,7 +101,7 @@ module AwesomeBot
       puts "> Will delay each request by #{delay} second#{delay==1? '': 's'}" unless delay.nil?
 
       github_age = options['github_age']
-      puts "> Checking for github repo's with a last commit > #{github_age} months" unless github_age.nil?
+      puts "> Checking for github repo's with a last commit > #{github_age} days" unless github_age.nil?
 
       white_listed = options['white_list']
 
