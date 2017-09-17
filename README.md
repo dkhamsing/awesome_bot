@@ -27,7 +27,7 @@ Usage: awesome_bot [file or files]
         --allow-ssl                  SSL errors are allowed
         --allow-redirect             Redirected URLs are allowed
         --allow-timeout              URLs that time out are allowed
-        --github-age                 Check the activity of a github project
+        --github-age [days]          Check the activity of a github project
         --base-url [base url]        Base URL to use for relative links
     -d, --request-delay [seconds]    Set request delay
     -t, --set-timeout [seconds]      Set connection timeout
