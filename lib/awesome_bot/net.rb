@@ -3,7 +3,7 @@ module AwesomeBot
   STATUS_ERROR = -1
 
   class << self
-    def net_status(url, timeout=30, head)
+    def net_status(url, timeout=30, head=false)
       require 'net/http'
       require 'openssl'
       require 'uri'
@@ -49,26 +49,6 @@ module AwesomeBot
       (status > 299) && (status < 400)
     end
 
-    def statuses(links, threads, timeout, head=false, delay=0)
-      require 'parallel'
 
-      statuses = []
-      Parallel.each(links, in_threads: threads) do |u|
-        sleep delay
-        begin
-          status, headers = net_status u, timeout, head
-          error = nil
-        rescue => e
-          status = STATUS_ERROR
-          headers = {}
-          error = e
-        end
-
-        yield status, u, headers if block_given?
-        statuses.push('url' => u, 'status' => status, 'error' => error, 'headers' => headers)
-      end # Parallel
-
-      statuses
-    end
   end # class
 end

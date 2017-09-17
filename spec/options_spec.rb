@@ -45,7 +45,6 @@ describe AwesomeBot do
     context "given a redirected link with --allow 301" do
       r = AwesomeBot::check 'http://github.com'
       expected = 0
-
       options = {
         'errors'=>['301'],
         'redirect'=>true,

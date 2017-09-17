@@ -4,6 +4,7 @@ module AwesomeBot
   STATUS_OTHER = '?'
   STATUS_400s = 'x'
   STATUS_REDIRECT = '→'
+  STATUS_OLD = '💀'
 
   class << self
     def loc(x, content)
@@ -28,6 +29,8 @@ module AwesomeBot
         return STATUS_OK
       elsif (s > 399 && s < 500)
         return STATUS_400s
+      elsif s == -2
+        return STATUS_OLD
       else
         return STATUS_OTHER
       end

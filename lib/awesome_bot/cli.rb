@@ -23,6 +23,7 @@ module AwesomeBot
         opts.on('--allow-ssl',                     TrueClass, 'SSL errors are allowed')             { |val| options['allow_ssl'] = val }
         opts.on('--allow-redirect',                TrueClass, 'Redirected URLs are allowed')        { |val| options['allow_redirect'] = val }
         opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')     { |val| options['allow_timeout'] = val }
+        opts.on('--github-age   ',                 Integer,   'Check the activity of a github project')     { |val| options['github_age'] = val }
         opts.on('--base-url [base url]',           String,    'Base URL to use for relative links') { |val| options['base_url'] = val }
         opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                  { |val| options['delay'] = val }
         opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
@@ -99,6 +100,9 @@ module AwesomeBot
       delay = options['delay']
       puts "> Will delay each request by #{delay} second#{delay==1? '': 's'}" unless delay.nil?
 
+      github_age = options['github_age']
+      puts "> Checking for github repo's with a last commit > #{github_age} months" unless github_age.nil?
+
       white_listed = options['white_list']
 
       timeout = options['timeout']
@@ -118,7 +122,8 @@ module AwesomeBot
         'delay' => delay,
         'timeout'   => timeout,
         'whitelist' => white_listed,
-        'baseurl' => base
+        'baseurl' => base,
+        'github_age' => github_age
       }
 
       threads = delay == nil ? 10 : 1

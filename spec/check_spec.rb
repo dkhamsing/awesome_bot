@@ -115,5 +115,23 @@ describe AwesomeBot do
         expect(value).to eql(expected)
       end
     end
+
+    context "given an old link" do
+      r = AwesomeBot::check  "https://github.com/toscanini/maestro", {"github_age" => 500}
+      expected = 1
+      value = r.statuses_issues.count
+      it "has one issue" do
+        expect(value).to eql(expected)
+      end
+    end
+
+    context "given a new link"   do
+      r = AwesomeBot::check  "https://github.com/twbs/bootstrap", {"github_age" => 500}
+      expected = 0
+      value = r.statuses_issues.count
+      it "has one issue" do
+        expect(value).to eql(expected)
+      end
+    end
   end
 end
