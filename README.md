@@ -27,6 +27,7 @@ Usage: awesome_bot [file or files]
         --allow-ssl                  SSL errors are allowed
         --allow-redirect             Redirected URLs are allowed
         --allow-timeout              URLs that time out are allowed
+        --github-age [days]          Check the activity of a github project
         --base-url [base url]        Base URL to use for relative links
     -d, --request-delay [seconds]    Set request delay
     -t, --set-timeout [seconds]      Set connection timeout
@@ -86,6 +87,9 @@ $ awesome_bot README.md --allow 403,429
 
 $ awesome_bot README.md --base-url https://github.com/IDR/idr-notebooks/blob/master/
 # will check relative links using the base url provided
+
+$ awesome_bot README.md --github-age 500
+# will check any github repository for a last commit age > 500 days
 ```
 
 ```shell
