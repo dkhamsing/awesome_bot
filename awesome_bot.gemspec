@@ -23,3 +23,4 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'parallel', '1.11.2' # threading
 end
+
