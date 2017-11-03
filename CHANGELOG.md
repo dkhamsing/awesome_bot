@@ -3,6 +3,11 @@
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
 
+# 1.17.2
+
+- [cli] output version by [Budh Ram Gurung](https://github.com/budhrg)
+- [gem] update `parallel` to version 1.12.0
+
 # 1.17.1
 
 - [parse] fix Markdown link issue by [Richard Littauer](https://github.com/RichardLitt)
