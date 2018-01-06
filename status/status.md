@@ -1,6 +1,6 @@
 # Awesome Status 
 
-Build status for **129** projects using https://github.com/dkhamsing/awesome_bot 
+Build status for **131** projects using https://github.com/dkhamsing/awesome_bot 
 
 Status | Config | Repo 
 ---    | ---    | ---  
@@ -132,6 +132,6 @@ Status | Config | Repo
 [![Build Status](https://travis-ci.org/adriagalin/tools.svg)](https://travis-ci.org/adriagalin/tools) | [`config`](https://github.com/adriagalin/tools/blob/master/.travis.yml) | [adriagalin/tools](https://github.com/adriagalin/tools) 
 [![Build Status](https://travis-ci.org/arthurwayne/awesome-pentester.svg)](https://travis-ci.org/arthurwayne/awesome-pentester) | [`config`](https://github.com/arthurwayne/awesome-pentester/blob/master/.travis.yml) | [arthurwayne/awesome-pentester](https://github.com/arthurwayne/awesome-pentester) 
 [![Build Status](https://travis-ci.org/alister/php-in-london.svg)](https://travis-ci.org/alister/php-in-london) | [`config`](https://github.com/alister/php-in-london/blob/master/.travis.yml) | [alister/php-in-london](https://github.com/alister/php-in-london) 
+[![Build Status](https://travis-ci.org/IQDevs/Awesome-IQDevs.svg)](https://travis-ci.org/IQDevs/Awesome-IQDevs) | [`config`](https://github.com/IQDevs/Awesome-IQDevs/blob/master/.travis.yml) | [IQDevs/Awesome-IQDevs](https://github.com/IQDevs/Awesome-IQDevs) 
+[![Build Status](https://travis-ci.org/BubuAnabelas/awesome-markdown.svg)](https://travis-ci.org/BubuAnabelas/awesome-markdown) | [`config`](https://github.com/BubuAnabelas/awesome-markdown/blob/master/.travis.yml) | [BubuAnabelas/awesome-markdown](https://github.com/BubuAnabelas/awesome-markdown) 
 [![Circle CI](https://img.shields.io/circleci/project/tmcw/awesome-geojson.svg)](https://circleci.com/gh/tmcw/awesome-geojson) | [`config`](https://github.com/tmcw/awesome-geojson/blob/master/circle.yml) | [tmcw/awesome-geojson](https://github.com/tmcw/awesome-geojson) 
-[![Build Status](https://travis-ci.org/IQDevs/Awesome-IQDevs.svg?branch=master)](https://travis-ci.org/IQDevs/Awesome-IQDevs) |[`config`](https://github.com/IQDevs/Awesome-IQDevs/blob/master/.travis.yml) | [IQDevs/Awesome-IQDevs](https://github.com/IQDevs/Awesome-IQDevs)
-
