@@ -2,7 +2,9 @@ FROM ruby
 
 RUN gem install awesome_bot --no-format-exec
 
-WORKDIR /tmp
+VOLUME /mnt
+
+WORKDIR /mnt
 
 ENTRYPOINT ["awesome_bot"]
 CMD ["--help"]
