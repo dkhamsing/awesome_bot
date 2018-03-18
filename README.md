@@ -109,6 +109,25 @@ No issues :-)
 Wrote results to ab-results-new-readme.md.json
 ```
 
+### Docker Examples
+If you do not want to install Ruby or it's dependencies you can simply use Docker and Docker image.
+
+Here is the example how you can check the links in your current directory+subdirectories markdown files:
+```shell
+docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --white-list "test.com" --allow-dupe --allow-redirect --skip-save-results `find . -name "*.md"`
+```
+
+or check links in just in a single file located in `./templates/ubuntu.md`:
+
+```shell
+docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results ./templates/ubuntu.md
+```
+
+You always need to specify the path to the file so you can not use simply `*.md` but `ls *.md"`:
+```shell
+docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --white-list "test.com" --allow-dupe --allow-redirect --skip-save-results `ls *.md`
+```
+
 ### Library
 
 ```ruby
@@ -159,6 +178,19 @@ To turn off email notifications, add the lines below
 ```yml
 notifications:
   email: false
+```
+
+In case you want to use the docker image inside Travis CI follow this example which will check broken links in all `*.md` files in your repository:
+
+```yml
+sudo: required
+
+services:
+  - docker
+
+script:
+  # Link Checks
+  - docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results `find . -name "*.md"`
 ```
 
 ### CircleCI
