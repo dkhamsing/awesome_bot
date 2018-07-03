@@ -45,9 +45,10 @@ module AwesomeBot
     end
 
     def get_relative_links(content, base)
-      links = content.scan /\].*?\)/
+      links = []
+      content.scan(/\[[^\]]+\] \( <? ([^)<>]+) >? \)/x) { |groups| links << groups.first }
+
       links.reject { |x| x.include?('http') || x.include?('#') }
-        .map { |x| x.sub '](', ''}
         .map { |x| x =~ /\S/ ? x.match(/^\S*/) : x }
         .map { |x| "#{base}#{x}"}
     end

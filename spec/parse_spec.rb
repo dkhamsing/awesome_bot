@@ -159,7 +159,19 @@ describe AwesomeBot do
       it 'ignores bracket characters that do not form a valid URL' do
         content = '`(String args[])`'
         list = AwesomeBot::links_find content, base
-        expect(AwesomeBot::links_filter list).to be_empty
+        expect(list).to be_empty
+      end
+
+      it 'parses multiple links on the same line' do
+        content = '[link 1](foo) [link 2](bar)'
+        list = AwesomeBot::links_find content, base
+        expect(list).to eq([base + 'foo', base + 'bar'])
+      end
+
+      it 'ignores empty links' do
+        content = '[link]() [link](<>)'
+        list = AwesomeBot::links_find content, base
+        expect(list).to be_empty
       end
     end
   end
