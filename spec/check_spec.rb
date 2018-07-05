@@ -1,4 +1,4 @@
-require 'awesome_bot'
+require 'spec_helper'
 
 describe AwesomeBot do
   describe "check" do

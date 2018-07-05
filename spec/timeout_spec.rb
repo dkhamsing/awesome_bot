@@ -2,7 +2,7 @@ require 'awesome_bot'
 
 describe AwesomeBot do
   describe "timeout" do
-    timeoutlink = 'http://www.cmr.osu.edu/browse/datasets'
+    timeoutlink = 'http://1.2.3.4'
     options = {'timeout'=>1}
 
     context "given a timeout link and setting timeout to 1s" do

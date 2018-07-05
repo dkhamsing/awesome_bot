@@ -1,4 +1,4 @@
-require 'awesome_bot'
+require 'spec_helper'
 
 describe AwesomeBot do
   describe "status" do
@@ -66,22 +66,35 @@ describe AwesomeBot do
 
     context "given a header with special encoding" do
       link = 'http://okeowoaderemi.com/site/assets/files/1103/zf2-flowchart.jpg'
-      r = AwesomeBot::check link
-      s = r.status[0]
-      value = s['headers']['strict-transport-security']
-      expected = '“max-age=31536000″'
+      header = "strict-transport-security".force_encoding(Encoding::ISO_8859_1)
+      header_value = "“max-age=31536000″".force_encoding(Encoding::ISO_8859_1)
+
       it "is encoded using utf8" do
+        stub_request(:get, link).
+          to_return(status: 200, headers: {header => header_value})
+
+        r = AwesomeBot::check link
+        s = r.status[0]
+
+        value = s['headers']['strict-transport-security']
+        expected = '“max-age=31536000″'
+
         expect(value).to eql(expected)
       end
     end
 
     context "given an incomplete redirect" do
       link = 'https://godoc.org/github.com/ipfs/go-libp2p-crypto'
-      r = AwesomeBot::check link
-      s = r.status[0]
-      value = s['headers']['location']
-      expected = 'https://godoc.org/github.com/libp2p/go-libp2p-crypto'
-      it "the redirect is adjusted" do
+
+      it "adds the scheme and host to the redirect URL" do
+        stub_request(:get, link).
+          to_return(status: 301, headers: {'location' => '/github.com/libp2p/go-libp2p-crypto'})
+
+        r = AwesomeBot::check link
+        s = r.status[0]
+        value = s['headers']['location']
+        expected = 'https://godoc.org/github.com/libp2p/go-libp2p-crypto'
+
         expect(value).to eql(expected)
       end
     end
