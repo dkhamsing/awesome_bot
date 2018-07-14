@@ -65,11 +65,11 @@ describe AwesomeBot do
     # end
 
     context "given an incomplete redirect" do
-      link = 'https://godoc.org/github.com/ipfs/go-libp2p-crypto'
+      link = 'https://httpbin.org/redirect-to?url=/foo&status_code=301'
       r = AwesomeBot::check link
       s = r.status[0]
       value = s['headers']['location']
-      expected = 'https://godoc.org/github.com/libp2p/go-libp2p-crypto'
+      expected = 'https://httpbin.org/foo'
       it "the redirect is adjusted" do
         expect(value).to eql(expected)
       end
