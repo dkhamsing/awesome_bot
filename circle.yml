@@ -1,6 +1,0 @@
-machine:
-  ruby:
-    version: 2.4.1
-test:
-  override:
-    - bundle exec rspec -fd --color -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
