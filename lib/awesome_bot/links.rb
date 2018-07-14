@@ -1,5 +1,14 @@
 # Get and filter links
 module AwesomeBot
+  # This matches, from left to right:
+  # a literal [
+  # the link title - i.e. anything up to the next closing bracket
+  # a literal ]
+  # a literal (
+  # the link destination (optionally enclosed in a single pair of angle brackets)
+  # a literal )
+  MARKDOWN_LINK_REGEX = /\[ [^\]]+ \] \( <? ([^)<>]+) >? \)/x
+
   class << self
     def links_filter(list)
       list.reject { |x| x.length < 9 }
@@ -45,9 +54,10 @@ module AwesomeBot
     end
 
     def get_relative_links(content, base)
-      links = content.scan /\].*?\)/
+      links = []
+      content.scan(MARKDOWN_LINK_REGEX) { |groups| links << groups.first }
+
       links.reject { |x| x.include?('http') || x.include?('#') }
-        .map { |x| x.sub '](', ''}
         .map { |x| x =~ /\S/ ? x.match(/^\S*/) : x }
         .map { |x| "#{base}#{x}"}
     end

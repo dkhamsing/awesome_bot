@@ -64,23 +64,12 @@ describe AwesomeBot do
     #   end
     # end
 
-    context "given a header with special encoding" do
-      link = 'http://okeowoaderemi.com/site/assets/files/1103/zf2-flowchart.jpg'
-      r = AwesomeBot::check link
-      s = r.status[0]
-      value = s['headers']['strict-transport-security']
-      expected = '“max-age=31536000″'
-      it "is encoded using utf8" do
-        expect(value).to eql(expected)
-      end
-    end
-
     context "given an incomplete redirect" do
-      link = 'https://godoc.org/github.com/ipfs/go-libp2p-crypto'
+      link = 'https://httpbin.org/redirect-to?url=/foo&status_code=301'
       r = AwesomeBot::check link
       s = r.status[0]
       value = s['headers']['location']
-      expected = 'https://godoc.org/github.com/libp2p/go-libp2p-crypto'
+      expected = 'https://httpbin.org/foo'
       it "the redirect is adjusted" do
         expect(value).to eql(expected)
       end
