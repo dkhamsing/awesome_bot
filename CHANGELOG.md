@@ -2,6 +2,9 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.18.0
+
+- [parse] stricter parsing of relative urls by [Mat Moore](https://github.com/MatMoore)
 
 # 1.17.2
 
