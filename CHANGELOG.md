@@ -204,14 +204,14 @@ Changes by [Daniel Khamsing][] unless otherwise noted.
 - use `result`
 - use `logger`
 
-## 1.1.0
+# 1.1.0
 
 - handle bad links
 - statuses yields `status`, `url`
 - add head option when getting statuses
 - [cli] improve output for `--allow-dupe`
 
-## 1.0.0
+# 1.0.0
 
 - correct failure logic
 - rename `run` to `check`
@@ -220,7 +220,7 @@ Changes by [Daniel Khamsing][] unless otherwise noted.
 - [gemspec] update
 - [travis] simplify
 
-## 0.1.0
+# 0.1.0
 
 - initial version
 
