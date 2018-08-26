@@ -251,7 +251,7 @@ As it happens, the default code snippet provided contain a redirect so adding a 
 - awesome_bot README.md --white-list travis-ci
 ```
 
-You can also add a badge for other CI tools, check out [shields.io](http://shields.io/).
+You can also add a badge for other CI tools, check out [shields.io](https://shields.io/).
 
 ### Danger
 

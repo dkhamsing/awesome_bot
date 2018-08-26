@@ -20,7 +20,6 @@ script:
   - awesome_bot -f bin/assets/test-no-issues,bin/assets/test-redirect --allow-redirect
   - awesome_bot bin/assets/test-no-* --allow-redirect
   - awesome_bot bin/assets/test-ssl --allow-ssl
-  - awesome_bot bin/assets/test-invalid.md --allow-redirect --allow-dupe
   - awesome_bot bin/assets/test-request-delay -d 1
   - awesome_bot README.md --allow-dupe --white-list gph.is,giphy,travis-ci.org,codeload,badge,rubydoc,rubygems,circleci,codeship,blob/master
   - gem install awesome_bot
