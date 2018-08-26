@@ -18,7 +18,7 @@ Verify links in [awesome](status/status.md) projects
 
 ### Command Line
 
-```
+``` shell
 Usage: awesome_bot [file or files]
        awesome_bot [options]
     -f, --files [files]              Comma separated files to check
@@ -29,7 +29,7 @@ Usage: awesome_bot [file or files]
         --allow-timeout              URLs that time out are allowed
         --base-url [base url]        Base URL to use for relative links
     -d, --request-delay [seconds]    Set request delay
-    -t, --set-timeout [seconds]      Set connection timeout
+    -t, --set-timeout [seconds]      Set connection timeout (default: 30)
         --skip-save-results          Skip saving results
     -w, --white-list [urls]          Comma separated URLs to white list
 ```

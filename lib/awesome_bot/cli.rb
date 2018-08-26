@@ -25,7 +25,7 @@ module AwesomeBot
         opts.on('--allow-timeout',                 TrueClass, 'URLs that time out are allowed')     { |val| options['allow_timeout'] = val }
         opts.on('--base-url [base url]',           String,    'Base URL to use for relative links') { |val| options['base_url'] = val }
         opts.on('-d', '--request-delay [seconds]', Integer,   'Set request delay')                  { |val| options['delay'] = val }
-        opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout')             { |val| options['timeout'] = val }
+        opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout (default: 30)')             { |val| options['timeout'] = val }
         opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                { |val| options['no_results'] = val }
         opts.on('-w', '--white-list [urls]',       Array,     'Comma separated URLs to white list') { |val| options['white_list'] = val }
         opts.on('-v', '--version',                 String,    'Display version')                    { |val| puts "#{PROJECT} version #{VERSION}" }
