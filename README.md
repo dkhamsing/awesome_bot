@@ -234,7 +234,7 @@ awesome_bot README.md
 
 ### Status Badge
 
-[![Build Status](https://travis-ci.org/unixorn/awesome-zsh-plugins.png)](https://travis-ci.org/unixorn/awesome-zsh-plugins)
+[![Build Status](https://travis-ci.org/unixorn/awesome-zsh-plugins.svg)](https://travis-ci.org/unixorn/awesome-zsh-plugins)
 
 To add the Travis CI build status badge above to your project, use the following code
 
