@@ -255,7 +255,7 @@ You can also add a badge for other CI tools, check out [shields.io](https://shie
 
 ### Danger
 
-Integrate `awesome_bot` with [Danger](https://github.com/danger/danger) and have results reported back to the [pull request](https://github.com/vsouza/awesome-ios/pull/1001)).
+Integrate `awesome_bot` with [Danger](https://github.com/danger/danger) and have results reported back to the [pull request](https://github.com/vsouza/awesome-ios/pull/1001).
 
 ![danger](https://cloud.githubusercontent.com/assets/4723115/17375716/0cdd37cc-5967-11e6-8ae3-829060a786dc.png)
 
