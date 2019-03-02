@@ -1,4 +1,4 @@
-FROM ruby
+FROM ruby:alpine
 
 RUN gem install awesome_bot --no-format-exec
 
