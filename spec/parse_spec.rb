@@ -95,6 +95,18 @@ describe AwesomeBot do
       end
     end
 
+    context 'given a wikipedia link with parentheses' do
+      content = 'https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Reader.html#nullReader()'
+      list = AwesomeBot::links_find content
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Reader.html#nullReader()'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+    end
+
+
     context 'given a markdown wikipedia link' do
       content = '[TAL](https://en.wikipedia.org/wiki/Template_Attribute_Language)'
       list = AwesomeBot::links_find content
