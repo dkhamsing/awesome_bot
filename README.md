@@ -32,6 +32,9 @@ Usage: awesome_bot [file or files]
     -t, --set-timeout [seconds]      Set connection timeout (default: 30)
         --skip-save-results          Skip saving results
     -w, --white-list [urls]          Comma separated URLs to white list
+        --skip-white-list            Skip checking white listed URLs
+    -v, --version                    Display version
+        --help
 ```
 
 - You can check multiple files (comma separated or `*` pattern, look below for details).

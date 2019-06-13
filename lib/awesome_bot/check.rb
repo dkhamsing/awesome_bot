@@ -9,12 +9,14 @@ module AwesomeBot
     def check(content, options=nil, number_of_threads=1)
       if options.nil?
         white_listed = nil
+        skip_white_listed = false
         skip_dupe = false
         timeout = nil
         delay = 0
         base = nil
       else
         white_listed = options['whitelist']
+        skip_white_listed = options['skipwhitelist']
         skip_dupe = options['allowdupe']
         timeout = options['timeout']
         delay = options['delay']
@@ -49,7 +51,7 @@ module AwesomeBot
         end
       yield "\n" if block_given?
 
-      return r if !r.white_listing || (r.links_white_listed.count == 0)
+      return r if !r.white_listing || (r.links_white_listed.count == 0) || skip_white_listed
 
       yield 'Checking white listed URLs: ' if block_given?
       r.white_listed =

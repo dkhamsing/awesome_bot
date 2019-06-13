@@ -28,6 +28,7 @@ module AwesomeBot
         opts.on('-t', '--set-timeout [seconds]',   Integer,   'Set connection timeout (default: 30)')             { |val| options['timeout'] = val }
         opts.on('--skip-save-results',             TrueClass, 'Skip saving results')                { |val| options['no_results'] = val }
         opts.on('-w', '--white-list [urls]',       Array,     'Comma separated URLs to white list') { |val| options['white_list'] = val }
+        opts.on('--skip-white-list',               TrueClass, 'Skip checking white listed URLs')    { |val| options['skip_white_list'] = val }
         opts.on('-v', '--version',                 String,    'Display version')                    { |val| puts "#{PROJECT} version #{VERSION}" }
 
         opts.on_tail("--help") do
@@ -101,6 +102,7 @@ module AwesomeBot
       puts "> Will delay each request by #{delay} second#{delay==1? '': 's'}" unless delay.nil?
 
       white_listed = options['white_list']
+      skip_white_list = options['skip_white_list']
 
       timeout = options['timeout']
       puts "> Connection timeout = #{timeout}s" unless timeout.nil?
@@ -119,6 +121,7 @@ module AwesomeBot
         'delay' => delay,
         'timeout'   => timeout,
         'whitelist' => white_listed,
+        'skipwhitelist' => skip_white_list,
         'baseurl' => base
       }
 
