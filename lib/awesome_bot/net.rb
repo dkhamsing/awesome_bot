@@ -3,12 +3,10 @@ module AwesomeBot
   STATUS_ERROR = -1
 
   class << self
-    def net_status(url, timeout=30, head)
+    def net_status(uri, timeout=30, head)
       require 'net/http'
       require 'openssl'
-      require 'uri'
 
-      uri = URI.parse url
       Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https', :open_timeout => timeout) do |http|
         ua = {'User-Agent' => 'awesome_bot'}
         if head
@@ -49,6 +47,14 @@ module AwesomeBot
       (status > 299) && (status < 400)
     end
 
+    def file_status(uri)
+      # NOTE if the user didn't provide an absolute base url, this will be relative to their CWD
+      if Pathname.new(uri.to_s.delete_prefix("file://")).exist?
+        return 200
+      end
+      return 404
+    end
+
     def statuses(links, threads, timeout, head=false, delay=0)
       require 'parallel'
 
@@ -56,7 +62,13 @@ module AwesomeBot
       Parallel.each(links, in_threads: threads) do |u|
         sleep delay
         begin
-          status, headers = net_status u, timeout, head
+          uri = URI.parse(u)
+          if uri.scheme == "file"
+            status = file_status uri
+            headers = {}
+          else
+            status, headers = net_status uri, timeout, head
+          end
           error = nil
         rescue => e
           status = STATUS_ERROR

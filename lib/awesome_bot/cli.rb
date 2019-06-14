@@ -123,7 +123,7 @@ module AwesomeBot
       }
 
       threads = delay == nil ? 10 : 1
-      r = check(content, options, threads) do |o|
+      r = check(File.dirname(filename), content, options, threads) do |o|
         print o
       end
 

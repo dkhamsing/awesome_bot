@@ -1,3 +1,5 @@
+require 'pathname.rb'
+
 # Get and filter links
 module AwesomeBot
   # This matches, from left to right:
@@ -44,22 +46,35 @@ module AwesomeBot
         end
     end
 
-    def links_find(content, url_base=nil)
+    def links_find(origin, content, url_base=nil)
       require 'uri'
       ext = URI.extract(content, /http()s?/)
       return ext if url_base.nil?
 
-      rel = get_relative_links content, url_base
+      rel = get_relative_links origin, content, url_base
       return rel + ext
     end
 
-    def get_relative_links(content, base)
+    def get_relative_links(origin, content, base)
       links = []
       content.scan(MARKDOWN_LINK_REGEX) { |groups| links << groups.first }
 
+      def joiner(origin, name, base)
+        # Apply the origin to the name if it's not root-relative "begins with /"
+        if name[0] != "/"
+          name = File.join(origin, name)
+        else
+          name = name.delete_prefix('/')
+        end
+        name = Pathname.new(name).cleanpath
+
+        uri = URI.parse("#{base}#{name}")
+        uri.to_s
+      end
+
       links.reject { |x| x.include?('http') || x.include?('#') }
         .map { |x| x =~ /\S/ ? x.match(/^\S*/) : x }
-        .map { |x| "#{base}#{x}"}
+        .map { |x| joiner(origin, x.to_s, base) }
     end
   end # class
 end

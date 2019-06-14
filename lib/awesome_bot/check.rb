@@ -6,7 +6,7 @@ require 'awesome_bot/result'
 # Check links
 module AwesomeBot
   class << self
-    def check(content, options=nil, number_of_threads=1)
+    def check(origin, content, options=nil, number_of_threads=1)
       if options.nil?
         white_listed = nil
         skip_dupe = false
@@ -22,7 +22,7 @@ module AwesomeBot
         base = options['baseurl']
       end
 
-      links = links_filter(links_find(content, base))
+      links = links_filter(links_find(origin, content, base))
 
       r = Result.new(links, white_listed)
       r.skip_dupe = skip_dupe
