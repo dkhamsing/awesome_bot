@@ -86,6 +86,15 @@ $ awesome_bot README.md --allow 403,429
 
 $ awesome_bot README.md --base-url https://github.com/IDR/idr-notebooks/blob/master/
 # will check relative links using the base url provided
+
+$ awesome_bot README.md --base-url file://
+# will check relative links on disk from the current working directory
+
+$ awesome_bot README.md --base-url file://./subdir/
+# will check relative links on disk from $CWD/subdir/
+
+$ awesome_bot README.md --base-url file:///usr/local/src/project/docs/
+# will check relative links on disk from /usr/loca/src/project/docs/
 ```
 
 ```shell
