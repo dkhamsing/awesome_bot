@@ -1,0 +1,28 @@
+# This is an alternate docker build that will build and install awesome_bot
+# from source right here rather than installing a cached version in the Gem repo
+
+# Sample Usage:
+#     docker build . -t awesome_bot:local -f Dockerfile.local_source
+
+
+### Stage 1: Build the gem for internal use
+
+FROM ruby:alpine AS builder
+COPY . /src
+RUN apk --no-cache add git && \
+    cd /src && \
+    gem build awesome_bot.gemspec
+
+
+### Stage 2: Build the deliverable docker image
+
+FROM ruby:alpine
+
+# Get the gem from the builder image, and install it from a CWD
+COPY --from=builder /src/awesome_bot-*.gem /tmp/awesome_bot.gem
+RUN cd /tmp && gem install awesome_bot --no-format-exec
+
+VOLUME /mnt
+WORKDIR /mnt
+ENTRYPOINT ["awesome_bot"]
+CMD ["--help"]
