@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.19.0
+
+- [parse] handle javadoc links by [Davide Angelocola](https://github.com/dfa1)
+
 # 1.18.0
 
 - [parse] stricter parsing of relative urls by [Mat Moore](https://github.com/MatMoore)
