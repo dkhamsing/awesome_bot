@@ -193,24 +193,9 @@ script:
   - docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results `find . -name "*.md"`
 ```
 
-### CircleCI
-
-If you prefer CircleCI, it'll work too. [Connect your repo](https://circleci.com/) and create a [`circle.yml` file](https://github.com/tmcw/awesome-geojson).
-
-```yml
-machine:
-  ruby:
-    version: 2.4.1
-test:
-  pre:
-    - gem install awesome_bot
-  override:
-    - awesome_bot README.md
-```
-
 ### More
 
-CircleCI, [Codeship](https://codeship.com/), and [Semaphore CI](https://semaphoreci.com/) support running tests without adding a file to the repo (a public configuration file can however help others contribute).
+[CircleCI](https://circleci.com), [Codeship](https://codeship.com/), and [Semaphore CI](https://semaphoreci.com/) support running tests without adding a file to the repo (a public configuration file can however help others contribute).
 
 ```
 # Codeship
