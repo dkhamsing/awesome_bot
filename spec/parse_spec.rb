@@ -40,7 +40,7 @@ describe AwesomeBot do
       end
     end
 
-    context "given links spearated by comma" do
+    context "given links separated by comma" do
       content = 'https://github.com/dkhamsing, https://twitter.com/dkhamsing'
       list = AwesomeBot::links_find content
       f = AwesomeBot::links_filter list
@@ -90,6 +90,28 @@ describe AwesomeBot do
       f = AwesomeBot::links_filter list
       value = f[0]
       expected = 'https://en.wikipedia.org/wiki/Counter_(digital)'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+    end
+
+    context 'given a link with fragment and parentheses' do
+      content = 'https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Reader.html#nullReader()'
+      list = AwesomeBot::links_find content
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Reader.html#nullReader()'
+      it "parses correctly" do
+        expect(value).to eql(expected)
+      end
+    end
+
+    context 'given a markdown link with fragment and parentheses' do
+      content = '[JAVADOC](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Reader.html#nullReader())'
+      list = AwesomeBot::links_find content
+      f = AwesomeBot::links_filter list
+      value = f[0]
+      expected = 'https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Reader.html#nullReader()'
       it "parses correctly" do
         expect(value).to eql(expected)
       end
