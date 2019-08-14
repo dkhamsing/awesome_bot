@@ -2,6 +2,10 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.19.1
+
+- [gem] update `parallel`, `rspec`, `rspec_junit_formatter` to latest
+
 # 1.19.0
 
 - [parse] handle javadoc links by [Davide Angelocola](https://github.com/dfa1)
