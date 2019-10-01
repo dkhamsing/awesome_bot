@@ -1,6 +1,6 @@
 # Awesome Status 
 
-Build status for **132** projects using https://github.com/dkhamsing/awesome_bot 
+Build status for **136** projects using https://github.com/dkhamsing/awesome_bot 
 
 Status | Config | Repo 
 ---    | ---    | ---  
@@ -13,6 +13,8 @@ Status | Config | Repo
 [![Build Status](https://travis-ci.org/ziadoz/awesome-php.svg)](https://travis-ci.org/ziadoz/awesome-php) | [`config`](https://github.com/ziadoz/awesome-php/blob/master/.travis.yml) | [ziadoz/awesome-php](https://github.com/ziadoz/awesome-php) 
 [![Build Status](https://travis-ci.org/matteocrippa/awesome-swift.svg)](https://travis-ci.org/matteocrippa/awesome-swift) | [`config`](https://github.com/matteocrippa/awesome-swift/blob/master/.travis.yml) | [matteocrippa/awesome-swift](https://github.com/matteocrippa/awesome-swift) 
 [![Build Status](https://travis-ci.org/wsargent/docker-cheat-sheet.svg)](https://travis-ci.org/wsargent/docker-cheat-sheet) | [`config`](https://github.com/wsargent/docker-cheat-sheet/blob/master/.travis.yml) | [wsargent/docker-cheat-sheet](https://github.com/wsargent/docker-cheat-sheet) 
+[![Build Status](https://travis-ci.org/jaywcjlove/awesome-mac.svg)](https://travis-ci.org/jaywcjlove/awesome-mac) | [`config`](https://github.com/jaywcjlove/awesome-mac/blob/master/.travis.yml) | [jaywcjlove/awesome-mac](https://github.com/jaywcjlove/awesome-mac) 
+[![Build Status](https://travis-ci.org/Kickball/awesome-selfhosted.svg)](https://travis-ci.org/Kickball/awesome-selfhosted) | [`config`](https://github.com/Kickball/awesome-selfhosted/blob/master/.travis.yml) | [Kickball/awesome-selfhosted](https://github.com/Kickball/awesome-selfhosted) 
 [![Build Status](https://travis-ci.org/alebcay/awesome-shell.svg)](https://travis-ci.org/alebcay/awesome-shell) | [`config`](https://github.com/alebcay/awesome-shell/blob/master/.travis.yml) | [alebcay/awesome-shell](https://github.com/alebcay/awesome-shell) 
 [![Build Status](https://travis-ci.org/cjwirth/awesome-ios-ui.svg)](https://travis-ci.org/cjwirth/awesome-ios-ui) | [`config`](https://github.com/cjwirth/awesome-ios-ui/blob/master/.travis.yml) | [cjwirth/awesome-ios-ui](https://github.com/cjwirth/awesome-ios-ui) 
 [![Build Status](https://travis-ci.org/n0shake/Public-APIs.svg)](https://travis-ci.org/n0shake/Public-APIs) | [`config`](https://github.com/n0shake/Public-APIs/blob/master/.travis.yml) | [n0shake/Public-APIs](https://github.com/n0shake/Public-APIs) 
@@ -135,6 +137,6 @@ Status | Config | Repo
 [![Build Status](https://travis-ci.org/IQDevs/Awesome-IQDevs.svg)](https://travis-ci.org/IQDevs/Awesome-IQDevs) | [`config`](https://github.com/IQDevs/Awesome-IQDevs/blob/master/.travis.yml) | [IQDevs/Awesome-IQDevs](https://github.com/IQDevs/Awesome-IQDevs) 
 [![Build Status](https://travis-ci.org/BubuAnabelas/awesome-markdown.svg)](https://travis-ci.org/BubuAnabelas/awesome-markdown) | [`config`](https://github.com/BubuAnabelas/awesome-markdown/blob/master/.travis.yml) | [BubuAnabelas/awesome-markdown](https://github.com/BubuAnabelas/awesome-markdown) 
 [![Build Status](https://travis-ci.org/serhii-londar/open-source-mac-os-apps.svg)](https://travis-ci.org/serhii-londar/open-source-mac-os-apps) | [`config`](https://github.com/serhii-londar/open-source-mac-os-apps/blob/master/.travis.yml) | [serhii-londar/open-source-mac-os-apps](https://github.com/serhii-londar/open-source-mac-os-apps) 
+[![Build Status](https://travis-ci.org/frenck/awesome-home-assistant.svg)](https://travis-ci.org/frenck/awesome-home-assistant) | [`config`](https://github.com/frenck/awesome-home-assistant/blob/master/.travis.yml) | [frenck/awesome-home-assistant](https://github.com/frenck/awesome-home-assistant) 
+[![Build Status](https://travis-ci.org/duyetdev/awesome-web-scraper.svg)](https://travis-ci.org/duyetdev/awesome-web-scraper) | [`config`](https://github.com/duyetdev/awesome-web-scraper/blob/master/.travis.yml) | [duyetdev/awesome-web-scraper](https://github.com/duyetdev/awesome-web-scraper) 
 [![Circle CI](https://img.shields.io/circleci/project/tmcw/awesome-geojson.svg)](https://circleci.com/gh/tmcw/awesome-geojson) | [`config`](https://github.com/tmcw/awesome-geojson/blob/master/circle.yml) | [tmcw/awesome-geojson](https://github.com/tmcw/awesome-geojson) 
-[![Build Status](https://travis-ci.org/frenck/awesome-home-assistant.svg)](https://travis-ci.org/frenck/awesome-home-assistant) | [`config`](https://github.com/frenck/awesome-home-assistant/blob/master/.travis.yml) | [frenck/awesome-home-assistant](https://github.com/frenck/awesome-home-assistant)
-[![Build Status](https://travis-ci.org/duyetdev/awesome-web-scraper.svg)](https://travis-ci.org/duyetdev/awesome-web-scraper) | [`config`](https://github.com/duyetdev/awesome-web-scraper/blob/master/.travis.yml) | [duyetdev/awesome-web-scraper](https://github.com/duyetdev/awesome-web-scraper)
