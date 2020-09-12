@@ -1,6 +1,6 @@
 # Awesome Status 
 
-Build status for **136** projects using https://github.com/dkhamsing/awesome_bot 
+Build status for **138** projects using https://github.com/dkhamsing/awesome_bot 
 
 Status | Config | Repo 
 ---    | ---    | ---  
@@ -139,5 +139,6 @@ Status | Config | Repo
 [![Build Status](https://travis-ci.org/serhii-londar/open-source-mac-os-apps.svg)](https://travis-ci.org/serhii-londar/open-source-mac-os-apps) | [`config`](https://github.com/serhii-londar/open-source-mac-os-apps/blob/master/.travis.yml) | [serhii-londar/open-source-mac-os-apps](https://github.com/serhii-londar/open-source-mac-os-apps) 
 [![Build Status](https://travis-ci.org/frenck/awesome-home-assistant.svg)](https://travis-ci.org/frenck/awesome-home-assistant) | [`config`](https://github.com/frenck/awesome-home-assistant/blob/master/.travis.yml) | [frenck/awesome-home-assistant](https://github.com/frenck/awesome-home-assistant) 
 [![Build Status](https://travis-ci.org/duyetdev/awesome-web-scraper.svg)](https://travis-ci.org/duyetdev/awesome-web-scraper) | [`config`](https://github.com/duyetdev/awesome-web-scraper/blob/master/.travis.yml) | [duyetdev/awesome-web-scraper](https://github.com/duyetdev/awesome-web-scraper) 
+[![Build Status](https://travis-ci.org/tapaswenipathak/Women-GitHubers.svg)](https://travis-ci.org/tapaswenipathak/Women-GitHubers) | [`config`](https://github.com/tapaswenipathak/Women-GitHubers/blob/master/.travis.yml) | [tapaswenipathak/Women-GitHubers](https://github.com/tapaswenipathak/Women-GitHubers) 
+[![Build Status](https://travis-ci.org/emacs-tw/awesome-emacs.svg)](https://travis-ci.org/emacs-tw/awesome-emacs) | [`config`](https://github.com/emacs-tw/awesome-emacs/blob/master/.travis.yml) | [emacs-tw/awesome-emacs](https://github.com/emacs-tw/awesome-emacs) 
 [![Circle CI](https://img.shields.io/circleci/project/tmcw/awesome-geojson.svg)](https://circleci.com/gh/tmcw/awesome-geojson) | [`config`](https://github.com/tmcw/awesome-geojson/blob/master/circle.yml) | [tmcw/awesome-geojson](https://github.com/tmcw/awesome-geojson) 
-[![Build Status](https://travis-ci.org/tapaswenipathak/Women-GitHubers.svg)](https://travis-ci.org/tapaswenipathak/Women-GitHubers) | [`config`](https://github.com/tapaswenipathak/Women-GitHubers/blob/master/.travis.yml) | [tapaswenipathak/Women-GitHubers](https://github.com/tapaswenipathak/Women-GitHubers)
