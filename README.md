@@ -8,7 +8,7 @@ Verify links in [awesome](status/status.md) projects
 [![Gem Version](https://badge.fury.io/rb/awesome_bot.svg)](https://badge.fury.io/rb/awesome_bot)
 [![](https://img.shields.io/badge/awesome-status-brightgreen.svg)](status/status.md)
 
-`awesome_bot` checks for valid URLs in a file, it can be used to [verify pull requests](#validate-pull-requests) updating a README.
+`awesome_bot` checks for valid URLs in a file. It can be used to [verify pull requests](#validate-pull-requests) which update a README.
 
 ## Installation
 
@@ -21,8 +21,8 @@ Verify links in [awesome](status/status.md) projects
 ``` shell
 Usage: awesome_bot [file or files]
        awesome_bot [options]
-    -f, --files [files]              Comma separated files to check
-    -a, --allow [errors]             Status code errors to allow
+    -f, --files [files]              Comma-separated files to check
+    -a, --allow [errors]             Status-code errors to allow
         --allow-dupe                 Duplicate URLs are allowed
         --allow-ssl                  SSL errors are allowed
         --allow-redirect             Redirected URLs are allowed
@@ -31,17 +31,17 @@ Usage: awesome_bot [file or files]
     -d, --request-delay [seconds]    Set request delay
     -t, --set-timeout [seconds]      Set connection timeout (default: 30)
         --skip-save-results          Skip saving results
-    -w, --white-list [urls]          Comma separated URLs to white list
+    -w, --white-list [urls]          Comma-separated URLs to whitelist
 ```
 
-- You can check multiple files (comma separated or `*` pattern, look below for details).
+- You can check multiple files (comma-separated or `*` pattern - see below for details).
 
 - By default, duplicate URLs or any status code other than `200` are flagged as failures.
 
   - Use option `--allow-dupe` to allow duplicates.
   - Use option `--allow-redirect` to allow redirects.
-  - Use option `--allow` to allow specific status code errors.
-  - Use option `--white-list` (`-w` for short) to prevent links from being flagged: `-w domain1.com/post/article,domain2.com` white lists `domain1.com/post/article` and all links matching `domain2.com`.
+  - Use option `--allow` to allow specific status-code errors.
+  - Use option `--white-list` (`-w` for short) to prevent links from being flagged: `-w domain1.com/post/article,domain2.com` whitelists `domain1.com/post/article` and all links matching `domain2.com`.
 
 ### Examples
 
@@ -69,23 +69,23 @@ Issues :-(
 
 ```shell
 $ awesome_bot README.md --allow-dupe --allow-redirect -w rubydoc,giphy
-# allow redirects, dupes and white list all links matching rubydoc and giphy
+# allow redirects and dupes, and whitelist all links matching rubydoc and giphy
 
 $ awesome_bot README.md,README-zh.md
 # check links in 2 files
 
 $ awesome_bot docs/*.md
-# check all markdown files in docs/ directory
+# check all Markdown files in the docs/ directory
 
 $ awesome_bot README.md --allow-timeout -t 5
 # speed up validation by setting a timeout of 5 seconds per link request and allowing timeouts
 
 $ awesome_bot README.md --allow 403,429
-# allow status code errors 403 and 429
+# allow status-code errors 403 and 429
 # --allow 301 would be similar to --allow-redirect
 
 $ awesome_bot README.md --base-url https://github.com/IDR/idr-notebooks/blob/master/
-# will check relative links using the base url provided
+# check relative links using the base URL provided
 ```
 
 ```shell
@@ -110,20 +110,20 @@ Wrote results to ab-results-new-readme.md.json
 ```
 
 ### Docker Examples
-If you do not want to install Ruby or it's dependencies you can simply use Docker and Docker image.
+If you do not want to install Ruby or its dependencies you can simply use Docker and Docker image.
 
-Here is the example how you can check the links in your current directory+subdirectories markdown files:
+Here is an example of how you can check the links in the Markdown files in your current directory+subdirectories:
 ```shell
 docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --white-list "test.com" --allow-dupe --allow-redirect --skip-save-results `find . -name "*.md"`
 ```
 
-or check links in just in a single file located in `./templates/ubuntu.md`:
+or just check the links in a single file located at `./templates/ubuntu.md`:
 
 ```shell
 docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results ./templates/ubuntu.md
 ```
 
-You always need to specify the path to the file so you can not use simply `*.md` but `ls *.md"`:
+You always need to specify the path to the file so you cannot simply use `*.md`; instead, use `ls *.md"`:
 ```shell
 docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --white-list "test.com" --allow-dupe --allow-redirect --skip-save-results `ls *.md`
 ```
@@ -230,13 +230,13 @@ i.e.
 [![Build Status](https://travis-ci.org/dkhamsing/awesome_bot.svg?branch=master)](https://travis-ci.org/dkhamsing/awesome_bot)
 ```
 
-As it happens, the default code snippet provided contain a redirect so adding a badge could fail your status :sob:.. one way to fix this is to white list `travis-ci`, i.e.
+As it happens, the default code snippet provided contains a redirect so adding a badge could fail your status :sob:... one way to fix this is to whitelist `travis-ci`, i.e.
 
 ```
 - awesome_bot README.md --white-list travis-ci
 ```
 
-You can also add a badge for other CI tools, check out [shields.io](https://shields.io/).
+You can also add a badge for other CI tools. Check out [shields.io](https://shields.io/).
 
 ### Danger
 
