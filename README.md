@@ -162,6 +162,38 @@ Tips
 - Use the keyword `[ci skip]` in your commit title/message to skip verification.
 - Use [Danger](#danger).
 
+### GitHub Actions
+
+To use `awesome_bot` with GitHub Actions (workflows), here is an [example](https://github.com/dkhamsing/open-source-ios-apps/blob/master/.github/workflows/ruby.yml):
+
+```yml
+name: Ruby
+
+on:
+  push:
+    branches: [ '*' ]
+  pull_request:
+    branches: [ '*' ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+    - name: Checks
+      run: |
+        ruby .github/osia_convert.rb
+        gem install awesome_bot
+        ruby .github/osia_get_links.rb
+        awesome_bot check-unique.txt --allow-ssl -a 302,429 -w xbmc/xbmc
+```
+
 ### Travis CI
 
 To use `awesome_bot` with Travis CI, [connect your repo](https://travis-ci.org/) and create a [`.travis.yml` file](https://github.com/ziadoz/awesome-php/blob/master/.travis.yml).
