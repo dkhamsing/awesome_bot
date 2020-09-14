@@ -75,7 +75,7 @@ $ awesome_bot README.md,README-zh.md
 # check links in 2 files
 
 $ awesome_bot docs/*.md
-# check all markdown files in docs/ directory
+# check all Markdown files in the docs/ directory
 
 $ awesome_bot README.md --allow-timeout -t 5
 # speed up validation by setting a timeout of 5 seconds per link request and allowing timeouts
@@ -85,7 +85,7 @@ $ awesome_bot README.md --allow 403,429
 # --allow 301 would be similar to --allow-redirect
 
 $ awesome_bot README.md --base-url https://github.com/IDR/idr-notebooks/blob/master/
-# will check relative links using the base url provided
+# check relative links using the base URL provided
 ```
 
 ```shell
@@ -110,20 +110,20 @@ Wrote results to ab-results-new-readme.md.json
 ```
 
 ### Docker Examples
-If you do not want to install Ruby or it's dependencies you can simply use Docker and Docker image.
+If you do not want to install Ruby or its dependencies you can simply use Docker and Docker image.
 
-Here is the example how you can check the links in your current directory+subdirectories markdown files:
+Here is an example for checking the links in the Markdown files in your current directory/subdirectories:
 ```shell
 docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --white-list "test.com" --allow-dupe --allow-redirect --skip-save-results `find . -name "*.md"`
 ```
 
-or check links in just in a single file located in `./templates/ubuntu.md`:
+or just check the links in a single file located at `./templates/ubuntu.md`:
 
 ```shell
 docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results ./templates/ubuntu.md
 ```
 
-You always need to specify the path to the file so you can not use simply `*.md` but `ls *.md"`:
+You always need to specify the path to the file so you cannot simply use `*.md`; instead use `ls *.md"`:
 ```shell
 docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --white-list "test.com" --allow-dupe --allow-redirect --skip-save-results `ls *.md`
 ```
@@ -230,7 +230,7 @@ i.e.
 [![Build Status](https://travis-ci.org/dkhamsing/awesome_bot.svg?branch=master)](https://travis-ci.org/dkhamsing/awesome_bot)
 ```
 
-As it happens, the default code snippet provided contain a redirect so adding a badge could fail your status :sob:.. one way to fix this is to white list `travis-ci`, i.e.
+As it happens, the default code snippet provided contains a redirect so adding a badge could fail your status :sob:.. one way to fix this is to white list `travis-ci`, i.e.
 
 ```
 - awesome_bot README.md --white-list travis-ci
