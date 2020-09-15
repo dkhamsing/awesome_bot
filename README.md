@@ -159,7 +159,7 @@ and [more](status/status.md).
 
 Tips
 
-- Use the keyword `[ci skip]` in your commit title/message to skip verification.
+- Use the keyword [`[ci skip]`](https://docs.travis-ci.com/user/customizing-the-build/) in your commit title/message to skip verification.
 - Use [Danger](#danger).
 
 ### GitHub Actions
