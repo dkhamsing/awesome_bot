@@ -2,7 +2,7 @@
 
 Verify links in [awesome](status/status.md) projects
 
-![](http://i.giphy.com/urvsFBDfR6N32.gif)
+![](https://i.pinimg.com/originals/a7/fb/10/a7fb100cbd997d541badb08d4885340c.gif)
 
 [![Build Status](https://travis-ci.org/dkhamsing/awesome_bot.svg)](https://travis-ci.org/dkhamsing/awesome_bot) [![Tests](https://img.shields.io/badge/tests-circle%20ci-brightgreen.svg)](https://circleci.com/gh/dkhamsing/awesome_bot)
 [![Gem Version](https://badge.fury.io/rb/awesome_bot.svg)](https://badge.fury.io/rb/awesome_bot)
