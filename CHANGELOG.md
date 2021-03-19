@@ -2,6 +2,11 @@
 
 Changes by [Daniel Khamsing][] unless otherwise noted.
 
+# 1.20.0
+
+- [cli] delay: change to use float by [Jonathan Lai](https://github.com/agsdot)
+- [gem] update `parallel`, `rspec` to latest
+
 # 1.19.1
 
 - [gem] update `parallel`, `rspec`, `rspec_junit_formatter` to latest
