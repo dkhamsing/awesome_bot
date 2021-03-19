@@ -65,11 +65,11 @@ describe AwesomeBot do
     # end
 
     context "given an incomplete redirect" do
-      link = 'https://httpbin.org/redirect-to?url=/foo&status_code=301'
+      link = 'https://github.com/supermarin/Alcatraz'
       r = AwesomeBot::check link
       s = r.status[0]
       value = s['headers']['location']
-      expected = 'https://httpbin.org/foo'
+      expected = 'https://github.com/alcatraz/Alcatraz'
       it "the redirect is adjusted" do
         expect(value).to eql(expected)
       end
