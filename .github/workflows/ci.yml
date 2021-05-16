@@ -1,10 +1,10 @@
 name: Tests
 
 on:
+  pull_request:
   push:
     branches:
-      - main
-  pull_request:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -44,4 +44,4 @@ jobs:
         awesome_bot bin/assets/test-ssl --allow-ssl
         awesome_bot README.md --allow-dupe --white-list gph.is,giphy,travis-ci.org,codeload,badge,rubydoc,rubygems,circleci,codeship,blob/master
     - name: Install gem
-      run: gem install awesome_bot        
+      run: gem install awesome_bot
