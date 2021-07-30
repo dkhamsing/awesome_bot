@@ -6,6 +6,7 @@ Verify links in [awesome](status/status.md) projects
 
 [![Gem Version](https://badge.fury.io/rb/awesome_bot.svg)](https://badge.fury.io/rb/awesome_bot)
 [![](https://img.shields.io/badge/awesome-status-brightgreen.svg)](status/status.md)
+![Test](https://github.com/dkhamsing/awesome_bot/actions/workflows/ci.yml/badge.svg)
 
 `awesome_bot` checks for valid URLs in a file, it can be used to [verify pull requests](#validate-pull-requests) updating a README.
 
