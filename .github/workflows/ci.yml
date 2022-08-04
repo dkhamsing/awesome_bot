@@ -21,7 +21,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Install bot
+    - name: Install awesome_bot
       run: rake install
     - name: Run tests
       run: |
