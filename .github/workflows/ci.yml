@@ -42,5 +42,7 @@ jobs:
         awesome_bot bin/assets/test-no-* --allow-redirect
         awesome_bot bin/assets/test-ssl --allow-ssl
         awesome_bot README.md --allow-dupe --white-list gph.is,giphy,travis-ci.org,codeload,badge,rubydoc,rubygems,circleci,codeship,blob/master
+    - name: RSpec tests
+      run: bundle exec rspec -fd --color -r rspec_junit_formatter --format RspecJunitFormatter -o junit.xml
     - name: Install gem
       run: gem install awesome_bot
