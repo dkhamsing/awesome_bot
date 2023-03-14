@@ -188,9 +188,7 @@ jobs:
         ruby-version: '2.6'
     - name: Checks
       run: |
-        ruby .github/osia_convert.rb
         gem install awesome_bot
-        ruby .github/osia_get_links.rb
         awesome_bot check-unique.txt --allow-ssl -a 302,429 -w xbmc/xbmc
 ```
 
