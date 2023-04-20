@@ -2,23 +2,25 @@
 
 Verify links in [awesome](status/status.md) projects
 
-![](http://i.giphy.com/urvsFBDfR6N32.gif)
+![Awesome Bender](http://i.giphy.com/urvsFBDfR6N32.gif)
 
 [![Gem Version](https://badge.fury.io/rb/awesome_bot.svg)](https://badge.fury.io/rb/awesome_bot)
-[![](https://img.shields.io/badge/awesome-status-brightgreen.svg)](status/status.md)
+[![Awesome status](https://img.shields.io/badge/awesome-status-brightgreen.svg)](status/status.md)
 ![Test](https://github.com/dkhamsing/awesome_bot/actions/workflows/ci.yml/badge.svg)
 
 `awesome_bot` checks for valid URLs in a file, it can be used to [verify pull requests](#validate-pull-requests) updating a README.
 
 ## Installation
 
-    $ gem install awesome_bot
+```shell
+gem install awesome_bot
+```
 
 ## Usage
 
 ### Command Line
 
-``` shell
+```shell
 Usage: awesome_bot [file or files]
        awesome_bot [options]
     -f, --files [files]              Comma separated files to check
@@ -110,9 +112,11 @@ Wrote results to ab-results-new-readme.md.json
 ```
 
 ### Docker Examples
+
 If you do not want to install Ruby or its dependencies you can simply use Docker and Docker image.
 
 Here is an example for checking the links in the Markdown files in your current directory/subdirectories:
+
 ```shell
 docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --white-list "test.com" --allow-dupe --allow-redirect --skip-save-results `find . -name "*.md"`
 ```
@@ -124,6 +128,7 @@ docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-r
 ```
 
 You always need to specify the path to the file so you cannot simply use `*.md`; instead use `ls *.md"`:
+
 ```shell
 docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --white-list "test.com" --allow-dupe --allow-redirect --skip-save-results `ls *.md`
 ```
@@ -148,12 +153,13 @@ More information at [rubydoc](http://www.rubydoc.info/gems/awesome_bot).
 
 Does your GitHub README contain a lot of links? `awesome_bot` can help you validate them when a [pull request](https://github.com/dkhamsing/open-source-ios-apps/pull/159) is created (or a commit is pushed). It is used by:
 
-- https://github.com/tiimgreen/github-cheat-sheet
-- https://github.com/enaqx/awesome-react
-- https://github.com/ziadoz/awesome-php
-- https://github.com/vsouza/awesome-ios
-- https://github.com/alebcay/awesome-shell
-- https://github.com/matteocrippa/awesome-swift
+- <https://github.com/tiimgreen/github-cheat-sheet>
+- <https://github.com/enaqx/awesome-react>
+- <https://github.com/ziadoz/awesome-php>
+- <https://github.com/vsouza/awesome-ios>
+- <https://github.com/alebcay/awesome-shell>
+- <https://github.com/matteocrippa/awesome-swift>
+- <https://github.com/logseq/awesome-logseq>
 
 and [more](status/status.md).
 
@@ -253,7 +259,7 @@ awesome_bot README.md
 
 To add the Travis CI build status badge above to your project, use the following code
 
-```
+```markdown
 [![Build Status](https://travis-ci.org/<username>/<project>.svg)](https://travis-ci.org/<username>/<project>)
 
 i.e.
@@ -262,8 +268,8 @@ i.e.
 
 As it happens, the default code snippet provided contains a redirect so adding a badge could fail your status :sob:.. one way to fix this is to white list `travis-ci`, i.e.
 
-```
-- awesome_bot README.md --white-list travis-ci
+```shell
+awesome_bot README.md --white-list travis-ci
 ```
 
 You can also add a badge for other CI tools, check out [shields.io](https://shields.io/).
@@ -286,6 +292,8 @@ if j['error']==true
   markdown j['message']
 end
 ```
+
+> Danger would not work on OSS project. See [here](https://github.com/marketplace/actions/danger-action#attention-for-repository-oss-or-using-dependabot)
 
 ## Contact
 
